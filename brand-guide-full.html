@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House of Light and Love — Visual Brand Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HLL Visual Brand Guide — Master Stylesheet
+     Generated: April 10, 2026
+     Source of Truth: HLL Visual Brand Guide — Designer Reference.docx
+     Confirmed by: Zac Wine (April 9, 2026)
+     ============================================================ */
+
+  :root {
+    /* Primary Base */
+    --espresso: #3A2F26;
+    --warm-ivory: #F4EEE6;
+    --soft-light: #F7F3EE;
+    /* Depth */
+    --warm-earth: #A89C8E;
+    --stone-gray: #8F8A83;
+    /* Support */
+    --clay: #C2A78F;
+    --soft-taupe: #D6CBBE;
+    --sage: #A8B2A1;
+    /* Accent */
+    --amber: #D6B25E;
+    --soft-gold: #C9A84C;
+    --glow: #F0D890;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--espresso);
+    color: var(--warm-ivory);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === Page Structure === */
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* === Cover === */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 48px;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214,178,94,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 52px;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--warm-ivory);
+  }
+
+  .cover .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--amber);
+    margin-bottom: 48px;
+  }
+
+  .cover .meta {
+    font-size: 13px;
+    color: var(--warm-earth);
+    line-height: 1.9;
+  }
+
+  .cover .divider-line {
+    width: 60px;
+    height: 1px;
+    background: var(--amber);
+    margin: 32px auto;
+    opacity: 0.5;
+  }
+
+  /* === Section Headers === */
+  .section-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--warm-ivory);
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: var(--warm-ivory);
+  }
+
+  .section-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--clay);
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--warm-earth);
+    margin: 64px 0;
+    opacity: 0.4;
+  }
+
+  /* === Color Swatches === */
+  .palette-group {
+    margin-bottom: 48px;
+  }
+
+  .palette-group-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-earth);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(168,156,142,0.2);
+  }
+
+  .swatch-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .swatch-card {
+    flex: 1;
+    min-width: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(168,156,142,0.15);
+  }
+
+  .swatch-color {
+    height: 80px;
+    position: relative;
+  }
+
+  .swatch-info {
+    padding: 14px 16px;
+    background: rgba(58,47,38,0.6);
+  }
+
+  .swatch-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--warm-ivory);
+    margin-bottom: 4px;
+  }
+
+  .swatch-hex {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    color: var(--warm-earth);
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+  }
+
+  .swatch-codes {
+    font-size: 11px;
+    color: var(--stone-gray);
+    margin-bottom: 6px;
+  }
+
+  .swatch-usage {
+    font-size: 12px;
+    color: var(--clay);
+    line-height: 1.5;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(168,156,142,0.12);
+  }
+
+  /* === Typography Samples === */
+  .type-sample {
+    margin-bottom: 40px;
+    padding: 32px;
+    border-radius: 8px;
+    background: rgba(247,243,238,0.04);
+    border: 1px solid rgba(168,156,142,0.1);
+  }
+
+  .type-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .type-demo-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--warm-ivory);
+    margin-bottom: 8px;
+  }
+
+  .type-demo-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    color: var(--warm-ivory);
+    margin-bottom: 8px;
+  }
+
+  .type-demo-h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--warm-ivory);
+    margin-bottom: 8px;
+  }
+
+  .type-demo-body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--warm-ivory);
+    max-width: 600px;
+    margin-bottom: 8px;
+  }
+
+  .type-demo-caption {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--stone-gray);
+  }
+
+  .type-spec {
+    font-size: 12px;
+    color: var(--warm-earth);
+    margin-top: 4px;
+  }
+
+  /* === Button Demos === */
+  .button-demo-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 24px 0;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--amber);
+    color: var(--espresso);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 5px;
+    border: 1px solid var(--espresso);
+    text-decoration: none;
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--warm-ivory);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 5px;
+    border: 1px solid var(--warm-earth);
+    text-decoration: none;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-label {
+    font-size: 11px;
+    color: var(--warm-earth);
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* === Spec Tables === */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .spec-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(168,156,142,0.2);
+  }
+
+  .spec-table td {
+    padding: 10px 16px;
+    color: var(--warm-ivory);
+    border-bottom: 1px solid rgba(168,156,142,0.08);
+    vertical-align: top;
+  }
+
+  .spec-table td:first-child {
+    color: var(--clay);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* === Lists === */
+  .guide-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .guide-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--warm-ivory);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .guide-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    opacity: 0.6;
+  }
+
+  .avoid-list li::before {
+    background: var(--warm-earth);
+    opacity: 0.4;
+  }
+
+  /* === Blockquote === */
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--warm-ivory);
+    border-left: 2px solid var(--amber);
+    padding: 16px 0 16px 24px;
+    margin: 32px 0;
+    opacity: 0.9;
+  }
+
+  /* === Form Demo === */
+  .form-demo {
+    max-width: 400px;
+    margin: 24px 0;
+  }
+
+  .form-demo input {
+    width: 100%;
+    background: var(--soft-light);
+    border: 1px solid var(--soft-taupe);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--espresso);
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-demo input::placeholder {
+    color: var(--warm-earth);
+  }
+
+  .form-demo input:focus {
+    border-color: var(--amber);
+  }
+
+  /* === Experience Flow === */
+  .flow-section {
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border-left: 3px solid var(--amber);
+    background: rgba(247,243,238,0.03);
+  }
+
+  .flow-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+  }
+
+  .flow-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--warm-ivory);
+    margin-bottom: 4px;
+  }
+
+  .flow-desc {
+    font-size: 13px;
+    color: var(--warm-earth);
+    line-height: 1.5;
+  }
+
+  /* === Do / Don't === */
+  .do-dont {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+  }
+
+  .do-box, .dont-box {
+    flex: 1;
+    min-width: 280px;
+    padding: 24px;
+    border-radius: 8px;
+  }
+
+  .do-box {
+    background: rgba(168,178,161,0.08);
+    border: 1px solid rgba(168,178,161,0.2);
+  }
+
+  .dont-box {
+    background: rgba(143,138,131,0.06);
+    border: 1px solid rgba(143,138,131,0.15);
+  }
+
+  .do-box .guide-list li::before { background: var(--sage); }
+  .dont-box .guide-list li::before { background: var(--stone-gray); opacity: 0.5; }
+
+  .box-title {
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .do-box .box-title { color: var(--sage); }
+  .dont-box .box-title { color: var(--stone-gray); }
+
+  /* === Accessibility Note === */
+  .a11y-note {
+    padding: 24px;
+    border-radius: 8px;
+    background: rgba(214,178,94,0.06);
+    border: 1px solid rgba(214,178,94,0.15);
+    margin: 32px 0;
+  }
+
+  .a11y-note .note-title {
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+
+  .a11y-note p {
+    font-size: 14px;
+    color: var(--clay);
+    line-height: 1.6;
+  }
+
+  /* === Footer === */
+  .guide-footer {
+    text-align: center;
+    padding: 80px 48px 48px;
+    color: var(--stone-gray);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .guide-footer .closing {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--clay);
+    margin-bottom: 32px;
+  }
+
+  /* === Contrast Demo === */
+  .contrast-demo {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+
+  .contrast-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .contrast-card .sample-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .contrast-card .contrast-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  /* === Print === */
+  @media print {
+    body { background: white; color: #3A2F26; }
+    .page { padding: 40px 32px; }
+    .cover { min-height: auto; padding: 60px 32px; }
+    .swatch-info { background: #f5f0ea; }
+    .swatch-name, h2, h3, .type-demo-h1, .type-demo-h2, .type-demo-h3,
+    .type-demo-body, .guide-list li, .spec-table td, blockquote,
+    .flow-title { color: #3A2F26; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+     ============================================================ -->
+<div class="cover page-break">
+  <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 80px; margin-bottom: 2rem; opacity: 0.9; filter: drop-shadow(0 0 12px rgba(214,178,94,0.15));">
+  <div class="subtitle">Visual Brand Guide</div>
+  <div class="divider-line"></div>
+  <div class="meta">
+    Source of Truth &mdash; Confirmed April 9, 2026<br>
+    Prepared for: Zac Wine (Web Designer)<br>
+    Prepared by: Marc Cooper / ACE System<br>
+    <br>
+    Based on: HLL Phase 1 Website Foundation &amp; Homepage Experience,<br>
+    FINAL &mdash; HLL Website Creative Brief &amp; Experience Blueprint,<br>
+    HLL Aesthetic Brand Guide v2.0,<br>
+    HLL Homepage Design Direction &mdash; Reflections &amp; Suggestions
+  </div>
+</div>
+
+<!-- ============================================================
+     1. BRAND ESSENCE & FEEL
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 01</div>
+  <h2>Brand Essence &amp; Feel</h2>
+  <div class="section-intro">The soul of the brand &mdash; what every design decision must serve.</div>
+
+  <blockquote>
+    &ldquo;A quiet, living space for reflection, connection, and remembrance &mdash; where nothing is being sold, and nothing is being taught, only gently revealed.&rdquo;
+  </blockquote>
+
+  <h3>Core Principle</h3>
+  <p style="color: var(--clay); font-size: 15px; margin-bottom: 32px;">
+    An invitation to reflection, not instruction &mdash; a calm and grounded space that gently guides visitors inward.
+  </p>
+
+  <h3>5 Guiding Adjectives</h3>
+  <div style="display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0 32px;">
+    <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--amber);">Calm</span>
+    <span style="color: var(--warm-earth); font-size: 22px;">&middot;</span>
+    <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--amber);">Warm</span>
+    <span style="color: var(--warm-earth); font-size: 22px;">&middot;</span>
+    <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--amber);">Spacious</span>
+    <span style="color: var(--warm-earth); font-size: 22px;">&middot;</span>
+    <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--amber);">Grounded</span>
+    <span style="color: var(--warm-earth); font-size: 22px;">&middot;</span>
+    <span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--amber);">Intentional</span>
+  </div>
+
+  <p style="font-size: 15px; color: var(--warm-ivory); margin-bottom: 16px;">
+    The site should feel like <em style="color: var(--clay);">quiet luxury meets editorial minimalism meets grounded spiritual presence.</em>
+  </p>
+
+  <h3>Guiding Feeling</h3>
+  <blockquote>&ldquo;Returning home to something already known.&rdquo;</blockquote>
+
+  <h3>What This Is Not</h3>
+  <ul class="guide-list avoid-list">
+    <li>Not a spiritual authority platform</li>
+    <li>Not promotional or conversion-driven</li>
+    <li>Not ornate, busy, or loud</li>
+    <li>Not instructional or dogmatic</li>
+    <li>Not a traditional website &mdash; it&rsquo;s a living space</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     2. COLOR SYSTEM
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 02</div>
+  <h2>Color System</h2>
+  <div class="section-intro">Finalized palette &mdash; every color has a purpose, a weight, and a home.</div>
+
+  <!-- PRIMARY BASE -->
+  <div class="palette-group">
+    <div class="palette-group-title">Primary Base</div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #3A2F26;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Espresso / Walnut</div>
+          <div class="swatch-hex">#3A2F26</div>
+          <div class="swatch-codes">RGB 58, 47, 38 &nbsp;|&nbsp; CMYK 0, 19, 34, 77</div>
+          <div class="swatch-usage">Primary background. The foundational field of the site. Default page canvas and primary grounding color across major sections.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #F4EEE6;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Ivory</div>
+          <div class="swatch-hex">#F4EEE6</div>
+          <div class="swatch-codes">RGB 244, 238, 230 &nbsp;|&nbsp; CMYK 0, 2, 6, 4</div>
+          <div class="swatch-usage">Primary text color on Espresso backgrounds. Headlines, body copy, navigation, key UI text, and other high-legibility type moments.</div>
+        </div>
+      </div>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #F7F3EE;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soft Light</div>
+          <div class="swatch-hex">#F7F3EE</div>
+          <div class="swatch-codes">RGB 247, 243, 238 &nbsp;|&nbsp; CMYK 0, 2, 4, 3</div>
+          <div class="swatch-usage">Alternate light surface for selective contrast moments &mdash; cards, form fields, overlays, and occasional section shifts where a brief lift in tone is helpful.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPTH PALETTE -->
+  <div class="palette-group">
+    <div class="palette-group-title">Depth Palette</div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #A89C8E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Earth</div>
+          <div class="swatch-hex">#A89C8E</div>
+          <div class="swatch-codes">RGB 168, 156, 142 &nbsp;|&nbsp; CMYK 0, 7, 15, 34</div>
+          <div class="swatch-usage">Secondary text, supporting UI detail, dividers, subtle borders, and quiet tonal variation against Espresso.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #8F8A83;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Stone Gray</div>
+          <div class="swatch-hex">#8F8A83</div>
+          <div class="swatch-codes">RGB 143, 138, 131 &nbsp;|&nbsp; CMYK 0, 3, 8, 44</div>
+          <div class="swatch-usage">Tertiary text, captions, metadata, subdued interface states, and low-emphasis supporting detail. Use carefully on dark backgrounds.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT PALETTE -->
+  <div class="palette-group">
+    <div class="palette-group-title">Support Palette</div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #C2A78F;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Clay</div>
+          <div class="swatch-hex">#C2A78F</div>
+          <div class="swatch-codes">RGB 194, 167, 143 &nbsp;|&nbsp; CMYK 0, 14, 26, 24</div>
+          <div class="swatch-usage">Supporting color for background design elements, soft blocks, layered surfaces, transitions, and restrained atmospheric accents.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #D6CBBE;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soft Taupe</div>
+          <div class="swatch-hex">#D6CBBE</div>
+          <div class="swatch-codes">RGB 214, 203, 190 &nbsp;|&nbsp; CMYK 0, 5, 11, 16</div>
+          <div class="swatch-usage">Borders, subtle overlays, section transitions, card treatments, and quiet background geometry.</div>
+        </div>
+      </div>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #A8B2A1;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sage</div>
+          <div class="swatch-hex">#A8B2A1</div>
+          <div class="swatch-codes">RGB 168, 178, 161 &nbsp;|&nbsp; CMYK 6, 0, 10, 30</div>
+          <div class="swatch-usage">Organic supporting accent. Use sparingly in background design elements, tonal transitions, and occasional soft glow or atmospheric detailing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCENT PALETTE -->
+  <div class="palette-group">
+    <div class="palette-group-title">Accent Palette</div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #D6B25E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amber / Gold (Primary Accent)</div>
+          <div class="swatch-hex">#D6B25E</div>
+          <div class="swatch-codes">RGB 214, 178, 94 &nbsp;|&nbsp; CMYK 0, 17, 56, 16</div>
+          <div class="swatch-usage">CTA buttons, key highlights, accent lines, and focal emphasis. Use with restraint &mdash; accent should feel like light, not decoration.</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #C9A84C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Soft Gold</div>
+          <div class="swatch-hex">#C9A84C</div>
+          <div class="swatch-codes">RGB 201, 168, 76 &nbsp;|&nbsp; CMYK 0, 16, 62, 21</div>
+          <div class="swatch-usage">Hover state for Amber buttons, darker accent moments, and selective glow support.</div>
+        </div>
+      </div>
+    </div>
+    <div class="swatch-row">
+      <div class="swatch-card">
+        <div class="swatch-color" style="background: #F0D890;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Glow Highlight</div>
+          <div class="swatch-hex">#F0D890</div>
+          <div class="swatch-codes">RGB 240, 216, 144 &nbsp;|&nbsp; CMYK 0, 10, 40, 6</div>
+          <div class="swatch-usage">Soft glow effects, luminous highlights, and gentle radiance around focal text or design moments.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Type Glow Guidance</h3>
+  <p style="font-size: 14px; color: var(--clay); line-height: 1.7; margin-bottom: 16px;">
+    Typography may carry a soft glow treatment where appropriate &mdash; especially in threshold moments, reflections, companion lines, and other elevated display text. This glow should feel diffused, warm, and atmospheric rather than graphic or neon.
+  </p>
+  <p style="font-size: 14px; color: var(--clay); line-height: 1.7; margin-bottom: 16px;">
+    Use Glow Highlight, Soft Gold, and occasionally supporting colors in very restrained ways. Supporting colors may also be used for background design elements, transitions, layered surfaces, and select font-glow treatments, but never so heavily that calm, clarity, or legibility is reduced.
+  </p>
+
+  <div class="a11y-note">
+    <div class="note-title">Accessibility &mdash; &ldquo;Care as Cause&rdquo;</div>
+    <p>Ivory on Espresso should be the primary high-contrast text treatment throughout the site. For CTA buttons, use Espresso text on Amber background for strongest clarity. Glow, accent, and supporting colors should enhance atmosphere, not reduce readability. Accessibility is non-negotiable.</p>
+  </div>
+
+  <!-- Contrast Demos -->
+  <h3>Contrast Reference</h3>
+  <div class="contrast-demo">
+    <div class="contrast-card" style="background: #3A2F26; color: #F4EEE6; border: 1px solid rgba(168,156,142,0.2);">
+      <div class="sample-text">Ivory on Espresso</div>
+      <div class="contrast-label" style="color: var(--warm-earth);">Primary treatment &mdash; highest contrast</div>
+    </div>
+    <div class="contrast-card" style="background: #D6B25E; color: #3A2F26; border: 1px solid rgba(58,47,38,0.2);">
+      <div class="sample-text">Espresso on Amber</div>
+      <div class="contrast-label" style="color: rgba(58,47,38,0.7);">CTA buttons &mdash; strongest clarity</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     3. TYPOGRAPHY SYSTEM
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 03</div>
+  <h2>Typography System</h2>
+  <div class="section-intro">Two typefaces. One voice. Every word has room to breathe.</div>
+
+  <div class="type-sample">
+    <div class="type-label">Headline Font &mdash; Cormorant Garamond</div>
+    <div class="type-demo-h1">Welcome Home</div>
+    <div class="type-spec">Light (300) &middot; 48&ndash;56px &middot; Elegant, refined serif. Timeless and contemplative.</div>
+    <div style="margin-top: 20px;">
+      <div class="type-demo-h2">A Quiet Place to Remember</div>
+      <div class="type-spec">Regular (400) &middot; 36&ndash;42px</div>
+    </div>
+    <div style="margin-top: 16px;">
+      <div class="type-demo-h3">What&rsquo;s Unfolding</div>
+      <div class="type-spec">Regular (400) &middot; 28&ndash;32px</div>
+    </div>
+    <div style="margin-top: 16px;">
+      <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--clay);">&ldquo;Love is not separate from us; it is what we are, and all that is.&rdquo;</span>
+      <div class="type-spec">Italic (400i) &middot; Reflections, quotes, companion lines</div>
+    </div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-label">Body / UI Font &mdash; Inter</div>
+    <div class="type-demo-body">An invitation to reflection, not instruction &mdash; a calm and grounded space that gently guides visitors inward. The site should feel like quiet luxury meets editorial minimalism meets grounded spiritual presence.</div>
+    <div class="type-spec">Regular (400) &middot; 16&ndash;18px &middot; Clean, modern sans-serif. Highly readable. Human.</div>
+    <div style="margin-top: 16px;">
+      <span style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px;">Stay Connected</span>
+      <div class="type-spec">Medium (500) &middot; 14&ndash;16px &middot; UI elements, buttons, navigation</div>
+    </div>
+    <div style="margin-top: 16px;">
+      <div class="type-demo-caption">Caption text &middot; Stone Gray &middot; Metadata and supporting detail</div>
+      <div class="type-spec">Regular (400) &middot; 12&ndash;13px</div>
+    </div>
+  </div>
+
+  <h3>Type Hierarchy</h3>
+  <table class="spec-table">
+    <tr><th>Level</th><th>Font</th><th>Size</th></tr>
+    <tr><td>H1</td><td>Cormorant Garamond Light</td><td>48&ndash;56px</td></tr>
+    <tr><td>H2</td><td>Cormorant Garamond Regular</td><td>36&ndash;42px</td></tr>
+    <tr><td>H3</td><td>Cormorant Garamond Regular</td><td>28&ndash;32px</td></tr>
+    <tr><td>Body</td><td>Inter Regular</td><td>16&ndash;18px</td></tr>
+    <tr><td>UI / Small</td><td>Inter Medium</td><td>14px</td></tr>
+    <tr><td>Caption</td><td>Inter Regular, Stone Gray</td><td>12&ndash;13px</td></tr>
+  </table>
+
+  <h3>Spacing Principles</h3>
+  <ul class="guide-list">
+    <li>Line height: 1.5&ndash;1.8 (generous, breathable)</li>
+    <li>Text width: 500&ndash;700px maximum (narrow, centered)</li>
+    <li>Letter spacing: Normal to slightly loose on headlines</li>
+    <li>Paragraph spacing: Generous &mdash; let text breathe</li>
+  </ul>
+
+  <h3>Avoid</h3>
+  <ul class="guide-list avoid-list">
+    <li>Heavy bold usage (nothing above Medium/500)</li>
+    <li>Tight line spacing</li>
+    <li>Full-width text blocks</li>
+    <li>All caps (except sparingly for small UI labels)</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     4. UI ELEMENTS
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 04</div>
+  <h2>UI Elements</h2>
+  <div class="section-intro">Every interaction should feel like an invitation, never a demand.</div>
+
+  <h3>Buttons</h3>
+  <div class="button-demo-row">
+    <div style="text-align: center;">
+      <div class="btn-primary">Stay Connected</div>
+      <div class="btn-label">Primary CTA</div>
+    </div>
+    <div style="text-align: center;">
+      <div class="btn-secondary">Learn More</div>
+      <div class="btn-label">Secondary CTA</div>
+    </div>
+  </div>
+
+  <table class="spec-table">
+    <tr><th>Property</th><th>Primary CTA</th><th>Secondary CTA</th></tr>
+    <tr><td>Background</td><td>Amber #D6B25E</td><td>Transparent</td></tr>
+    <tr><td>Text</td><td>Espresso #3A2F26</td><td>Warm Ivory #F4EEE6</td></tr>
+    <tr><td>Border</td><td>1px Espresso</td><td>1px Warm Earth / Soft Taupe</td></tr>
+    <tr><td>Radius</td><td>4&ndash;6px</td><td>4&ndash;6px</td></tr>
+    <tr><td>Font</td><td>Inter Medium, 14&ndash;16px</td><td>Inter Medium, 14&ndash;16px</td></tr>
+    <tr><td>Padding</td><td>14px 28px</td><td>14px 28px</td></tr>
+    <tr><td>Hover</td><td>Soft Gold #C9A84C</td><td>Subtle warm tint shift</td></tr>
+  </table>
+
+  <h3>Form Fields</h3>
+  <div class="form-demo">
+    <input type="text" placeholder="Your email address">
+    <div class="btn-primary" style="display: block; text-align: center; margin-top: 4px;">Stay Connected</div>
+  </div>
+
+  <table class="spec-table">
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Background</td><td>Soft Light #F7F3EE or Warm Ivory #F4EEE6</td></tr>
+    <tr><td>Border</td><td>1px Soft Taupe #D6CBBE</td></tr>
+    <tr><td>Radius</td><td>4px</td></tr>
+    <tr><td>Text</td><td>Espresso #3A2F26</td></tr>
+    <tr><td>Placeholder</td><td>Warm Earth #A89C8E</td></tr>
+    <tr><td>Focus</td><td>Border shifts to Amber #D6B25E</td></tr>
+    <tr><td>Font</td><td>Inter Regular, 16px</td></tr>
+    <tr><td>Padding</td><td>12px 16px</td></tr>
+  </table>
+
+  <h3>Navigation</h3>
+  <ul class="guide-list">
+    <li>Minimal, soft, unobtrusive</li>
+    <li>Font: Inter Regular, 14&ndash;15px</li>
+    <li>Color: Warm Ivory on Espresso</li>
+    <li>Hover: Subtle underline, warm lift, or restrained Amber accent</li>
+    <li>No heavy dropdowns or mega-menus</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     5. LAYOUT & SPACING
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 05</div>
+  <h2>Layout &amp; Spacing</h2>
+  <div class="section-intro">Space is the primary design element. The page should feel like breathing.</div>
+
+  <ul class="guide-list">
+    <li>Large margins on all sides</li>
+    <li>Generous vertical spacing between sections (80&ndash;120px+)</li>
+    <li>Centered content alignment</li>
+    <li>One idea per section &mdash; never stack competing messages</li>
+    <li>Text width: 500&ndash;700px maximum</li>
+    <li>Section backgrounds: primarily Espresso-led, with Soft Light, Warm Ivory, and supporting tones used selectively for rhythm, contrast, and transition</li>
+  </ul>
+
+  <h3>Page Rhythm</h3>
+  <blockquote>Expand, pause, expand, pause. Each section is a room in the house.</blockquote>
+  <p style="font-size: 14px; color: var(--clay); line-height: 1.7; margin-top: 16px;">
+    The darker base should feel grounding, not heavy, so contrast moments should be intentional and spacious rather than frequent.
+  </p>
+
+  <h3>Mobile</h3>
+  <ul class="guide-list">
+    <li>Mobile-first responsive design</li>
+    <li>Touch-friendly tap targets (44px minimum)</li>
+    <li>Even more generous spacing on mobile</li>
+    <li>Single-column layout</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     6. IMAGERY & VISUAL LANGUAGE
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 06</div>
+  <h2>Imagery &amp; Visual Language</h2>
+  <div class="section-intro">Images should feel like they were found, not produced.</div>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <div class="box-title">Use</div>
+      <ul class="guide-list">
+        <li>Light entering a space (windows, doorways, canopies)</li>
+        <li>Reflections (water, glass, mirrors)</li>
+        <li>Sky and horizon</li>
+        <li>Natural textures (linen, sand, stone, wood grain)</li>
+        <li>Warm hearth / firelight</li>
+        <li>Subtle geometric patterns (mandala-inspired)</li>
+        <li>Welcome Home mat &mdash; core symbolic motif</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <div class="box-title">Avoid</div>
+      <ul class="guide-list">
+        <li>Clich&eacute; spiritual imagery (lotus, third eyes, chakras)</li>
+        <li>Overly literal visuals</li>
+        <li>Busy compositions</li>
+        <li>Stock photos that feel staged or corporate</li>
+        <li>Heavy filters or dark moody aesthetics</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Image Treatment</h3>
+  <ul class="guide-list">
+    <li>Soft, natural color grading (aligned with palette)</li>
+    <li>Warm tone overlay if needed</li>
+    <li>High quality, contemplative compositions</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     7. EXPERIENCE DIRECTION
+     ============================================================ -->
+<div class="page page-break">
+  <div class="section-number">Section 07</div>
+  <h2>Experience Direction</h2>
+  <div class="section-intro">This is not a traditional website. It is a living space.</div>
+
+  <h3>Homepage Flow</h3>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 0</div>
+    <div class="flow-title">Threshold &mdash; &ldquo;Welcome Home&rdquo;</div>
+    <div class="flow-desc">A quiet, full-screen moment of arrival. Just &ldquo;Welcome Home&rdquo; in Cormorant on Warm Ivory. Subtle fade transition. Welcome Home mat integration. This transforms the site from content to experience.</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 1</div>
+    <div class="flow-title">Rotating Reflection</div>
+    <div class="flow-desc">A living element &mdash; quote, poem, or reflection that rotates daily/weekly. Cormorant italic. Amber accent.</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 2</div>
+    <div class="flow-title">Hero</div>
+    <div class="flow-desc">Brand name/logo. Headline: &ldquo;A Quiet Place to Remember What Already Lives as Love.&rdquo; CTA: Stay Connected. Companion Line: &ldquo;Love is not separate from us; it is what we are, and all that is.&rdquo;</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 3</div>
+    <div class="flow-title">Intention</div>
+    <div class="flow-desc">Centered paragraph. Minimal structure. Editorial tone.</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 4</div>
+    <div class="flow-title">How It Unfolds</div>
+    <div class="flow-desc">Narrow text. Increased spacing. Slows the experience.</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 5</div>
+    <div class="flow-title">What&rsquo;s Unfolding</div>
+    <div class="flow-desc">&ldquo;Rooms of the house&rdquo; language: Pause &amp; Remember (not Reflection) &middot; Shared Listening (not Conversations) &middot; Living Creativity (not Creative Expression)</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 6</div>
+    <div class="flow-title">Invitation</div>
+    <div class="flow-desc">Warm, open, human bridge to connection.</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 7</div>
+    <div class="flow-title">Email Signup &mdash; &ldquo;Threshold Deeper&rdquo;</div>
+    <div class="flow-desc">Espresso background. Ivory text. Amber CTA. Feels like stepping further into the house.</div>
+  </div>
+
+  <div class="flow-section">
+    <div class="flow-label">Section 8</div>
+    <div class="flow-title">Footer</div>
+    <div class="flow-desc">Brand name. Grounding line. Optional closing reflection: &ldquo;You are not meeting love here. You are remembering yourself as love.&rdquo;</div>
+  </div>
+
+  <h3>Motion</h3>
+  <ul class="guide-list">
+    <li>Slow fades (0.3&ndash;0.5s)</li>
+    <li>Gentle scroll-triggered reveals</li>
+    <li>Subtle hover states</li>
+    <li>No autoplay media</li>
+    <li>Motion should feel like breathing</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     8. DECISIONS & STATUS
+     ============================================================ -->
+<div class="page">
+  <div class="section-number">Section 08</div>
+  <h2>Decisions &amp; Status</h2>
+  <div class="section-intro">What&rsquo;s confirmed, what&rsquo;s in motion.</div>
+
+  <h3>Incorporated from Design Reflections (March 18, 2026)</h3>
+  <ul class="guide-list">
+    <li>Welcome Home threshold moment (Section 0)</li>
+    <li>Rotating Remembrance Reflection (Section 1)</li>
+    <li>Companion line elevation (standalone visual moment)</li>
+    <li>Invitation section before email signup</li>
+    <li>Welcome Home mat as design motif</li>
+    <li>&ldquo;Rooms of the house&rdquo; language for What&rsquo;s Unfolding</li>
+    <li>Footer closing resonance (bookend)</li>
+    <li>Renamed to &ldquo;Flow&rdquo; / &ldquo;Experience&rdquo; language</li>
+  </ul>
+
+  <h3>In Progress</h3>
+  <table class="spec-table">
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Logo finalization</td><td>Canonical pick selected. Sent to designer for variations, color versions, and vector formats (April 10, 2026).</td></tr>
+    <tr><td>Amber/Ivory contrast</td><td>Espresso text on Amber + Espresso border recommended. Zac to verify WCAG AA compliance.</td></tr>
+  </table>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<div class="guide-footer">
+  <div class="closing">&ldquo;The goal: a site that feels less like a document and more like crossing a threshold &mdash; into a house that has always been waiting.&rdquo;</div>
+  <div class="divider-line" style="width: 40px; margin: 24px auto;"></div>
+  House of Light and Love &mdash; Visual Brand Guide<br>
+  Source of Truth &mdash; Confirmed April 9, 2026<br>
+  Prepared by Marc Cooper / ACE System<br>
+  <br>
+  Questions: marc@tfrg.com &nbsp;|&nbsp; kmvcommunications@gmail.com
+</div>
+
+</body>
+</html>
