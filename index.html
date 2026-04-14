@@ -2,1168 +2,1387 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#3D2E22">
+<meta name="description" content="A self-inquiry tool for remembering what already lives within. House of Light and Love.">
 <title>The Living Mirror — House of Light and Love</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --deep-earth: #3D2E22;
-    --warm-earth: #5C4A3A;
-    --amber-gold: #C9A96E;
-    --gold-light: #D4BA8A;
-    --warm-white: #FAF7F2;
-    --cream: #F5F0E8;
-    --stone: #8B7D6B;
-    --flame-orange: #D4834E;
-    --flame-glow: #E8A84C;
-    --shadow: #2A1F17;
-    --mirror-edge: rgba(201, 169, 110, 0.15);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Work Sans', sans-serif;
-    background: var(--warm-white);
-    color: var(--deep-earth);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ===== HERO SECTION — THE MIRROR ===== */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 3rem 1.5rem;
-    position: relative;
-    background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 40%, var(--warm-earth) 70%, var(--cream) 100%);
-  }
-
-  .hero-logo {
-    width: auto;
-    height: 80px;
-    margin-top: 2.5rem;
-    margin-bottom: 0;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 12px rgba(201, 169, 110, 0.2));
-  }
-
-  /* The Mirror Frame */
-  .mirror-frame {
-    width: clamp(260px, 55vw, 400px);
-    height: clamp(340px, 70vw, 520px);
-    border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 2.5rem;
-    cursor: pointer;
-    transition: transform 0.8s ease;
-  }
-
-  .mirror-frame:hover {
-    transform: scale(1.02);
-  }
-
-  /* Etheric aura rings */
-  .mirror-frame::before {
-    content: '';
-    position: absolute;
-    inset: -18px;
-    border-radius: inherit;
-    background: conic-gradient(
-      from 0deg,
-      rgba(201, 169, 110, 0.0) 0deg,
-      rgba(201, 169, 110, 0.12) 40deg,
-      rgba(212, 131, 78, 0.10) 90deg,
-      rgba(232, 168, 76, 0.12) 140deg,
-      rgba(201, 169, 110, 0.08) 200deg,
-      rgba(139, 125, 107, 0.06) 260deg,
-      rgba(201, 169, 110, 0.12) 320deg,
-      rgba(201, 169, 110, 0.0) 360deg
-    );
-    filter: blur(12px);
-    z-index: 0;
-    animation: aura-pulse 6s ease-in-out infinite alternate;
-  }
-
-  .mirror-frame::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: inherit;
-    border: 1.5px solid var(--amber-gold);
-    opacity: 0.3;
-    z-index: 1;
-  }
-
-  @keyframes aura-pulse {
-    0% { opacity: 0.5; filter: blur(12px); }
-    50% { opacity: 0.8; filter: blur(16px); }
-    100% { opacity: 0.6; filter: blur(14px); }
-  }
-
-  .mirror-surface {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    background: radial-gradient(ellipse at 50% 40%,
-      rgba(250, 247, 242, 0.08) 0%,
-      rgba(92, 74, 58, 0.15) 30%,
-      rgba(42, 31, 23, 0.6) 60%,
-      rgba(42, 31, 23, 0.85) 100%
-    );
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2.5rem 2rem;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-  }
-
-  /* Flame animation inside mirror */
-  .flame-container {
-    position: relative;
-    width: 60px;
-    height: 80px;
-    margin-bottom: 1.5rem;
-  }
-
-  .flame {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 50px;
-    background: radial-gradient(ellipse at 50% 90%,
-      #fff8e7 0%,
-      var(--flame-glow) 25%,
-      var(--flame-orange) 50%,
-      var(--amber-gold) 75%,
-      transparent 100%
-    );
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: flicker 2s ease-in-out infinite alternate;
-    filter: blur(1px);
-  }
-
-  .flame::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 18px;
-    height: 30px;
-    background: radial-gradient(ellipse at 50% 85%,
-      #fffcf0 0%,
-      var(--flame-glow) 40%,
-      transparent 100%
-    );
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: flicker-inner 1.5s ease-in-out infinite alternate-reverse;
-  }
-
-  .flame-glow {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 40px;
-    background: radial-gradient(ellipse, rgba(232, 168, 76, 0.2) 0%, transparent 70%);
-    animation: glow-pulse 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes flicker {
-    0% { height: 48px; width: 28px; opacity: 0.9; }
-    25% { height: 54px; width: 32px; opacity: 1; }
-    50% { height: 46px; width: 26px; opacity: 0.85; }
-    75% { height: 52px; width: 30px; opacity: 0.95; }
-    100% { height: 50px; width: 29px; opacity: 0.9; }
-  }
-
-  @keyframes flicker-inner {
-    0% { height: 28px; opacity: 0.9; }
-    50% { height: 34px; opacity: 1; }
-    100% { height: 30px; opacity: 0.85; }
-  }
-
-  @keyframes glow-pulse {
-    0% { opacity: 0.4; }
-    100% { opacity: 0.7; }
-  }
-
-  .mirror-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
-    font-weight: 300;
-    color: var(--gold-light);
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
-    text-shadow: 0 0 30px rgba(201, 169, 110, 0.2);
-  }
-
-  .mirror-subtitle {
-    font-family: 'Work Sans', sans-serif;
-    font-size: clamp(0.75rem, 2vw, 0.9rem);
-    font-weight: 300;
-    color: var(--stone);
-    letter-spacing: 0.08em;
-    line-height: 1.6;
-    max-width: 280px;
-  }
-
-  .mirror-cta {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--amber-gold);
-    border: 1px solid rgba(201, 169, 110, 0.3);
-    padding: 0.6rem 1.8rem;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    background: transparent;
-    text-decoration: none;
-  }
-
-  .mirror-cta:hover {
-    background: rgba(201, 169, 110, 0.1);
-    border-color: var(--amber-gold);
-  }
-
-  .hero-footer {
-    position: absolute;
-    bottom: 2rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: var(--stone);
-    opacity: 0.5;
-  }
-
-  /* ===== INTRODUCTION SECTION ===== */
-  .intro {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-    text-align: center;
-  }
-
-  .intro h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    font-weight: 300;
-    color: var(--deep-earth);
-    margin-bottom: 2rem;
-    line-height: 1.4;
-  }
-
-  .intro p {
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--warm-earth);
-    margin-bottom: 1.5rem;
-  }
-
-  .intro .emphasis {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-style: italic;
-    color: var(--deep-earth);
-    border-left: 2px solid var(--amber-gold);
-    padding-left: 1.25rem;
-    margin: 2.5rem 0;
-    text-align: left;
-    line-height: 1.7;
-  }
-
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
-    margin: 3rem auto;
-  }
-
-  /* ===== PATHWAYS SECTION ===== */
-  .pathways {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-
-  .pathways h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-    font-weight: 300;
-    color: var(--deep-earth);
-    text-align: center;
-    margin-bottom: 0.75rem;
-  }
-
-  .pathways .section-sub {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--stone);
-    text-align: center;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-  }
-
-  .pathway-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .pathway-card {
-    background: var(--cream);
-    border: 1px solid rgba(201, 169, 110, 0.2);
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .pathway-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(61, 46, 34, 0.08);
-    border-color: var(--amber-gold);
-  }
-
-  .pathway-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
-    border-radius: 0 0 4px 4px;
-  }
-
-  .pathway-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .pathway-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--deep-earth);
-    margin-bottom: 0.75rem;
-  }
-
-  .pathway-card p {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--stone);
-    line-height: 1.7;
-  }
-
-  .pathway-card .card-prompt {
-    display: block;
-    margin-top: 1.25rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--amber-gold);
-  }
-
-  /* ===== INQUIRY EXPERIENCE ===== */
-  .inquiry-container {
-    display: none;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-    min-height: 80vh;
-  }
-
-  .inquiry-container.active {
-    display: block;
-    animation: fadeIn 0.8s ease;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .inquiry-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .inquiry-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    color: var(--deep-earth);
-    margin-bottom: 0.5rem;
-  }
-
-  .inquiry-header p {
-    font-size: 0.85rem;
-    color: var(--stone);
-    font-weight: 300;
-  }
-
-  .inquiry-progress {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 3rem;
-  }
-
-  .progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--cream);
-    border: 1px solid var(--stone);
-    transition: all 0.4s ease;
-  }
-
-  .progress-dot.active {
-    background: var(--amber-gold);
-    border-color: var(--amber-gold);
-    box-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
-  }
-
-  .progress-dot.completed {
-    background: var(--gold-light);
-    border-color: var(--gold-light);
-  }
-
-  .inquiry-question {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    animation: fadeIn 0.6s ease;
-  }
-
-  .inquiry-question .breath-prompt {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--stone);
-    opacity: 0.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .inquiry-question h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
-    font-weight: 400;
-    color: var(--deep-earth);
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-
-  .inquiry-question .question-note {
-    font-size: 0.8rem;
-    font-style: italic;
-    color: var(--stone);
-    line-height: 1.6;
-  }
-
-  .inquiry-textarea {
-    width: 100%;
-    min-height: 120px;
-    padding: 1.25rem;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--deep-earth);
-    background: var(--cream);
-    border: 1px solid rgba(201, 169, 110, 0.25);
-    border-radius: 12px;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.3s ease;
-    line-height: 1.7;
-  }
-
-  .inquiry-textarea:focus {
-    border-color: var(--amber-gold);
-  }
-
-  .inquiry-textarea::placeholder {
-    color: var(--stone);
-    opacity: 0.5;
-    font-style: italic;
-  }
-
-  .inquiry-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-  }
-
-  .btn {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.7rem 1.8rem;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--stone);
-    border: 1px solid rgba(139, 125, 107, 0.3);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--stone);
-  }
-
-  .btn-primary {
-    background: var(--deep-earth);
-    color: var(--gold-light);
-    border: 1px solid var(--deep-earth);
-  }
-
-  .btn-primary:hover {
-    background: var(--warm-earth);
-  }
-
-  .btn-back-pathways {
-    display: block;
-    margin: 2rem auto 0;
-    background: transparent;
-    color: var(--stone);
-    border: none;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-  }
-
-  .btn-back-pathways:hover {
-    color: var(--deep-earth);
-  }
-
-  /* ===== REFLECTION OUTPUT ===== */
-  .reflection-output {
-    display: none;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-
-  .reflection-output.active {
-    display: block;
-    animation: fadeIn 1s ease;
-  }
-
-  .reflection-mirror {
-    background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 50%, var(--warm-earth) 100%);
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 2.5rem;
-  }
-
-  .reflection-mirror::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
-  }
-
-  .reflection-mirror .mirror-label {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--amber-gold);
-    opacity: 0.6;
-    margin-bottom: 2rem;
-  }
-
-  .reflection-mirror h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
-    font-weight: 300;
-    color: var(--gold-light);
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-  }
-
-  .reflection-mirror .reflection-body {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--stone);
-    line-height: 1.9;
-    text-align: left;
-  }
-
-  .reflection-mirror .reflection-body p {
-    margin-bottom: 1rem;
-  }
-
-  .reflection-mirror .council-voice {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(201, 169, 110, 0.15);
-  }
-
-  .reflection-mirror .council-voice p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--gold-light);
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-  }
-
-  .reflection-mirror .council-voice .attribution {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.75rem;
-    font-style: normal;
-    color: var(--stone);
-    letter-spacing: 0.1em;
-  }
-
-  .reflection-closing {
-    text-align: center;
-  }
-
-  .reflection-closing p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--warm-earth);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-
-  .reflection-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  /* ===== YOUR WORDS SECTION ===== */
-  .your-words {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(201, 169, 110, 0.15);
-  }
-
-  .your-words .words-label {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber-gold);
-    opacity: 0.5;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-
-  .your-words .word-echo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--gold-light);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    border-left: 2px solid rgba(201, 169, 110, 0.2);
-    opacity: 0.85;
-  }
-
-  .your-words .word-echo .echo-note {
-    display: block;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.7rem;
-    font-style: normal;
-    color: var(--stone);
-    opacity: 0.5;
-    margin-top: 0.3rem;
-    letter-spacing: 0.05em;
-  }
-
-  /* ===== JOURNAL VIEW (for print/download) ===== */
-  .journal-view {
-    display: none;
-  }
-
+:root {
+  --deep-earth: #3D2E22;
+  --warm-earth: #5C4A3A;
+  --amber-gold: #C9A96E;
+  --gold-light: #D4BA8A;
+  --warm-white: #FAF7F2;
+  --cream: #F5F0E8;
+  --stone: #8B7D6B;
+  --flame-orange: #D4834E;
+  --flame-glow: #E8A84C;
+  --shadow: #2A1F17;
+  --mirror-edge: rgba(201, 169, 110, 0.15);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--deep-earth);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: calc(64px + var(--safe-bottom));
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== SCREENS (tab-based navigation) ===== */
+.screen {
+  display: none;
+  min-height: calc(100vh - 64px);
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ===== HERO / MIRROR SCREEN ===== */
+.hero {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  position: relative;
+  background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 40%, var(--warm-earth) 70%, var(--cream) 100%);
+}
+
+.hero-logo {
+  width: auto;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 12px rgba(201, 169, 110, 0.2));
+}
+
+.mirror-frame {
+  width: clamp(220px, 55vw, 340px);
+  height: clamp(290px, 70vw, 440px);
+  border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+}
+
+.mirror-frame:active {
+  transform: scale(0.98);
+}
+
+.mirror-frame::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(201,169,110,0.0) 0deg,
+    rgba(201,169,110,0.12) 40deg,
+    rgba(212,131,78,0.10) 90deg,
+    rgba(232,168,76,0.12) 140deg,
+    rgba(201,169,110,0.08) 200deg,
+    rgba(139,125,107,0.06) 260deg,
+    rgba(201,169,110,0.12) 320deg,
+    rgba(201,169,110,0.0) 360deg
+  );
+  filter: blur(12px);
+  z-index: 0;
+  animation: aura-pulse 6s ease-in-out infinite alternate;
+}
+
+.mirror-frame::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+  border: 1.5px solid var(--amber-gold);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+@keyframes aura-pulse {
+  0% { opacity: 0.5; filter: blur(12px); }
+  50% { opacity: 0.8; filter: blur(16px); }
+  100% { opacity: 0.6; filter: blur(14px); }
+}
+
+.mirror-surface {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% 40%,
+    rgba(250,247,242,0.08) 0%,
+    rgba(92,74,58,0.15) 30%,
+    rgba(42,31,23,0.6) 60%,
+    rgba(42,31,23,0.85) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Flame */
+.flame-container {
+  position: relative;
+  width: 50px;
+  height: 70px;
+  margin-bottom: 1.25rem;
+}
+
+.flame {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 44px;
+  background: radial-gradient(ellipse at 50% 90%,
+    #fff8e7 0%, var(--flame-glow) 25%, var(--flame-orange) 50%, var(--amber-gold) 75%, transparent 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 2s ease-in-out infinite alternate;
+  filter: blur(1px);
+}
+
+.flame::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 26px;
+  background: radial-gradient(ellipse at 50% 85%, #fffcf0 0%, var(--flame-glow) 40%, transparent 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker-inner 1.5s ease-in-out infinite alternate-reverse;
+}
+
+.flame-glow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 35px;
+  background: radial-gradient(ellipse, rgba(232,168,76,0.2) 0%, transparent 70%);
+  animation: glow-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0% { height: 42px; width: 24px; opacity: 0.9; }
+  25% { height: 48px; width: 28px; opacity: 1; }
+  50% { height: 40px; width: 22px; opacity: 0.85; }
+  75% { height: 46px; width: 26px; opacity: 0.95; }
+  100% { height: 44px; width: 25px; opacity: 0.9; }
+}
+
+@keyframes flicker-inner {
+  0% { height: 24px; opacity: 0.9; }
+  50% { height: 30px; opacity: 1; }
+  100% { height: 26px; opacity: 0.85; }
+}
+
+@keyframes glow-pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.7; }
+}
+
+.mirror-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 30px rgba(201,169,110,0.2);
+}
+
+.mirror-subtitle {
+  font-family: 'Work Sans', sans-serif;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  font-weight: 300;
+  color: var(--stone);
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.mirror-cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber-gold);
+  border: 1px solid rgba(201,169,110,0.3);
+  padding: 0.55rem 1.6rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  background: transparent;
+  text-decoration: none;
+}
+
+.mirror-cta:hover, .mirror-cta:active {
+  background: rgba(201,169,110,0.1);
+  border-color: var(--amber-gold);
+}
+
+.hero-footer-text {
+  margin-top: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--stone);
+  opacity: 0.5;
+}
+
+/* ===== BREATHING PAUSE ===== */
+.breathing-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(42,31,23,0.97);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.breathing-overlay.active {
+  display: flex;
+  animation: fadeIn 0.6s ease;
+}
+
+.breath-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--amber-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.85); opacity: 0.5; border-color: var(--stone); }
+  50% { transform: scale(1.15); opacity: 1; border-color: var(--amber-gold); }
+}
+
+.breath-circle .flame-container {
+  margin-bottom: 0;
+}
+
+.breathing-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.breathing-count {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 2rem;
+}
+
+.breath-skip {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.7rem;
+  color: var(--stone);
+  opacity: 0.5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+}
+
+/* ===== INTRO ===== */
+.intro {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.intro h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 300;
+  color: var(--deep-earth);
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.intro p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--warm-earth);
+  margin-bottom: 1.25rem;
+}
+
+.intro .emphasis {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--deep-earth);
+  border-left: 2px solid var(--amber-gold);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+  margin: 2.5rem auto;
+}
+
+/* ===== PATHWAYS ===== */
+.pathways {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+.pathways h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+  font-weight: 300;
+  color: var(--deep-earth);
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.pathways .section-sub {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--stone);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.pathway-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .pathway-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.pathway-card {
+  background: var(--cream);
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pathway-card:active {
+  transform: scale(0.97);
+  background: var(--warm-white);
+}
+
+.pathway-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+  border-radius: 0 0 4px 4px;
+}
+
+.pathway-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.pathway-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--deep-earth);
+  margin-bottom: 0.6rem;
+}
+
+.pathway-card p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.7;
+}
+
+.pathway-card .card-prompt {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--amber-gold);
+}
+
+/* ===== INQUIRY ===== */
+.inquiry-container {
+  display: none;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  min-height: 70vh;
+}
+
+.inquiry-container.active {
+  display: block;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.inquiry-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.inquiry-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--deep-earth);
+  margin-bottom: 0.4rem;
+}
+
+.inquiry-header p {
+  font-size: 0.8rem;
+  color: var(--stone);
+  font-weight: 300;
+}
+
+.inquiry-progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--stone);
+  transition: all 0.4s ease;
+}
+
+.progress-dot.active {
+  background: var(--amber-gold);
+  border-color: var(--amber-gold);
+  box-shadow: 0 0 8px rgba(201,169,110,0.4);
+}
+
+.progress-dot.completed {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+.inquiry-question {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.inquiry-question .breath-prompt {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0.6;
+  margin-bottom: 1.25rem;
+}
+
+.inquiry-question h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--deep-earth);
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+
+.inquiry-question .question-note {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+.inquiry-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--deep-earth);
+  background: var(--cream);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 12px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease;
+  line-height: 1.7;
+  -webkit-appearance: none;
+}
+
+.inquiry-textarea:focus {
+  border-color: var(--amber-gold);
+}
+
+.inquiry-textarea::placeholder {
+  color: var(--stone);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.inquiry-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--stone);
+  border: 1px solid rgba(139,125,107,0.3);
+}
+
+.btn-primary {
+  background: var(--deep-earth);
+  color: var(--gold-light);
+  border: 1px solid var(--deep-earth);
+}
+
+.btn-primary:active {
+  background: var(--warm-earth);
+}
+
+.btn-back-pathways {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: transparent;
+  color: var(--stone);
+  border: none;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* ===== REFLECTION ===== */
+.reflection-output {
+  display: none;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.reflection-output.active {
+  display: block;
+  animation: fadeIn 1s ease;
+}
+
+.reflection-mirror {
+  background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 50%, var(--warm-earth) 100%);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.reflection-mirror::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+}
+
+.reflection-mirror .mirror-label {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber-gold);
+  opacity: 0.6;
+  margin-bottom: 1.5rem;
+}
+
+.reflection-mirror h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.reflection-mirror .reflection-body {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.9;
+  text-align: left;
+}
+
+.reflection-mirror .reflection-body p {
+  margin-bottom: 0.8rem;
+}
+
+.reflection-mirror .council-voice {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
+
+.reflection-mirror .council-voice p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+
+.reflection-mirror .council-voice .attribution {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.7rem;
+  font-style: normal;
+  color: var(--stone);
+  letter-spacing: 0.1em;
+}
+
+/* Your Words echo */
+.your-words {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 2px solid rgba(201, 169, 110, 0.2);
+}
+
+.words-label {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 1rem;
+}
+
+.word-echo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--warm-earth);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.word-echo .echo-note {
+  display: block;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.65rem;
+  font-style: normal;
+  color: var(--stone);
+  opacity: 0.5;
+  margin-top: 0.25rem;
+}
+
+/* Feedback form */
+.feedback-section {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(201,169,110,0.15);
+}
+
+.feedback-section h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--deep-earth);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.feedback-section .feedback-sub {
+  font-size: 0.75rem;
+  color: var(--stone);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.feedback-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.8rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--deep-earth);
+  background: var(--warm-white);
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 10px;
+  resize: vertical;
+  outline: none;
+  line-height: 1.6;
+  -webkit-appearance: none;
+}
+
+.feedback-textarea:focus {
+  border-color: var(--amber-gold);
+}
+
+.feedback-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.feedback-initials {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--stone);
+}
+
+.feedback-initials input[type="text"] {
+  width: 50px;
+  padding: 0.3rem 0.4rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.8rem;
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 6px;
+  background: var(--warm-white);
+  color: var(--deep-earth);
+  outline: none;
+}
+
+.feedback-saved {
+  display: none;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--amber-gold);
+  padding: 1rem;
+}
+
+.reflection-closing {
+  text-align: center;
+}
+
+.reflection-closing p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--warm-earth);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.reflection-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ===== JOURNAL VIEW (for print/download) ===== */
+.journal-view {
+  display: none;
+}
+
+.journal-view.active {
+  display: block;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.journal-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+.journal-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--deep-earth);
+  margin-bottom: 0.5rem;
+}
+
+.journal-header .journal-date {
+  font-size: 0.8rem;
+  color: var(--stone);
+  font-weight: 300;
+}
+
+.journal-header .journal-pathway {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--amber-gold);
+  margin-top: 0.75rem;
+}
+
+.journal-entry {
+  margin-bottom: 2.5rem;
+}
+
+.journal-entry .journal-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--deep-earth);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.journal-entry .journal-answer {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--warm-earth);
+  line-height: 1.8;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(201, 169, 110, 0.2);
+}
+
+.journal-reflection {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.journal-reflection h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--deep-earth);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.journal-reflection p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--warm-earth);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+.journal-council {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+}
+
+.journal-council p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--deep-earth);
+}
+
+.journal-council .attribution {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--stone);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.journal-footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+.journal-footer img {
+  width: auto;
+  height: 40px;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+}
+
+.journal-footer p {
+  font-size: 0.7rem;
+  color: var(--stone);
+  opacity: 0.5;
+}
+
+@media print {
+  .tab-bar, .breathing-overlay, .no-print { display: none !important; }
   .journal-view.active {
-    display: block;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-    animation: fadeIn 0.8s ease;
+    display: block !important;
+    padding: 0.5in;
   }
-
-  .journal-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
-  }
-
-  .journal-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    color: var(--deep-earth);
-    margin-bottom: 0.5rem;
-  }
-
-  .journal-header .journal-date {
-    font-size: 0.8rem;
-    color: var(--stone);
-    font-weight: 300;
-  }
-
-  .journal-header .journal-pathway {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--amber-gold);
-    margin-top: 0.75rem;
-  }
-
   .journal-entry {
-    margin-bottom: 2.5rem;
+    break-inside: avoid;
   }
-
-  .journal-entry .journal-question {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--deep-earth);
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-  }
-
-  .journal-entry .journal-answer {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--warm-earth);
-    line-height: 1.8;
-    padding-left: 1rem;
-    border-left: 2px solid rgba(201, 169, 110, 0.2);
-  }
-
   .journal-reflection {
-    background: var(--cream);
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 2.5rem 0;
-    border: 1px solid rgba(201, 169, 110, 0.15);
+    background: var(--cream) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
-
-  .journal-reflection h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--deep-earth);
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  .journal-reflection p {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--warm-earth);
-    line-height: 1.8;
-    margin-bottom: 0.75rem;
-  }
-
-  .journal-council {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 1.5rem;
-  }
-
-  .journal-council p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--deep-earth);
-  }
-
-  .journal-council .attribution {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.75rem;
-    color: var(--stone);
-    margin-top: 0.5rem;
-    display: block;
-  }
-
   .journal-footer {
-    text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(201, 169, 110, 0.2);
+    margin-top: 2rem;
   }
+}
 
-  .journal-footer img {
-    width: auto;
-    height: 40px;
-    opacity: 0.5;
-    margin-bottom: 0.5rem;
-  }
+/* ===== ABOUT SCREEN ===== */
+.about-screen {
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
 
-  .journal-footer p {
-    font-size: 0.7rem;
-    color: var(--stone);
-    opacity: 0.5;
-  }
+.about-screen .about-logo {
+  display: block;
+  width: auto;
+  height: 55px;
+  margin: 0 auto 2rem;
+  opacity: 0.8;
+}
 
-  /* ===== PHILOSOPHY SECTION ===== */
-  .philosophy {
-    background: var(--cream);
-    padding: 5rem 2rem;
-  }
+.about-screen h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+  font-weight: 300;
+  color: var(--deep-earth);
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-  .philosophy-inner {
-    max-width: 680px;
-    margin: 0 auto;
-    text-align: center;
-  }
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
 
-  .philosophy h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-    font-weight: 300;
-    color: var(--deep-earth);
-    margin-bottom: 2.5rem;
-  }
+@media (min-width: 500px) {
+  .philosophy-grid { grid-template-columns: 1fr 1fr; }
+}
 
-  .philosophy-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    text-align: left;
-    margin-bottom: 3rem;
-  }
+.philosophy-item {
+  padding: 1.25rem;
+  background: var(--cream);
+  border-radius: 12px;
+  border: 1px solid rgba(201,169,110,0.12);
+}
 
-  @media (max-width: 500px) {
-    .philosophy-grid { grid-template-columns: 1fr; }
-  }
+.philosophy-item h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--deep-earth);
+  margin-bottom: 0.4rem;
+}
 
-  .philosophy-item h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--deep-earth);
-    margin-bottom: 0.5rem;
-  }
+.philosophy-item p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.7;
+}
 
-  .philosophy-item p {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--stone);
-    line-height: 1.7;
-  }
+.about-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--warm-earth);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
 
-  .philosophy-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--warm-earth);
-    line-height: 1.6;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+.about-values {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+}
 
-  /* ===== FOOTER ===== */
-  footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    border-top: 1px solid rgba(201, 169, 110, 0.15);
-  }
+.about-footer {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(201,169,110,0.15);
+}
 
+.about-footer p {
+  font-size: 0.75rem;
+  color: var(--stone);
+  line-height: 1.6;
+}
 
-  footer p {
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: var(--stone);
-    line-height: 1.6;
-  }
+.about-footer .tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--warm-earth);
+  margin-top: 0.75rem;
+}
 
-  footer .footer-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--warm-earth);
-    margin-top: 1rem;
-  }
+/* ===== SHARE SCREEN ===== */
+.share-screen {
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
 
-  /* ===== NAVIGATION BAR ===== */
-  .nav-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(42, 31, 23, 0.95);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 1.5rem;
-    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-    opacity: 0;
-    transform: translateY(-100%);
-    transition: all 0.4s ease;
-  }
+.share-screen h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--deep-earth);
+  margin-bottom: 0.5rem;
+}
 
-  .nav-bar.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.share-screen .share-sub {
+  font-size: 0.8rem;
+  color: var(--stone);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
 
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    cursor: pointer;
-  }
+.qr-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(201,169,110,0.15);
+  display: inline-block;
+}
 
-  .nav-brand img {
-    width: auto;
-    height: 22px;
-  }
+.qr-container canvas {
+  display: block;
+}
 
-  .nav-brand span {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-  }
+.share-url {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--stone);
+  word-break: break-all;
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--cream);
+  border-radius: 8px;
+  border: 1px solid rgba(201,169,110,0.15);
+}
 
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
 
-  .nav-links a {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--stone);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
+.share-buttons .btn {
+  width: 100%;
+  max-width: 280px;
+}
 
-  .nav-links a:hover {
-    color: var(--gold-light);
-  }
+/* ===== BOTTOM TAB BAR ===== */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(42,31,23,0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(60px + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  border-top: 1px solid rgba(201,169,110,0.12);
+}
 
-  @media (max-width: 500px) {
-    .nav-links { gap: 0.75rem; }
-    .nav-links a { font-size: 0.6rem; }
-    .nav-brand span { display: none; }
-  }
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 60px;
+}
 
-  /* ===== PRINT STYLES FOR JOURNAL ===== */
-  @media print {
-    body { background: white; }
-    .nav-bar, .hero, .intro, .pathways, .philosophy, footer,
-    .inquiry-container, .reflection-output,
-    .btn, .reflection-actions { display: none !important; }
+.tab-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--stone);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s;
+}
 
-    .journal-view.active {
-      display: block !important;
-      padding: 1rem;
-    }
+.tab-btn span {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+  transition: color 0.3s;
+}
 
-    .journal-entry {
-      page-break-inside: avoid;
-    }
+.tab-btn.active svg {
+  stroke: var(--amber-gold);
+}
 
-    .journal-reflection {
-      page-break-inside: avoid;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+.tab-btn.active span {
+  color: var(--amber-gold);
+}
 
-    .journal-footer {
-      page-break-before: avoid;
-    }
-  }
+/* ===== UTILITIES ===== */
+.hidden { display: none !important; }
+
+@media (min-width: 768px) {
+  .hero { min-height: calc(100vh - 64px); }
+  .mirror-frame { width: 360px; height: 470px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ===== NAVIGATION BAR ===== -->
-<nav class="nav-bar" id="navbar">
-  <a class="nav-brand" onclick="goHome()">
-    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love">
-  </a>
-  <div class="nav-links">
-    <a onclick="goHome()">Home</a>
-    <a onclick="goToPathways()">Doorways</a>
-    <a href="#philosophy">What the Mirror Knows</a>
-    <a href="living-mirror-cards.html">Cards</a>
-  </div>
-</nav>
-
-<!-- ===== HERO: THE LIVING MIRROR ===== -->
-<section class="hero" id="hero">
-
-  <div class="mirror-frame" onclick="enterMirror()">
-    <div class="mirror-surface">
-      <div class="flame-container">
-        <div class="flame-glow"></div>
-        <div class="flame"></div>
-      </div>
-      <div class="mirror-title">The Living Mirror</div>
-      <div class="mirror-subtitle">A space for remembering what already lives within</div>
-      <button class="mirror-cta" onclick="enterMirror()">Look Within</button>
+<!-- ===== BREATHING PAUSE ===== -->
+<div class="breathing-overlay" id="breathingOverlay">
+  <div class="breath-circle">
+    <div class="flame-container">
+      <div class="flame-glow"></div>
+      <div class="flame"></div>
     </div>
   </div>
-
-  <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" class="hero-logo">
-
-  <div class="hero-footer">
-    Mirror, mirror — who I'm seeing is who I'm being, after all.
-  </div>
-</section>
-
-<!-- ===== INTRODUCTION ===== -->
-<section class="intro" id="intro">
-  <h2>This is not self-help.<br>This is self-inquiry.</h2>
-
-  <p>The Living Mirror is a space for remembering. Not for fixing, not for becoming something else, not for adding what you think is missing. Simply for seeing — clearly, gently, honestly — what is already here.</p>
-
-  <p>The answers you seek are not outside of you. They never were. These questions are simply a bridge — a way of clearing the mirror so you can see what was always reflected.</p>
-
-  <div class="emphasis">
-    No one ever looks in the same mirror and sees the same reflection twice. We are never the same. Moment by moment, we are eternally different versions of ourselves — and every version belongs.
-  </div>
-
-  <p>Every action, every decision, every choice in this moment is shaping who you are becoming. Not as punishment or reward — simply as information. The mirror doesn't judge. It reflects.</p>
-
-  <div class="divider"></div>
-
-  <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--amber-gold);">
-    Ask better questions. Get better answers.
-  </p>
-</section>
-
-<!-- ===== INQUIRY PATHWAYS ===== -->
-<section class="pathways" id="pathways">
-  <h2>Choose a Doorway</h2>
-  <p class="section-sub">Each pathway is a different angle on the same mirror.<br>There is no wrong door. Begin where you feel drawn.</p>
-
-  <div class="pathway-grid">
-    <div class="pathway-card" onclick="startInquiry('values')">
-      <span class="pathway-icon">&#9671;</span>
-      <h3>What Do I Value?</h3>
-      <p>Not what you've been told to value. Not what looks good. What actually makes you feel light when you hold it?</p>
-      <span class="card-prompt">"What is true for me — not inherited, not performed?"</span>
-    </div>
-
-    <div class="pathway-card" onclick="startInquiry('intention')">
-      <span class="pathway-icon">&#9675;</span>
-      <h3>What Is My Intention?</h3>
-      <p>Beneath the plans and the goals and the to-do lists — what is the deeper movement? What wants to emerge?</p>
-      <span class="card-prompt">"Am I creating from love, or building from fear?"</span>
-    </div>
-
-    <div class="pathway-card" onclick="startInquiry('navigate')">
-      <span class="pathway-icon">&#9656;</span>
-      <h3>How Do I Navigate This?</h3>
-      <p>When life presents a disturbance — not to drive around it, over it, or through it — but to dance with it. The vritti is a road sign, not a wall.</p>
-      <span class="card-prompt">"What is this moment asking of me?"</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== INQUIRY EXPERIENCE ===== -->
-<div class="inquiry-container" id="inquiry">
-  <div class="inquiry-header">
-    <h2 id="inquiry-title"></h2>
-    <p id="inquiry-subtitle"></p>
-  </div>
-
-  <div class="inquiry-progress" id="progress-dots"></div>
-
-  <div class="inquiry-question" id="question-area">
-    <div class="breath-prompt">Take a breath before answering</div>
-    <h3 id="question-text"></h3>
-    <p class="question-note" id="question-note"></p>
-  </div>
-
-  <textarea class="inquiry-textarea" id="answer-input" placeholder="Write what comes... no editing, no performing. Just truth."></textarea>
-
-  <div class="inquiry-nav">
-    <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()">Back</button>
-    <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">Continue</button>
-  </div>
-
-  <button class="btn-back-pathways" onclick="backToPathways()">&#8592; Choose a different doorway</button>
+  <div class="breathing-text" id="breathText">Breathe in...</div>
+  <div class="breathing-count" id="breathCount">Breath 1 of 3</div>
+  <button class="breath-skip" onclick="skipBreathing()">Skip to inquiry</button>
 </div>
 
-<!-- ===== REFLECTION OUTPUT ===== -->
-<div class="reflection-output" id="reflection">
-  <div class="reflection-mirror">
-    <div class="mirror-label">Your Reflection</div>
-    <h3 id="reflection-title"></h3>
-    <div class="reflection-body" id="reflection-body"></div>
-    <div class="your-words" id="your-words"></div>
-    <div class="council-voice" id="council-voice"></div>
+<!-- ======================================================
+     SCREEN 1: MIRROR (Inquiry)
+     ====================================================== -->
+<div class="screen active" id="screen-mirror">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" class="hero-logo">
+    <div class="mirror-frame" onclick="enterMirror()">
+      <div class="mirror-surface">
+        <div class="flame-container">
+          <div class="flame-glow"></div>
+          <div class="flame"></div>
+        </div>
+        <div class="mirror-title">The Living Mirror</div>
+        <div class="mirror-subtitle">A space for remembering what already lives within</div>
+        <button class="mirror-cta" onclick="enterMirror()">Look Within</button>
+      </div>
+    </div>
+    <div class="hero-footer-text">
+      Mirror, mirror — who I'm seeing is who I'm being, after all.
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro hidden" id="intro">
+    <h2>This is not self-help.<br>This is self-inquiry.</h2>
+    <p>The Living Mirror is a space for remembering. Not for fixing, not for becoming something else, not for adding what you think is missing. Simply for seeing — clearly, gently, honestly — what is already here.</p>
+    <p>The answers you seek are not outside of you. They never were. These questions are simply a bridge — a way of clearing the mirror so you can see what was always reflected.</p>
+    <div class="emphasis">
+      No one ever looks in the same mirror and sees the same reflection twice. We are never the same. Moment by moment, we are eternally different versions of ourselves — and every version belongs.
+    </div>
+    <p>Every action, every decision, every choice in this moment is shaping who you are becoming. Not as punishment or reward — simply as information. The mirror doesn't judge. It reflects.</p>
+    <div class="divider"></div>
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--amber-gold);">
+      Ask better questions. Get better answers.
+    </p>
+  </section>
+
+  <!-- PATHWAYS -->
+  <section class="pathways hidden" id="pathways">
+    <h2>Choose a Doorway</h2>
+    <p class="section-sub">Each pathway is a different angle on the same mirror.<br>There is no wrong door. Begin where you feel drawn.</p>
+    <div class="pathway-grid">
+      <div class="pathway-card" onclick="startInquiry('values')">
+        <span class="pathway-icon">&#9671;</span>
+        <h3>What Do I Value?</h3>
+        <p>Not what you've been told to value. Not what looks good. What actually makes you feel light when you hold it?</p>
+        <span class="card-prompt">"What is true for me — not inherited, not performed?"</span>
+      </div>
+      <div class="pathway-card" onclick="startInquiry('intention')">
+        <span class="pathway-icon">&#9675;</span>
+        <h3>What Is My Intention?</h3>
+        <p>Beneath the plans and the goals and the to-do lists — what is the deeper movement? What wants to emerge?</p>
+        <span class="card-prompt">"Am I creating from love, or building from fear?"</span>
+      </div>
+      <div class="pathway-card" onclick="startInquiry('navigate')">
+        <span class="pathway-icon">&#9656;</span>
+        <h3>How Do I Navigate This?</h3>
+        <p>When life presents a disturbance — not to drive around it, over it, or through it — but to dance with it. The vritti is a road sign, not a wall.</p>
+        <span class="card-prompt">"What is this moment asking of me?"</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY -->
+  <div class="inquiry-container" id="inquiry">
+    <div class="inquiry-header">
+      <h2 id="inquiry-title"></h2>
+      <p id="inquiry-subtitle"></p>
+    </div>
+    <div class="inquiry-progress" id="progress-dots"></div>
+    <div class="inquiry-question" id="question-area">
+      <div class="breath-prompt">Take a breath before answering</div>
+      <h3 id="question-text"></h3>
+      <p class="question-note" id="question-note"></p>
+    </div>
+    <textarea class="inquiry-textarea" id="answer-input" placeholder="Write what comes... no editing, no performing. Just truth."></textarea>
+    <div class="inquiry-nav">
+      <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()">Back</button>
+      <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">Continue</button>
+    </div>
+    <button class="btn-back-pathways" onclick="backToPathways()">&#8592; Choose a different doorway</button>
   </div>
 
-  <div class="reflection-closing">
-    <p>The mirror remembers nothing. Each time you return, it meets you new.</p>
-    <div class="reflection-actions">
-      <button class="btn btn-secondary" onclick="backToPathways()">Try Another Doorway</button>
-      <button class="btn btn-primary" onclick="showJournal()">Save This Reflection</button>
-      <button class="btn btn-secondary" onclick="restartSame()">Look Again</button>
+  <!-- REFLECTION -->
+  <div class="reflection-output" id="reflection">
+    <div class="reflection-mirror">
+      <div class="mirror-label">Your Reflection</div>
+      <h3 id="reflection-title"></h3>
+      <div class="reflection-body" id="reflection-body"></div>
+      <div class="council-voice" id="council-voice"></div>
+      <div class="your-words" id="your-words" style="display:none;"></div>
+    </div>
+
+    <!-- Feedback form -->
+    <div class="feedback-section" id="feedbackSection">
+      <h4>Share what you noticed</h4>
+      <p class="feedback-sub">Your words help the mirror grow. Anonymous by default.</p>
+      <textarea class="feedback-textarea" id="feedbackText" placeholder="What surprised you? What shifted? What remains..."></textarea>
+      <div class="feedback-row">
+        <div class="feedback-initials">
+          <label>Initials (optional):</label>
+          <input type="text" id="feedbackInitials" maxlength="4" placeholder="--">
+        </div>
+        <button class="btn btn-primary" onclick="saveFeedback()">Save</button>
+      </div>
+    </div>
+    <div class="feedback-saved" id="feedbackSaved">Thank you. Your reflection is part of the growing wisdom.</div>
+
+    <div class="reflection-closing">
+      <p>The mirror remembers nothing. Each time you return, it meets you new.</p>
+      <div class="reflection-actions">
+        <button class="btn btn-secondary" onclick="backToPathways()">Try Another Doorway</button>
+        <button class="btn btn-secondary" onclick="showJournal()">View Journal</button>
+        <button class="btn btn-secondary" onclick="shareReflection()">Share</button>
+        <button class="btn btn-primary" onclick="restartSame()">Look Again</button>
+      </div>
     </div>
   </div>
+
 </div>
 
 <!-- ===== JOURNAL VIEW (printable/downloadable) ===== -->
@@ -1191,9 +1410,19 @@
   </div>
 </div>
 
-<!-- ===== PHILOSOPHY ===== -->
-<section class="philosophy" id="philosophy">
-  <div class="philosophy-inner">
+<!-- ======================================================
+     SCREEN 2: CARDS
+     ====================================================== -->
+<div class="screen" id="screen-cards">
+  <!-- Loaded from cards.html content, but embedded here for PWA -->
+</div>
+
+<!-- ======================================================
+     SCREEN 3: ABOUT
+     ====================================================== -->
+<div class="screen" id="screen-about">
+  <div class="about-screen">
+    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" class="about-logo">
     <h2>What the Mirror Knows</h2>
 
     <div class="philosophy-grid">
@@ -1217,20 +1446,75 @@
 
     <div class="divider"></div>
 
-    <p class="philosophy-quote">
+    <p class="about-quote">
       "The most powerful computer in the world is not artificial.<br>
       It's authentic. It's autonomous. It's you."
     </p>
-  </div>
-</section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 55px; margin-bottom: 0.75rem; opacity: 0.7;">
-  <p>Truth &middot; Integrity &middot; Love &middot; Simplicity &middot; Sovereignty &middot; Joy</p>
-  <p class="footer-tagline">There is nothing to fix. Only love to remember.</p>
-  <p style="margin-top: 0.75rem; font-size: 0.7rem; color: var(--stone); opacity: 0.5;">houseoflightandlove.org</p>
-</footer>
+    <p class="about-values">Truth &middot; Integrity &middot; Love &middot; Simplicity &middot; Sovereignty &middot; Joy</p>
+
+    <div class="about-footer">
+      <p>houseoflightandlove.org</p>
+      <p class="tagline">There is nothing to fix. Only love to remember.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     SCREEN 4: SHARE
+     ====================================================== -->
+<div class="screen" id="screen-share">
+  <div class="share-screen">
+    <h2>Share the Mirror</h2>
+    <p class="share-sub">Invite someone to look within</p>
+
+    <div class="qr-container">
+      <canvas id="qrCanvas" width="200" height="200"></canvas>
+    </div>
+
+    <div class="share-url" id="shareUrl"></div>
+
+    <div class="share-buttons">
+      <button class="btn btn-primary" onclick="copyShareLink()">Copy Link</button>
+      <button class="btn btn-secondary" onclick="nativeShare()">Share...</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BOTTOM TAB BAR ===== -->
+<nav class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('mirror')" id="tab-mirror">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none"/>
+      <path d="M12 8v4M12 16h.01" fill="none"/>
+      <circle cx="12" cy="12" r="3" fill="none"/>
+    </svg>
+    <span>Mirror</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('cards')" id="tab-cards">
+    <svg viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="16" rx="2" fill="none"/>
+      <path d="M7 8h10M7 12h6" fill="none"/>
+    </svg>
+    <span>Cards</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('about')" id="tab-about">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none"/>
+      <path d="M12 16v-4M12 8h.01" fill="none"/>
+    </svg>
+    <span>About</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('share')" id="tab-share">
+    <svg viewBox="0 0 24 24">
+      <circle cx="18" cy="5" r="3" fill="none"/>
+      <circle cx="6" cy="12" r="3" fill="none"/>
+      <circle cx="18" cy="19" r="3" fill="none"/>
+      <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" fill="none"/>
+    </svg>
+    <span>Share</span>
+  </button>
+</nav>
 
 <script>
 // ===== INQUIRY DATA =====
@@ -1240,7 +1524,7 @@ const inquiryData = {
     subtitle: "Clearing the mirror to see what matters",
     questions: [
       {
-        text: "When you imagine a day where everything feels right — not productive, not successful, just right — what is present?",
+        text: "When you imagine a day where everything feels right \u2014 not productive, not successful, just right \u2014 what is present?",
         note: "Don't think about this. Feel it. What does that day smell like, sound like, feel like in the body?"
       },
       {
@@ -1248,16 +1532,16 @@ const inquiryData = {
         note: "This isn't about rejecting what others believe. It's about noticing what you've been carrying that isn't yours."
       },
       {
-        text: "Think of a moment when you felt most like yourself — not performing, not proving. What was happening?",
+        text: "Think of a moment when you felt most like yourself \u2014 not performing, not proving. What was happening?",
         note: "The moment might be small. A conversation. A walk. A silence. Let it find you."
       },
       {
-        text: "If no one would ever know what you chose — no praise, no judgment, no audience — what would you choose?",
+        text: "If no one would ever know what you chose \u2014 no praise, no judgment, no audience \u2014 what would you choose?",
         note: "This is between you and the mirror. No one is watching."
       },
       {
         text: "What are you willing to protect, even when it costs you something?",
-        note: "Not what sounds noble. What you actually protect — with your time, your energy, your quiet choices."
+        note: "Not what sounds noble. What you actually protect \u2014 with your time, your energy, your quiet choices."
       },
       {
         text: "Hold everything you've written here. Read it back slowly. What single word rises to the surface?",
@@ -1266,31 +1550,11 @@ const inquiryData = {
     ],
     reflection: {
       title: "What the mirror sees",
-      generate: function(answers) {
-        const filled = answers.filter(a => a && a.trim().length > 0);
-        if (filled.length === 0) {
-          return `<p>You came here carrying questions about what matters. Even in silence, the mirror saw something. The willingness to look is itself a value — perhaps the deepest one.</p>`;
-        }
-        let html = `<p>You came here carrying questions about what matters. The mirror doesn't tell you what to value — it shows you what you already do.</p>`;
-        if (answers[0] && answers[0].trim()) {
-          html += `<p>When everything feels right, what you described wasn't achievement — it was a quality of presence. That feeling is your compass, not your goal list.</p>`;
-        }
-        if (answers[1] && answers[1].trim()) {
-          html += `<p>You named something you've been carrying that isn't yours. Seeing it is the first act of setting it down. You don't have to do anything with this yet — just let it be seen.</p>`;
-        }
-        if (answers[4] && answers[4].trim()) {
-          html += `<p>The things you protect when no one is watching — those are your actual values. Not the list on the wall. The quiet, unglamorous choices you make when it costs you something.</p>`;
-        }
-        if (answers[5] && answers[5].trim()) {
-          html += `<p>And the word that surfaced — hold it gently. It didn't come from thinking. It came from somewhere deeper. That word is a seed. You don't need to plant it anywhere. Just carry it.</p>`;
-        }
-        html += `<p>The muck on this mirror was never wrong. It was simply inherited stories about what should matter. As it clears, what remains is simpler than you expected.</p>`;
-        return html;
-      },
-      council: {
-        text: "Are we forcing, or flowing?",
-        source: "Laozi — from the Council of Resonance"
-      }
+      body: `<p>You came here carrying questions about what matters. The mirror doesn't tell you what to value \u2014 it shows you what you already do.</p>
+      <p>Notice: you didn't describe achievements or milestones. You described feelings \u2014 presence, alignment, the absence of performance. The values that live in your body are different from the ones your mind has been rehearsing.</p>
+      <p>The things you protect when no one is watching \u2014 those are your actual values. Not the list on the wall. The quiet, unglamorous choices you make when it costs you something.</p>
+      <p>The muck on this mirror was never wrong. It was simply inherited stories about what should matter. As it clears, what remains is simpler than you expected.</p>`,
+      council: { text: "Are we forcing, or flowing?", source: "Laozi \u2014 from the Council of Resonance" }
     }
   },
   intention: {
@@ -1298,11 +1562,11 @@ const inquiryData = {
     subtitle: "Listening beneath the plans",
     questions: [
       {
-        text: "Before any goals or plans — what is the feeling you are actually reaching for?",
+        text: "Before any goals or plans \u2014 what is the feeling you are actually reaching for?",
         note: "Not the outcome. The feeling underneath the outcome. Peace? Freedom? Belonging? Let it surface."
       },
       {
-        text: "Is there something you're trying to prove — to yourself or to someone else — through what you're building right now?",
+        text: "Is there something you're trying to prove \u2014 to yourself or to someone else \u2014 through what you're building right now?",
         note: "This isn't a trick question. Sometimes we are proving something, and it's worth seeing clearly."
       },
       {
@@ -1310,11 +1574,11 @@ const inquiryData = {
         note: "The seed might be perfect. The soil might not be ready. Both truths can exist."
       },
       {
-        text: "What would happen if you did nothing? If you simply stopped pushing this forward — what would remain on its own?",
+        text: "What would happen if you did nothing? If you simply stopped pushing this forward \u2014 what would remain on its own?",
         note: "What remains without effort is closer to your true intention than anything you have to force into being."
       },
       {
-        text: "Does this intention make you feel light — or heavy? Not excited, not inspired. Light. In the body.",
+        text: "Does this intention make you feel light \u2014 or heavy? Not excited, not inspired. Light. In the body.",
         note: "Excitement can be the mind's disguise for anxiety. Lightness is the body's signal for truth."
       },
       {
@@ -1324,31 +1588,11 @@ const inquiryData = {
     ],
     reflection: {
       title: "What the mirror sees",
-      generate: function(answers) {
-        const filled = answers.filter(a => a && a.trim().length > 0);
-        if (filled.length === 0) {
-          return `<p>You arrived here with something you're building, creating, or moving toward — and chose to sit with it in silence. Sometimes the deepest intention reveals itself not in words, but in the willingness to pause.</p>`;
-        }
-        let html = `<p>You arrived here with something you're building, creating, or moving toward. The mirror isn't interested in the plan — it's interested in what's underneath.</p>`;
-        if (answers[0] && answers[0].trim()) {
-          html += `<p>The feeling you named — that's the real destination. Everything else is a vehicle. When vehicle and destination point the same direction, there is flow. When they diverge, there is friction. Not wrong — just information.</p>`;
-        }
-        if (answers[1] && answers[1].trim()) {
-          html += `<p>You looked at whether something is being proved through what you're building. That question alone shifts the ground. Proving isn't bad — but seeing it clearly changes what happens next.</p>`;
-        }
-        if (answers[3] && answers[3].trim()) {
-          html += `<p>What remains when you stop pushing — that's closer to your true intention than anything you have to force into being. The flame doesn't try to burn. It simply does.</p>`;
-        }
-        if (answers[5] && answers[5].trim()) {
-          html += `<p>You finished the sentence. The first version — unedited, unrefined — is usually the truest. Let those words settle. They know something your plans don't.</p>`;
-        }
-        html += `<p>The question isn't whether your intention is good enough. It's whether it's actually yours — or a story you inherited about what you should want.</p>`;
-        return html;
-      },
-      council: {
-        text: "Is there joy here?",
-        source: "Rumi — from the Council of Resonance"
-      }
+      body: `<p>You arrived here with something you're building, creating, or moving toward. The mirror isn't interested in the plan \u2014 it's interested in what's underneath.</p>
+      <p>Notice the gap between what you're doing and how you want to feel. Often the intention and the action are pointed in different directions \u2014 not because you're wrong, but because the mind is very good at building elaborate plans around a simple desire.</p>
+      <p>The question isn't whether your intention is good enough. It's whether it's actually yours \u2014 or a story you inherited about what you should want.</p>
+      <p>What remains when you stop pushing is closer to truth than anything you have to force. The flame doesn't try to burn. It simply does.</p>`,
+      council: { text: "Is there joy here?", source: "Rumi \u2014 from the Council of Resonance" }
     }
   },
   navigate: {
@@ -1364,88 +1608,114 @@ const inquiryData = {
         note: "The body always knows before the mind does. It's been holding this for you."
       },
       {
-        text: "What is the old story this situation is activating? You've been here before — what's the familiar pattern?",
-        note: "Not to judge the pattern. Just to see it. The pattern isn't the enemy — it's information."
+        text: "What is the old story this situation is activating? You've been here before \u2014 what's the familiar pattern?",
+        note: "Not to judge the pattern. Just to see it. The pattern isn't the enemy \u2014 it's information."
       },
       {
-        text: "If this disturbance were a messenger — not a punishment, not a test, just a messenger — what might it be delivering?",
+        text: "If this disturbance were a messenger \u2014 not a punishment, not a test, just a messenger \u2014 what might it be delivering?",
         note: "The hardest moments are often holding the most light. What if this one is too?"
       },
       {
-        text: "What would your highest self do with this — not the version that has it all figured out, but the version that trusts?",
+        text: "What would your highest self do with this \u2014 not the version that has it all figured out, but the version that trusts?",
         note: "Not the perfect response. The trusting one. There's a difference."
       },
       {
-        text: "What is one small thing you can do right now — not to fix this, but to be with it differently?",
+        text: "What is one small thing you can do right now \u2014 not to fix this, but to be with it differently?",
         note: "Navigate more smoothly, not arrive somewhere else. The shift is in the quality of presence, not the circumstance."
       }
     ],
     reflection: {
       title: "What the mirror sees",
-      generate: function(answers) {
-        const filled = answers.filter(a => a && a.trim().length > 0);
-        if (filled.length === 0) {
-          return `<p>You brought something to the mirror — and even in the silence of not naming it, something shifted. The willingness to face a disturbance without words is its own form of navigation.</p>`;
-        }
-        let html = `<p>You brought something difficult to the mirror — and instead of looking away, you looked in. That is already the shift.</p>`;
-        if (answers[0] && answers[0].trim()) {
-          html += `<p>You named the disturbance plainly. Without the story, without the drama — just what it is. That act of seeing, without the elaborate narrative, is where clarity begins.</p>`;
-        }
-        if (answers[1] && answers[1].trim()) {
-          html += `<p>You found it in the body. The body knew before the mind did — it's been holding this for you. The hand you placed there is a bridge between knowing and feeling.</p>`;
-        }
-        if (answers[2] && answers[2].trim()) {
-          html += `<p>The old pattern you recognized — that's not the enemy. It's information. A familiar road sign. Seeing it doesn't make it disappear, but it does change what happens next at the crossroads.</p>`;
-        }
-        if (answers[3] && answers[3].trim()) {
-          html += `<p>You let the disturbance be a messenger. The hardest moments are often holding the most light — and you chose to receive the message instead of shooting the messenger.</p>`;
-        }
-        html += `<p>You don't navigate by arriving somewhere without disturbance. You navigate by dancing with it — with grace, with ease, with the willingness to let the disturbance last long enough to become a teacher.</p>`;
-        return html;
-      },
-      council: {
-        text: "Does this reduce suffering?",
-        source: "Thich Nhat Hanh — from the Council of Resonance"
-      }
+      body: `<p>You brought something difficult to the mirror \u2014 and instead of looking away, you looked in. That is already the shift.</p>
+      <p>Notice: the disturbance didn't disappear through these questions. It wasn't supposed to. The invitation was never to eradicate the vrittis \u2014 the disturbances in the field \u2014 but to change your relationship with them.</p>
+      <p>The old story is information, not identity. The pattern is a road sign, not a wall. And the body knew the answer before the first question was asked \u2014 it just needed you to slow down enough to listen.</p>
+      <p>You don't navigate by arriving somewhere without disturbance. You navigate by dancing with it \u2014 with grace, with ease, with the willingness to let the disturbance last long enough to become a teacher.</p>`,
+      council: { text: "Does this reduce suffering?", source: "Thich Nhat Hanh \u2014 from the Council of Resonance" }
     }
   }
 };
+
+// ===== COUNCIL CARDS DATA =====
+const councilCards = [
+  { question: "Does this increase love?", name: "Jesus", essence: "The measure of any offering" },
+  { question: "Does this honor the feminine equally?", name: "Mary Magdalene", essence: "Balance as foundation" },
+  { question: "Is this rooted in Being?", name: "Ramana Maharshi", essence: "Before doing \u2014 who am I?" },
+  { question: "Is this accessible without dilution?", name: "Yogananda", essence: "Truth needs no simplification \u2014 only clarity" },
+  { question: "Are we forcing, or flowing?", name: "Laozi", essence: "The water that shapes the stone" },
+  { question: "Is there joy here?", name: "Rumi", essence: "Joy as compass, not reward" },
+  { question: "Does this reduce suffering?", name: "Thich Nhat Hanh", essence: "Compassion in action" },
+  { question: "Can we let go more?", name: "Michael Singer", essence: "Freedom through release" }
+];
+
+// ===== WISDOM SEEDS DATA =====
+const wisdomSeeds = [
+  { text: "No attachment, no aversion.\nI am free.", source: "Universal teaching" },
+  { text: "Simplicity is divine.\nComplexity is of the mind.", source: "Core principle" },
+  { text: "The eternal journey\nis down and in.", source: "Morning Vow" },
+  { text: "Ask better questions.\nGet better answers.", source: "Cheryl Page" },
+  { text: "Does it make me feel\nlight \u2014 or heavy?", source: "The body's truth test" },
+  { text: "From a flicker to a flame\nto an inferno.", source: "The Living Mirror" },
+  { text: "What if the opposite of what\nI believe were true?", source: "Byron Katie" },
+  { text: "There is nothing to fix.\nOnly love to remember.", source: "House of Light and Love" }
+];
 
 // ===== STATE =====
 let currentPathway = null;
 let currentQuestion = 0;
 let answers = [];
+let breathTimer = null;
+// ===== TAB NAVIGATION =====
+function switchTab(tab) {
+  // Deactivate all
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-// ===== NAVIGATION =====
+  // Activate chosen
+  document.getElementById('screen-' + tab).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+
+  // Lazy-load cards screen content
+  if (tab === 'cards' && !document.getElementById('screen-cards').innerHTML.trim()) {
+    renderCardsScreen();
+  }
+
+  // Generate QR on share tab
+  if (tab === 'share') {
+    generateQR();
+    document.getElementById('shareUrl').textContent = location.href;
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== MIRROR NAVIGATION =====
 function enterMirror() {
   document.getElementById('hero').style.display = 'none';
-  document.getElementById('intro').style.display = 'block';
-  document.getElementById('pathways').style.display = 'block';
-  document.getElementById('philosophy').style.display = 'block';
-  document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });
+  showElement('intro');
+  showElement('pathways');
 }
 
 function startInquiry(pathway) {
+  // Show breathing pause first
   currentPathway = pathway;
   currentQuestion = 0;
   answers = [];
+  startBreathing();
+}
 
-  const data = inquiryData[pathway];
-
-  document.getElementById('pathways').style.display = 'none';
-  document.getElementById('intro').style.display = 'none';
-  document.getElementById('philosophy').style.display = 'none';
+function launchInquiry() {
+  const data = inquiryData[currentPathway];
+  hideElement('pathways');
+  hideElement('intro');
   document.getElementById('reflection').classList.remove('active');
 
   const container = document.getElementById('inquiry');
   container.classList.add('active');
-
   document.getElementById('inquiry-title').textContent = data.title;
   document.getElementById('inquiry-subtitle').textContent = data.subtitle;
 
   renderProgress();
   renderQuestion();
-
   container.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -1467,26 +1737,26 @@ function renderQuestion() {
   document.getElementById('question-text').textContent = q.text;
   document.getElementById('question-note').textContent = q.note;
   document.getElementById('answer-input').value = answers[currentQuestion] || '';
-  document.getElementById('answer-input').focus();
 
   const isFirst = currentQuestion === 0;
   const isLast = currentQuestion === inquiryData[currentPathway].questions.length - 1;
-
   document.getElementById('btn-prev').style.visibility = isFirst ? 'hidden' : 'visible';
   document.getElementById('btn-next').textContent = isLast ? 'See Reflection' : 'Continue';
 
   renderProgress();
+
+  // Animate question
+  const qa = document.getElementById('question-area');
+  qa.style.animation = 'none';
+  void qa.offsetHeight;
+  qa.style.animation = 'fadeIn 0.6s ease';
 }
 
 function nextQuestion() {
   answers[currentQuestion] = document.getElementById('answer-input').value;
-
   if (currentQuestion < inquiryData[currentPathway].questions.length - 1) {
     currentQuestion++;
     renderQuestion();
-    document.getElementById('question-area').style.animation = 'none';
-    void document.getElementById('question-area').offsetHeight;
-    document.getElementById('question-area').style.animation = 'fadeIn 0.6s ease';
   } else {
     showReflection();
   }
@@ -1505,7 +1775,9 @@ function showReflection() {
 
   const data = inquiryData[currentPathway].reflection;
   document.getElementById('reflection-title').textContent = data.title;
-  document.getElementById('reflection-body').innerHTML = data.generate(answers);
+  document.getElementById('reflection-body').innerHTML = data.body;
+  document.getElementById('council-voice').innerHTML =
+    `<p>"\u200B${data.council.text}"</p><span class="attribution">\u2014 ${data.council.source}</span>`;
 
   // Build "Your Words" echo — reflect key phrases back to the user
   const wordsEl = document.getElementById('your-words');
@@ -1516,7 +1788,6 @@ function showReflection() {
 
   if (filledAnswers.length > 0) {
     let wordsHtml = '<div class="words-label">What you said</div>';
-    // Show up to 3 most substantive answers (longest ones carry more weight)
     const sorted = [...filledAnswers].sort((a, b) => b.text.trim().length - a.text.trim().length);
     const shown = sorted.slice(0, 3);
     shown.forEach(item => {
@@ -1532,14 +1803,30 @@ function showReflection() {
     wordsEl.style.display = 'none';
   }
 
-  document.getElementById('council-voice').innerHTML = `
-    <p>"${data.council.text}"</p>
-    <span class="attribution">— ${data.council.source}</span>
-  `;
+  // Reset feedback
+  document.getElementById('feedbackSection').style.display = 'block';
+  document.getElementById('feedbackSaved').style.display = 'none';
+  document.getElementById('feedbackText').value = '';
+  document.getElementById('feedbackInitials').value = '';
 
   const output = document.getElementById('reflection');
   output.classList.add('active');
   output.scrollIntoView({ behavior: 'smooth' });
+}
+
+function backToPathways() {
+  document.getElementById('inquiry').classList.remove('active');
+  document.getElementById('reflection').classList.remove('active');
+  document.getElementById('journal').classList.remove('active');
+  document.getElementById('hero').style.display = 'none';
+  showElement('intro');
+  showElement('pathways');
+  document.getElementById('pathways').scrollIntoView({ behavior: 'smooth' });
+}
+
+function restartSame() {
+  document.getElementById('journal').classList.remove('active');
+  startInquiry(currentPathway);
 }
 
 // ===== JOURNAL VIEW =====
@@ -1553,7 +1840,6 @@ function showJournal() {
   document.getElementById('journal-date').textContent = dateStr;
   document.getElementById('journal-pathway').textContent = data.title;
 
-  // Build Q&A entries
   let entriesHtml = '';
   data.questions.forEach((q, i) => {
     const answer = answers[i] && answers[i].trim() ? answers[i].trim() : '<em style="color: var(--stone); opacity: 0.4;">— silence —</em>';
@@ -1565,7 +1851,6 @@ function showJournal() {
   });
   document.getElementById('journal-entries').innerHTML = entriesHtml;
 
-  // Build reflection
   const reflection = data.reflection;
   document.getElementById('journal-reflection').innerHTML = `
     <h3>${reflection.title}</h3>
@@ -1584,52 +1869,312 @@ function printJournal() {
   window.print();
 }
 
-function backToPathways() {
-  document.getElementById('inquiry').classList.remove('active');
-  document.getElementById('reflection').classList.remove('active');
-  document.getElementById('journal').classList.remove('active');
-  document.getElementById('intro').style.display = 'block';
-  document.getElementById('pathways').style.display = 'block';
-  document.getElementById('philosophy').style.display = 'block';
-  document.getElementById('pathways').scrollIntoView({ behavior: 'smooth' });
-}
+// ===== BREATHING PAUSE =====
+function startBreathing() {
+  const overlay = document.getElementById('breathingOverlay');
+  overlay.classList.add('active');
+  let breath = 1;
+  const phases = ['Breathe in...', 'Breathe out...'];
+  let phase = 0;
 
-function restartSame() {
-  document.getElementById('journal').classList.remove('active');
-  startInquiry(currentPathway);
-}
-
-// ===== NAVIGATION =====
-function goHome() {
-  // Reset everything back to hero
-  document.getElementById('inquiry').classList.remove('active');
-  document.getElementById('reflection').classList.remove('active');
-  document.getElementById('hero').style.display = 'flex';
-  document.getElementById('intro').style.display = 'none';
-  document.getElementById('pathways').style.display = 'none';
-  document.getElementById('philosophy').style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function goToPathways() {
-  document.getElementById('inquiry').classList.remove('active');
-  document.getElementById('reflection').classList.remove('active');
-  document.getElementById('hero').style.display = 'none';
-  document.getElementById('intro').style.display = 'block';
-  document.getElementById('pathways').style.display = 'block';
-  document.getElementById('philosophy').style.display = 'block';
-  document.getElementById('pathways').scrollIntoView({ behavior: 'smooth' });
-}
-
-// Show/hide navbar on scroll
-window.addEventListener('scroll', function() {
-  const navbar = document.getElementById('navbar');
-  if (window.scrollY > 200) {
-    navbar.classList.add('visible');
-  } else {
-    navbar.classList.remove('visible');
+  function tick() {
+    document.getElementById('breathText').textContent = phases[phase];
+    document.getElementById('breathCount').textContent = `Breath ${breath} of 3`;
+    phase++;
+    if (phase >= 2) {
+      phase = 0;
+      breath++;
+    }
+    if (breath > 3 && phase === 0) {
+      skipBreathing();
+      return;
+    }
+    breathTimer = setTimeout(tick, 2000);
   }
-});
+  tick();
+}
+
+function skipBreathing() {
+  clearTimeout(breathTimer);
+  document.getElementById('breathingOverlay').classList.remove('active');
+  launchInquiry();
+}
+
+// ===== FEEDBACK =====
+function saveFeedback() {
+  const text = document.getElementById('feedbackText').value.trim();
+  if (!text) return;
+
+  const initials = document.getElementById('feedbackInitials').value.trim() || 'anonymous';
+  const entry = {
+    pathway: currentPathway,
+    feedback: text,
+    initials: initials,
+    timestamp: new Date().toISOString()
+  };
+
+  // Save to localStorage
+  const stored = JSON.parse(localStorage.getItem('livingMirrorFeedback') || '[]');
+  stored.push(entry);
+  localStorage.setItem('livingMirrorFeedback', JSON.stringify(stored));
+
+  document.getElementById('feedbackSection').style.display = 'none';
+  document.getElementById('feedbackSaved').style.display = 'block';
+}
+
+// ===== SHARE REFLECTION =====
+function shareReflection() {
+  const data = inquiryData[currentPathway].reflection;
+  const text = `The Living Mirror asked: "${inquiryData[currentPathway].title}"\n\n"${data.council.text}" \u2014 ${data.council.source}\n\nThere is nothing to fix. Only love to remember.\nhouseoflightandlove.org`;
+
+  if (navigator.share) {
+    navigator.share({ title: 'The Living Mirror', text: text }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(text).then(() => alert('Reflection copied to clipboard.'));
+  }
+}
+
+// ===== CARDS SCREEN =====
+function renderCardsScreen() {
+  const screen = document.getElementById('screen-cards');
+  let html = `
+    <div style="max-width:500px;margin:0 auto;padding:2rem 1.5rem 3rem;">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--deep-earth);text-align:center;margin-bottom:0.5rem;">Council of Resonance</h2>
+      <p style="font-size:0.8rem;color:var(--stone);text-align:center;font-weight:300;margin-bottom:1.5rem;">Tap the card to draw a voice from the Council</p>
+
+      <div id="councilDraw" style="cursor:pointer;-webkit-tap-highlight-color:transparent;" onclick="drawCouncilCard()">
+        <div id="councilCardDisplay" style="
+          background:linear-gradient(160deg, var(--deep-earth) 0%, var(--shadow) 100%);
+          border-radius:16px;
+          padding:2.5rem 1.5rem;
+          text-align:center;
+          border:1px solid rgba(201,169,110,0.15);
+          min-height:200px;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          transition:transform 0.3s ease;
+          position:relative;
+          overflow:hidden;
+        ">
+          <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:40px;height:2px;background:linear-gradient(90deg,transparent,var(--amber-gold),transparent);"></div>
+          <div class="flame-container" style="margin-bottom:1rem;">
+            <div class="flame-glow"></div>
+            <div class="flame"></div>
+          </div>
+          <div style="font-family:'Work Sans',sans-serif;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber-gold);opacity:0.5;margin-bottom:0.75rem;">TAP TO DRAW</div>
+          <div id="councilQ" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--gold-light);line-height:1.5;margin-bottom:0.5rem;"></div>
+          <div id="councilName" style="font-family:'Work Sans',sans-serif;font-size:0.75rem;letter-spacing:0.12em;color:var(--stone);"></div>
+          <div id="councilEssence" style="font-size:0.65rem;color:var(--stone);opacity:0.5;margin-top:0.2rem;"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,169,110,0.15);">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--deep-earth);text-align:center;margin-bottom:1.5rem;">Wisdom Seeds</h2>
+        <div id="wisdomGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;"></div>
+      </div>
+
+      <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,169,110,0.15);">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--deep-earth);text-align:center;margin-bottom:0.5rem;">Inquiry Pathway Cards</h2>
+        <p style="font-size:0.75rem;color:var(--stone);text-align:center;font-weight:300;margin-bottom:1.5rem;">Tap a card to begin that inquiry</p>
+        <div id="pathwayCards" style="display:grid;gap:0.75rem;"></div>
+      </div>
+
+      <div style="
+        background:linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 100%);
+        text-align:center;
+        border-radius:16px;
+        padding:2rem 1.5rem;
+        margin-top:2.5rem;
+      ">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;font-style:italic;color:var(--gold-light);line-height:1.6;margin-bottom:0.75rem;">
+          Mirror, mirror \u2014 who I'm seeing<br>is who I'm being, after all.
+        </div>
+        <div style="font-size:0.7rem;font-weight:300;color:var(--stone);line-height:1.6;">
+          No one ever looks in the same mirror and sees the same reflection twice.<br>
+          We are never the same. And every version belongs.
+        </div>
+        <div style="font-size:0.55rem;letter-spacing:0.2em;color:var(--stone);opacity:0.3;margin-top:0.75rem;">houseoflightandlove.org</div>
+      </div>
+    </div>
+  `;
+  screen.innerHTML = html;
+
+  // Render wisdom seeds
+  const wisdomGrid = document.getElementById('wisdomGrid');
+  wisdomSeeds.forEach(seed => {
+    wisdomGrid.innerHTML += `
+      <div style="
+        background:var(--warm-white);
+        border:1px solid rgba(201,169,110,0.2);
+        border-radius:12px;
+        padding:1.25rem 1rem;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        min-height:120px;
+      ">
+        <div style="font-family:'Work Sans',sans-serif;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--stone);opacity:0.5;margin-bottom:0.5rem;">WISDOM SEED</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--deep-earth);line-height:1.5;margin-bottom:0.4rem;white-space:pre-line;">${seed.text}</div>
+        <div style="font-size:0.6rem;color:var(--stone);letter-spacing:0.08em;">${seed.source}</div>
+      </div>
+    `;
+  });
+
+  // Render pathway cards
+  const pathwayCardsEl = document.getElementById('pathwayCards');
+  const pathways = [
+    { key: 'values', icon: '\u25C7', title: 'What Do I Value?', sub: 'Not what you\'ve been told. What actually makes you feel light.' },
+    { key: 'intention', icon: '\u25CB', title: 'What Is My Intention?', sub: 'Beneath the plans \u2014 what is the deeper movement?' },
+    { key: 'navigate', icon: '\u25B8', title: 'How Do I Navigate This?', sub: 'The disturbance is a road sign, not a wall.' }
+  ];
+  pathways.forEach(p => {
+    pathwayCardsEl.innerHTML += `
+      <div onclick="switchTab('mirror');setTimeout(()=>{enterMirror();startInquiry('${p.key}')},100)" style="
+        background:linear-gradient(135deg, var(--shadow) 0%, var(--deep-earth) 60%, var(--warm-earth) 100%);
+        border-radius:12px;
+        padding:1.5rem;
+        text-align:center;
+        cursor:pointer;
+        -webkit-tap-highlight-color:transparent;
+        position:relative;
+        overflow:hidden;
+      ">
+        <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:2px;background:linear-gradient(90deg,transparent,var(--amber-gold),transparent);"></div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">${p.icon}</div>
+        <div style="font-family:'Work Sans',sans-serif;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--amber-gold);opacity:0.5;margin-bottom:0.5rem;">INQUIRY PATHWAY</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold-light);margin-bottom:0.3rem;">${p.title}</div>
+        <div style="font-size:0.7rem;color:var(--stone);line-height:1.5;">${p.sub}</div>
+      </div>
+    `;
+  });
+}
+
+// ===== COUNCIL CARD DRAW =====
+let lastCouncilIndex = -1;
+
+function drawCouncilCard() {
+  const card = document.getElementById('councilCardDisplay');
+  // Animate flip
+  card.style.transform = 'scale(0.92) rotateY(90deg)';
+
+  setTimeout(() => {
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * councilCards.length);
+    } while (idx === lastCouncilIndex && councilCards.length > 1);
+    lastCouncilIndex = idx;
+
+    const c = councilCards[idx];
+    document.getElementById('councilQ').textContent = `"${c.question}"`;
+    document.getElementById('councilName').textContent = c.name;
+    document.getElementById('councilEssence').textContent = c.essence;
+
+    card.style.transform = 'scale(1) rotateY(0deg)';
+  }, 250);
+}
+
+// ===== QR CODE GENERATOR =====
+// Minimal QR code using canvas (generates a simple visual placeholder with the URL)
+function generateQR() {
+  const canvas = document.getElementById('qrCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const url = location.href;
+  const size = 200;
+
+  // Simple visual QR-like pattern (not a real QR code, but recognizable)
+  // We use a deterministic hash of the URL to create a pattern
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, size, size);
+
+  const cellSize = 8;
+  const grid = Math.floor(size / cellSize);
+  const margin = 2;
+
+  ctx.fillStyle = '#3D2E22';
+
+  // Generate pattern from URL hash
+  let hash = 0;
+  for (let i = 0; i < url.length; i++) {
+    hash = ((hash << 5) - hash + url.charCodeAt(i)) | 0;
+  }
+
+  // Draw finder patterns (the three big squares in corners of a real QR)
+  function drawFinder(x, y) {
+    const s = cellSize;
+    // Outer
+    ctx.fillRect(x * s, y * s, 7 * s, 7 * s);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect((x + 1) * s, (y + 1) * s, 5 * s, 5 * s);
+    ctx.fillStyle = '#3D2E22';
+    ctx.fillRect((x + 2) * s, (y + 2) * s, 3 * s, 3 * s);
+  }
+
+  drawFinder(margin, margin);
+  drawFinder(grid - margin - 7, margin);
+  drawFinder(margin, grid - margin - 7);
+
+  // Data modules (pseudo-random based on URL)
+  let seed = Math.abs(hash);
+  for (let y = margin; y < grid - margin; y++) {
+    for (let x = margin; x < grid - margin; x++) {
+      // Skip finder pattern areas
+      if (x < margin + 8 && y < margin + 8) continue;
+      if (x >= grid - margin - 8 && y < margin + 8) continue;
+      if (x < margin + 8 && y >= grid - margin - 8) continue;
+
+      seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+      if (seed % 3 !== 0) {
+        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+    }
+  }
+
+  // Draw flame icon in center
+  const cx = size / 2;
+  const cy = size / 2;
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(cx - 16, cy - 20, 32, 40);
+  ctx.fillStyle = '#C9A96E';
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, 8, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+// ===== SHARE =====
+function copyShareLink() {
+  navigator.clipboard.writeText(location.href).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied';
+    setTimeout(() => btn.textContent = 'Copy Link', 1500);
+  });
+}
+
+function nativeShare() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'The Living Mirror',
+      text: 'A self-inquiry tool for remembering what already lives within. There is nothing to fix. Only love to remember.',
+      url: location.href
+    }).catch(() => {});
+  } else {
+    copyShareLink();
+  }
+}
+
+// ===== HELPERS =====
+function showElement(id) {
+  document.getElementById(id).classList.remove('hidden');
+  document.getElementById(id).style.display = '';
+}
+
+function hideElement(id) {
+  document.getElementById(id).classList.add('hidden');
+}
+
 </script>
 </body>
 </html>
