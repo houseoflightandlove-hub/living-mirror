@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House of Light and Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --deep-earth: #3D2E22;
+    --warm-earth: #5C4A3A;
+    --amber-gold: #C9A96E;
+    --gold-light: #D4BA8A;
+    --warm-white: #FAF7F2;
+    --cream: #F5F0E8;
+    --stone: #8B7D6B;
+  }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--warm-earth);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 8.5in;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0.55in 0.75in 0.45in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--warm-white);
+  }
+
+  /* --- Gold divider --- */
+  .divider {
+    width: 3in;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+    margin: 0.18in auto;
+  }
+  .divider.short { width: 1.6in; }
+
+  /* --- Header --- */
+  .header { text-align: center; }
+
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32pt;
+    color: var(--deep-earth);
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 9.5pt;
+    color: var(--stone);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.06in;
+  }
+
+  /* --- Main quote --- */
+  .quote {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17pt;
+    color: var(--amber-gold);
+    line-height: 1.4;
+    padding: 0 0.4in;
+  }
+
+  /* --- Body paragraph --- */
+  .body-text {
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 9.5pt;
+    line-height: 1.7;
+    color: var(--warm-earth);
+    max-width: 5.8in;
+    margin: 0 auto;
+  }
+
+  /* --- Values --- */
+  .values {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--deep-earth);
+    letter-spacing: 0.08em;
+  }
+  .values span { color: var(--amber-gold); margin: 0 0.12in; }
+
+  /* --- What's Inside --- */
+  .inside { text-align: center; }
+
+  .inside-heading {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    margin-bottom: 0.1in;
+  }
+
+  .inside-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.06in 0.5in;
+    max-width: 5.6in;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .inside-list li {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--warm-earth);
+    padding-left: 0.14in;
+    position: relative;
+  }
+  .inside-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.28em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--amber-gold);
+  }
+
+  .inside-list li strong {
+    font-weight: 500;
+    color: var(--deep-earth);
+  }
+
+  .built-line {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11pt;
+    color: var(--stone);
+    margin-top: 0.12in;
+  }
+
+  /* --- Footer --- */
+  .footer { text-align: center; }
+
+  .resonates {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 9pt;
+    color: var(--stone);
+    margin-bottom: 0.08in;
+  }
+
+  .contact {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    font-size: 9pt;
+    color: var(--warm-earth);
+    letter-spacing: 0.02em;
+  }
+  .contact a {
+    color: var(--amber-gold);
+    text-decoration: none;
+  }
+
+  .welcome {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16pt;
+    color: var(--deep-earth);
+    margin-top: 0.18in;
+    letter-spacing: 0.02em;
+  }
+
+  /* --- Print --- */
+  @media print {
+    html, body { height: auto; }
+    .page {
+      min-height: 0;
+      height: 100vh;
+      padding: 0.5in 0.7in 0.4in;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="title">House of Light and Love</div>
+    <div class="subtitle">An Open Community for Remembrance, Reflection, and Shared Humanity</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Main Quote -->
+  <div class="quote">
+    "A Quiet Place to Remember What Already Lives as Love"<br>
+    <span style="font-size: 11pt; color: #8B7D6B; font-style: italic;">An offering to the world, entered with curiosity.</span>
+  </div>
+
+  <div class="divider short"></div>
+
+  <!-- Body -->
+  <div class="body-text">
+    House of Light and Love has always existed. We are not creating something new &mdash; we are remembering something ancient. A remembering to move inward. A return to oneself. An open community and invitational space for reflection, honest conversation, and the lived experience of love as our shared foundation. All it asks is your willingness to show up &mdash; for yourself. There is no membership, no doctrine, no hierarchy. Just an open door. All are welcome. Always.
+  </div>
+
+  <!-- Values -->
+  <div class="values">
+    Truth <span>&middot;</span> Integrity <span>&middot;</span> Love <span>&middot;</span> Simplicity <span>&middot;</span> Sovereignty <span>&middot;</span> Joy <span>&middot;</span> Play <span>&middot;</span> Fun
+  </div>
+
+  <div class="divider short"></div>
+
+  <!-- What's Inside -->
+  <div class="inside">
+    <div class="inside-heading">What's Unfolding</div>
+    <ul class="inside-list">
+      <li><strong>The Library of Love</strong> &mdash; wisdom from all traditions, rooted in light and love. A shared experience where you are seen, heard, and felt</li>
+      <li><strong>The Wellness Room</strong> &mdash; body, mind, and spirit in harmony and coherence</li>
+      <li><strong>The Council of Resonance</strong> &mdash; wisdom holders across all paths, times, and places</li>
+      <li><strong>The Foundation</strong> &mdash; place a brick to help build a lasting foundation</li>
+    </ul>
+    <div class="built-line">"The House unfolds as we gather. Every entrance adds to the foundation."</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="resonates">There is no cost. House of Light and Love is sustained by inspired offerings and aligned collaborators. If something here inspires you &mdash; step in. All it takes is willingness. No obligation. No pressure.</div>
+    <div class="contact" style="margin-top: 0.12in;">
+      <a href="https://houseoflightandlove.org">houseoflightandlove.org</a><br>
+      <a href="mailto:hello@houseoflightandlove.org">hello@houseoflightandlove.org</a><br>
+      Marc Cooper &nbsp;&middot;&nbsp; 978-852-3028
+    </div>
+    <div class="welcome">"The House is built by all, and all are welcome."</div>
+  </div>
+
+</div>
+</body>
+</html>

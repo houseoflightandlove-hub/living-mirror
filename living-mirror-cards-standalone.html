@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Mirror Cards — House of Light and Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-earth: #3D2E22;
+    --warm-earth: #5C4A3A;
+    --amber-gold: #C9A96E;
+    --gold-light: #D4BA8A;
+    --warm-white: #FAF7F2;
+    --cream: #F5F0E8;
+    --stone: #8B7D6B;
+    --flame-orange: #D4834E;
+    --shadow: #2A1F17;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--deep-earth);
+  }
+
+  /* ===== SCREEN VIEW ===== */
+  .screen-header {
+    text-align: center;
+    padding: 3rem 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .screen-header .brand {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+  }
+
+  .screen-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 300;
+    color: var(--deep-earth);
+    margin-bottom: 1rem;
+  }
+
+  .screen-header p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.7;
+    max-width: 550px;
+    margin: 0 auto 2rem;
+  }
+
+  .print-btn {
+    display: inline-block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: var(--deep-earth);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+  }
+
+  .print-btn:hover {
+    background: var(--warm-earth);
+  }
+
+  .download-note {
+    font-size: 0.75rem;
+    color: var(--stone);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .cards-wrapper {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+
+  .card-set-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--deep-earth);
+    text-align: center;
+    margin: 3rem 0 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .card-set-title:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  /* ===== CARD STYLES ===== */
+  .card-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  @media (max-width: 600px) {
+    .card-pair {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    aspect-ratio: 5 / 3.2;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Front cards — dark background */
+  .card-front {
+    background: linear-gradient(135deg, var(--shadow) 0%, var(--deep-earth) 60%, var(--warm-earth) 100%);
+    text-align: center;
+  }
+
+  .card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+  }
+
+  .card-front .card-type {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber-gold);
+    opacity: 0.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-front h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-front .card-sub {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.5;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .card-front .flame-small {
+    display: inline-block;
+    width: 12px;
+    height: 18px;
+    background: radial-gradient(ellipse at 50% 85%, #fff8e7 0%, var(--amber-gold) 60%, transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+  }
+
+  /* Back cards — light background */
+  .card-back {
+    background: var(--cream);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .card-back .card-type {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--stone);
+    opacity: 0.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-back .question-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card-back .question-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    font-style: italic;
+    color: var(--deep-earth);
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+    padding-left: 0.75rem;
+    position: relative;
+  }
+
+  .card-back .question-list li::before {
+    content: '\25C7';
+    position: absolute;
+    left: 0;
+    color: var(--amber-gold);
+    font-size: 0.5rem;
+    top: 0.3rem;
+    font-style: normal;
+  }
+
+  .card-back .card-footer {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: var(--stone);
+    opacity: 0.5;
+    text-align: right;
+  }
+
+  /* ===== COUNCIL CARDS ===== */
+  .council-card-front {
+    background: linear-gradient(160deg, var(--deep-earth) 0%, var(--shadow) 100%);
+    text-align: center;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .council-card-front .council-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .council-card-front .council-name {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--stone);
+  }
+
+  .council-card-front .council-essence {
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--stone);
+    opacity: 0.5;
+    margin-top: 0.25rem;
+  }
+
+  /* ===== WISDOM CARDS ===== */
+  .wisdom-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    text-align: center;
+  }
+
+  .wisdom-card .wisdom-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 400;
+    color: var(--deep-earth);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .wisdom-card .wisdom-source {
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== MIRROR REMINDER CARD ===== */
+  .mirror-reminder {
+    background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 100%);
+    text-align: center;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    page-break-inside: avoid;
+  }
+
+  .mirror-reminder .reminder-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .mirror-reminder .reminder-sub {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  .mirror-reminder .brand-mark {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber-gold);
+    opacity: 0.4;
+    margin-top: 1rem;
+  }
+
+  /* ===== PRINT STYLES ===== */
+  @media print {
+    body { background: white; }
+    .screen-header { display: none; }
+    .card-set-title { font-size: 1.1rem; margin: 1.5rem 0 1rem; }
+    .cards-wrapper { padding: 0 0.5in; }
+
+    .card-pair {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card {
+      border-radius: 8px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .card-front, .council-card-front, .mirror-reminder {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .mirror-reminder {
+      page-break-before: always;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SCREEN HEADER ===== -->
+<div class="screen-header">
+  <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 70px; margin-bottom: 1.5rem;">
+  <h1>Living Mirror Cards</h1>
+  <p>Portable companions for self-inquiry. Print them, carry them, put one on your actual mirror. Each card is an invitation — not an instruction.</p>
+  <div>
+    <button class="print-btn" onclick="window.print()">Print Cards</button>
+  </div>
+  <p class="download-note">Tip: Use "Save as PDF" in the print dialog to download a digital copy.</p>
+</div>
+
+<div class="cards-wrapper">
+
+  <!-- ===== SET 1: PATHWAY CARDS ===== -->
+  <div class="card-set-title">Inquiry Pathway Cards</div>
+
+  <!-- Values -->
+  <div class="card-pair">
+    <div class="card card-front">
+      <div class="flame-small"></div>
+      <div class="card-type">Inquiry Pathway</div>
+      <h3>What Do I Value?</h3>
+      <div class="card-sub">Not what you've been told. What actually makes you feel light.</div>
+    </div>
+    <div class="card card-back">
+      <div class="card-type">Reflection Questions</div>
+      <ul class="question-list">
+        <li>When everything feels right — not productive, just right — what is present?</li>
+        <li>What have I been carrying that isn't mine?</li>
+        <li>When was I most myself — not performing, not proving?</li>
+        <li>If no one would ever know, what would I choose?</li>
+        <li>What am I willing to protect, even when it costs me?</li>
+      </ul>
+      <div class="card-footer">The Living Mirror &middot; houseoflightandlove.org</div>
+    </div>
+  </div>
+
+  <!-- Intention -->
+  <div class="card-pair">
+    <div class="card card-front">
+      <div class="flame-small"></div>
+      <div class="card-type">Inquiry Pathway</div>
+      <h3>What Is My Intention?</h3>
+      <div class="card-sub">Beneath the plans — what is the deeper movement?</div>
+    </div>
+    <div class="card card-back">
+      <div class="card-type">Reflection Questions</div>
+      <ul class="question-list">
+        <li>What is the feeling I'm actually reaching for?</li>
+        <li>Am I trying to prove something through what I'm building?</li>
+        <li>If I did nothing — what would remain on its own?</li>
+        <li>Does this make me feel light or heavy? In the body.</li>
+        <li>"What I really want is to..." — finish without editing.</li>
+      </ul>
+      <div class="card-footer">The Living Mirror &middot; houseoflightandlove.org</div>
+    </div>
+  </div>
+
+  <!-- Navigate -->
+  <div class="card-pair">
+    <div class="card card-front">
+      <div class="flame-small"></div>
+      <div class="card-type">Inquiry Pathway</div>
+      <h3>How Do I Navigate This?</h3>
+      <div class="card-sub">The disturbance is a road sign, not a wall.</div>
+    </div>
+    <div class="card card-back">
+      <div class="card-type">Reflection Questions</div>
+      <ul class="question-list">
+        <li>Name the disturbance plainly — without the story.</li>
+        <li>Where do I feel this in my body right now?</li>
+        <li>What old pattern is this activating?</li>
+        <li>If this were a messenger, not a punishment — what is it delivering?</li>
+        <li>What would my trusting self do — not my perfect self?</li>
+      </ul>
+      <div class="card-footer">The Living Mirror &middot; houseoflightandlove.org</div>
+    </div>
+  </div>
+
+  <!-- ===== SET 2: COUNCIL CARDS ===== -->
+  <div class="card-set-title">Council of Resonance Cards</div>
+
+  <div class="card-pair">
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Does this increase love?"</div>
+      <div class="council-name">Jesus</div>
+      <div class="council-essence">The measure of any offering</div>
+    </div>
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Does this honor the feminine equally?"</div>
+      <div class="council-name">Mary Magdalene</div>
+      <div class="council-essence">Balance as foundation</div>
+    </div>
+  </div>
+
+  <div class="card-pair">
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Is this rooted in Being?"</div>
+      <div class="council-name">Ramana Maharshi</div>
+      <div class="council-essence">Before doing — who am I?</div>
+    </div>
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Is this accessible without dilution?"</div>
+      <div class="council-name">Yogananda</div>
+      <div class="council-essence">Truth needs no simplification — only clarity</div>
+    </div>
+  </div>
+
+  <div class="card-pair">
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Are we forcing, or flowing?"</div>
+      <div class="council-name">Laozi</div>
+      <div class="council-essence">The water that shapes the stone</div>
+    </div>
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Is there joy here?"</div>
+      <div class="council-name">Rumi</div>
+      <div class="council-essence">Joy as compass, not reward</div>
+    </div>
+  </div>
+
+  <div class="card-pair">
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Does this reduce suffering?"</div>
+      <div class="council-name">Thich Nhat Hanh</div>
+      <div class="council-essence">Compassion in action</div>
+    </div>
+    <div class="card council-card-front">
+      <div class="card-type">Council of Resonance</div>
+      <div class="council-question">"Can we let go more?"</div>
+      <div class="council-name">Michael Singer</div>
+      <div class="council-essence">Freedom through release</div>
+    </div>
+  </div>
+
+  <!-- ===== SET 3: WISDOM CARDS ===== -->
+  <div class="card-set-title">Wisdom Seeds</div>
+
+  <div class="card-pair">
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">No attachment, no aversion.<br>I am free.</div>
+      <div class="wisdom-source">Universal teaching</div>
+    </div>
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">Simplicity is divine.<br>Complexity is of the mind.</div>
+      <div class="wisdom-source">Core principle</div>
+    </div>
+  </div>
+
+  <div class="card-pair">
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">The eternal journey<br>is down and in.</div>
+      <div class="wisdom-source">Morning Vow</div>
+    </div>
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">Ask better questions.<br>Get better answers.</div>
+      <div class="wisdom-source">Cheryl Page</div>
+    </div>
+  </div>
+
+  <div class="card-pair">
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">Does it make me feel<br>light — or heavy?</div>
+      <div class="wisdom-source">The body's truth test</div>
+    </div>
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">From a flicker to a flame<br>to an inferno.</div>
+      <div class="wisdom-source">The Living Mirror</div>
+    </div>
+  </div>
+
+  <div class="card-pair">
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">What if the opposite of what<br>I believe were true?</div>
+      <div class="wisdom-source">Byron Katie</div>
+    </div>
+    <div class="card wisdom-card">
+      <div class="card-type">Wisdom Seed</div>
+      <div class="wisdom-text">There is nothing to fix.<br>Only love to remember.</div>
+      <div class="wisdom-source">House of Light and Love</div>
+    </div>
+  </div>
+
+  <!-- ===== MIRROR REMINDER ===== -->
+  <div class="mirror-reminder">
+    <div class="reminder-text">
+      Mirror, mirror — who I'm seeing<br>is who I'm being, after all.
+    </div>
+    <div class="reminder-sub">
+      No one ever looks in the same mirror and sees the same reflection twice.<br>
+      We are never the same. And every version belongs.
+    </div>
+    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 45px; margin-bottom: 0.5rem; opacity: 0.6;">
+    <div style="font-size: 0.55rem; letter-spacing: 0.2em; color: var(--stone); opacity: 0.3; margin-top: 0.25rem;">houseoflightandlove.org</div>
+  </div>
+
+</div>
+
+</body>
+</html>

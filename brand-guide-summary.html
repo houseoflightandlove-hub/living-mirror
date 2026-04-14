@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HLL Visual Brand Guide — Quick Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0.6in 0.65in; }
+  :root {
+    --espresso: #3A2F26; --warm-ivory: #F4EEE6; --soft-light: #F7F3EE;
+    --warm-earth: #A89C8E; --stone-gray: #8F8A83;
+    --clay: #C2A78F; --soft-taupe: #D6CBBE; --sage: #A8B2A1;
+    --amber: #D6B25E; --soft-gold: #C9A84C; --glow: #F0D890;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--espresso); color: var(--warm-ivory);
+    font-family: 'Inter', sans-serif; font-size: 10px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 750px; margin: 0 auto; padding: 0; }
+  .page-break { page-break-after: always; break-after: page; }
+
+  /* Header */
+  .header {
+    text-align: center; padding: 28px 0 20px;
+    border-bottom: 1px solid rgba(214,178,94,0.25);
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: 26px; color: var(--warm-ivory); margin-bottom: 2px;
+  }
+  .header .sub {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 13px; color: var(--amber);
+  }
+  .header .meta { font-size: 8px; color: var(--stone-gray); margin-top: 6px; }
+
+  /* Sections */
+  .section-title {
+    font-weight: 500; font-size: 8px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--amber);
+    margin: 16px 0 6px; padding-bottom: 3px;
+    border-bottom: 1px solid rgba(168,156,142,0.15);
+  }
+
+  /* Essence block */
+  .essence {
+    text-align: center; padding: 10px 20px; margin-bottom: 4px;
+    background: rgba(247,243,238,0.03); border-radius: 4px;
+  }
+  .essence blockquote {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 12px; color: var(--clay); margin: 0;
+  }
+  .adjectives {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 12px; color: var(--amber); text-align: center;
+    margin: 6px 0;
+  }
+
+  /* Swatches */
+  .palette-row {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px;
+  }
+  .swatch {
+    flex: 1; min-width: 60px; border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(168,156,142,0.12);
+  }
+  .swatch-color { height: 28px; }
+  .swatch-label {
+    padding: 3px 5px; background: rgba(58,47,38,0.5);
+    font-size: 7.5px; line-height: 1.3;
+  }
+  .swatch-label strong { color: var(--warm-ivory); font-weight: 500; }
+  .swatch-label span { color: var(--warm-earth); display: block; font-size: 7px; }
+
+  /* Type */
+  .type-row { display: flex; gap: 12px; margin: 6px 0; }
+  .type-card {
+    flex: 1; padding: 10px 12px; border-radius: 4px;
+    background: rgba(247,243,238,0.03);
+    border: 1px solid rgba(168,156,142,0.08);
+  }
+  .type-card .label {
+    font-size: 7px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 4px;
+  }
+  .type-card .demo-headline {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: 20px; color: var(--warm-ivory); line-height: 1.2;
+  }
+  .type-card .demo-body {
+    font-family: 'Inter', sans-serif; font-size: 10px;
+    color: var(--warm-ivory); line-height: 1.5;
+  }
+  .type-card .spec {
+    font-size: 7.5px; color: var(--warm-earth); margin-top: 4px;
+  }
+
+  /* Hierarchy table */
+  .mini-table {
+    width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 8px;
+  }
+  .mini-table th {
+    text-align: left; font-weight: 500; font-size: 7px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber);
+    padding: 3px 6px; border-bottom: 1px solid rgba(168,156,142,0.2);
+  }
+  .mini-table td {
+    padding: 2px 6px; color: var(--warm-ivory);
+    border-bottom: 1px solid rgba(168,156,142,0.06);
+  }
+  .mini-table td:first-child { color: var(--clay); font-weight: 500; }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 12px; align-items: center; margin: 8px 0; }
+  .btn-p {
+    display: inline-block; background: var(--amber); color: var(--espresso);
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 9px;
+    padding: 7px 16px; border-radius: 4px; border: 1px solid var(--espresso);
+  }
+  .btn-s {
+    display: inline-block; background: transparent; color: var(--warm-ivory);
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 9px;
+    padding: 7px 16px; border-radius: 4px; border: 1px solid var(--warm-earth);
+  }
+  .btn-label { font-size: 7px; color: var(--warm-earth); text-align: center; margin-top: 2px; }
+
+  /* Flow */
+  .flow-grid { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0; }
+  .flow-item {
+    flex: 1; min-width: 140px; padding: 5px 8px; border-radius: 3px;
+    border-left: 2px solid var(--amber); background: rgba(247,243,238,0.025);
+  }
+  .flow-item .num {
+    font-size: 7px; font-weight: 500; color: var(--amber);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .flow-item .name {
+    font-family: 'Cormorant Garamond', serif; font-size: 10px;
+    color: var(--warm-ivory);
+  }
+  .flow-item .desc { font-size: 7px; color: var(--warm-earth); line-height: 1.4; }
+
+  /* Lists */
+  .mini-list { list-style: none; padding: 0; columns: 2; column-gap: 16px; }
+  .mini-list li {
+    font-size: 8.5px; color: var(--warm-ivory); padding-left: 10px;
+    position: relative; margin-bottom: 2px; break-inside: avoid;
+  }
+  .mini-list li::before {
+    content: ''; position: absolute; left: 0; top: 4px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--amber); opacity: 0.5;
+  }
+  .avoid-list li::before { background: var(--stone-gray); }
+
+  .do-dont { display: flex; gap: 8px; margin: 6px 0; }
+  .do-box, .dont-box {
+    flex: 1; padding: 8px 10px; border-radius: 4px; font-size: 8px;
+  }
+  .do-box { background: rgba(168,178,161,0.06); border: 1px solid rgba(168,178,161,0.15); }
+  .dont-box { background: rgba(143,138,131,0.04); border: 1px solid rgba(143,138,131,0.1); }
+  .do-box .box-label { color: var(--sage); font-size: 7px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .dont-box .box-label { color: var(--stone-gray); font-size: 7px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding-top: 12px; margin-top: 16px;
+    border-top: 1px solid rgba(214,178,94,0.2);
+    font-size: 7px; color: var(--stone-gray);
+  }
+  .footer .closing {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 10px; color: var(--clay); margin-bottom: 6px;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== PAGE 1 ====== -->
+<div class="page page-break">
+
+  <div class="header">
+    <img src="../assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 60px; margin-bottom: 8px; opacity: 0.9; filter: drop-shadow(0 0 10px rgba(214,178,94,0.15));">
+    <div class="sub">Visual Brand Guide &mdash; Quick Reference</div>
+    <div class="meta">Source of Truth &mdash; Confirmed April 9, 2026 &nbsp;|&nbsp; Prepared by Marc Cooper / ACE System</div>
+  </div>
+
+  <!-- ESSENCE -->
+  <div class="section-title">Brand Essence</div>
+  <div class="essence">
+    <blockquote>&ldquo;A quiet, living space for reflection, connection, and remembrance &mdash; where nothing is being sold, and nothing is being taught, only gently revealed.&rdquo;</blockquote>
+  </div>
+  <div class="adjectives">Calm &nbsp;&middot;&nbsp; Warm &nbsp;&middot;&nbsp; Spacious &nbsp;&middot;&nbsp; Grounded &nbsp;&middot;&nbsp; Intentional</div>
+
+  <!-- COLORS -->
+  <div class="section-title">Color System</div>
+
+  <div style="font-size:7px; color:var(--warm-earth); margin-bottom:4px; font-weight:500; letter-spacing:0.08em;">PRIMARY BASE</div>
+  <div class="palette-row">
+    <div class="swatch"><div class="swatch-color" style="background:#3A2F26"></div><div class="swatch-label"><strong>Espresso</strong><span>#3A2F26 &mdash; Primary background</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F4EEE6"></div><div class="swatch-label"><strong>Warm Ivory</strong><span>#F4EEE6 &mdash; Primary text</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F7F3EE"></div><div class="swatch-label"><strong>Soft Light</strong><span>#F7F3EE &mdash; Alt light surface</span></div></div>
+  </div>
+
+  <div style="font-size:7px; color:var(--warm-earth); margin-bottom:4px; font-weight:500; letter-spacing:0.08em;">DEPTH + SUPPORT</div>
+  <div class="palette-row">
+    <div class="swatch"><div class="swatch-color" style="background:#A89C8E"></div><div class="swatch-label"><strong>Warm Earth</strong><span>#A89C8E</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8F8A83"></div><div class="swatch-label"><strong>Stone Gray</strong><span>#8F8A83</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C2A78F"></div><div class="swatch-label"><strong>Clay</strong><span>#C2A78F</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D6CBBE"></div><div class="swatch-label"><strong>Soft Taupe</strong><span>#D6CBBE</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#A8B2A1"></div><div class="swatch-label"><strong>Sage</strong><span>#A8B2A1</span></div></div>
+  </div>
+
+  <div style="font-size:7px; color:var(--warm-earth); margin-bottom:4px; font-weight:500; letter-spacing:0.08em;">ACCENT</div>
+  <div class="palette-row">
+    <div class="swatch"><div class="swatch-color" style="background:#D6B25E"></div><div class="swatch-label"><strong>Amber / Gold</strong><span>#D6B25E &mdash; CTAs, highlights</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C9A84C"></div><div class="swatch-label"><strong>Soft Gold</strong><span>#C9A84C &mdash; Hover state</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F0D890"></div><div class="swatch-label"><strong>Glow</strong><span>#F0D890 &mdash; Soft radiance</span></div></div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section-title">Typography</div>
+  <div class="type-row">
+    <div class="type-card">
+      <div class="label">Headlines &mdash; Cormorant Garamond</div>
+      <div class="demo-headline">Welcome Home</div>
+      <div class="spec">Light/Regular (300&ndash;400) &middot; Serif &middot; Timeless, contemplative</div>
+    </div>
+    <div class="type-card">
+      <div class="label">Body / UI &mdash; Inter</div>
+      <div class="demo-body">An invitation to reflection, not instruction &mdash; a calm and grounded space.</div>
+      <div class="spec">Regular/Medium (400&ndash;500) &middot; Sans-serif &middot; Readable, human</div>
+    </div>
+  </div>
+  <table class="mini-table">
+    <tr><th>Level</th><th>Font</th><th>Size</th><th>Level</th><th>Font</th><th>Size</th></tr>
+    <tr><td>H1</td><td>Cormorant Light</td><td>48&ndash;56px</td><td>Body</td><td>Inter Regular</td><td>16&ndash;18px</td></tr>
+    <tr><td>H2</td><td>Cormorant Regular</td><td>36&ndash;42px</td><td>UI</td><td>Inter Medium</td><td>14px</td></tr>
+    <tr><td>H3</td><td>Cormorant Regular</td><td>28&ndash;32px</td><td>Caption</td><td>Inter Regular</td><td>12&ndash;13px</td></tr>
+  </table>
+
+  <!-- BUTTONS -->
+  <div class="section-title">UI Elements</div>
+  <div class="btn-row">
+    <div><div class="btn-p">Stay Connected</div><div class="btn-label">Amber bg &middot; Espresso text &middot; 4&ndash;6px radius</div></div>
+    <div><div class="btn-s">Learn More</div><div class="btn-label">Transparent &middot; Ivory text &middot; Earth border</div></div>
+    <div style="flex:1; font-size:8px; color:var(--warm-earth); line-height:1.4;">
+      <strong style="color:var(--clay);">Forms:</strong> Soft Light bg, Taupe border, Amber focus<br>
+      <strong style="color:var(--clay);">Nav:</strong> Minimal, Inter 14&ndash;15px, Ivory on Espresso<br>
+      <strong style="color:var(--clay);">Motion:</strong> Slow fades (0.3&ndash;0.5s), scroll reveals, no autoplay
+    </div>
+  </div>
+
+  <!-- SPACING -->
+  <div class="section-title">Layout Principles</div>
+  <ul class="mini-list">
+    <li>Space is the primary design element</li>
+    <li>80&ndash;120px+ vertical section spacing</li>
+    <li>500&ndash;700px max text width, centered</li>
+    <li>One idea per section</li>
+    <li>Espresso-led backgrounds, selective contrast</li>
+    <li>Mobile-first, 44px min tap targets</li>
+    <li>Line height 1.5&ndash;1.8, generous breathing</li>
+    <li>No bold above Medium/500, no all-caps</li>
+  </ul>
+
+</div>
+
+<!-- ====== PAGE 2 ====== -->
+<div class="page">
+
+  <!-- EXPERIENCE FLOW -->
+  <div class="section-title" style="margin-top:24px;">Homepage Experience Flow</div>
+  <div class="flow-grid">
+    <div class="flow-item"><div class="num">S0</div><div class="name">Threshold</div><div class="desc">&ldquo;Welcome Home&rdquo; &mdash; full-screen, Cormorant, fade-in. Content becomes experience.</div></div>
+    <div class="flow-item"><div class="num">S1</div><div class="name">Rotating Reflection</div><div class="desc">Daily/weekly quote. Cormorant italic. Amber accent.</div></div>
+    <div class="flow-item"><div class="num">S2</div><div class="name">Hero</div><div class="desc">Logo + &ldquo;A Quiet Place to Remember What Already Lives as Love.&rdquo; CTA: Stay Connected.</div></div>
+    <div class="flow-item"><div class="num">S3</div><div class="name">Intention</div><div class="desc">Centered paragraph. Minimal. Editorial tone.</div></div>
+    <div class="flow-item"><div class="num">S4</div><div class="name">How It Unfolds</div><div class="desc">Narrow text. Increased spacing. Slows the pace.</div></div>
+    <div class="flow-item"><div class="num">S5</div><div class="name">What's Unfolding</div><div class="desc">Rooms: Pause &amp; Remember, Shared Listening, Living Creativity.</div></div>
+    <div class="flow-item"><div class="num">S6</div><div class="name">Invitation</div><div class="desc">Warm, human bridge to connection.</div></div>
+    <div class="flow-item"><div class="num">S7</div><div class="name">Threshold Deeper</div><div class="desc">Email signup. Espresso bg, Ivory text, Amber CTA.</div></div>
+    <div class="flow-item"><div class="num">S8</div><div class="name">Footer</div><div class="desc">&ldquo;You are not meeting love here. You are remembering yourself as love.&rdquo;</div></div>
+  </div>
+
+  <!-- IMAGERY -->
+  <div class="section-title">Imagery &amp; Visual Language</div>
+  <div class="do-dont">
+    <div class="do-box">
+      <div class="box-label">Use</div>
+      <ul class="mini-list" style="columns:1;">
+        <li>Light entering a space (windows, doorways, canopies)</li>
+        <li>Reflections (water, glass, mirrors)</li>
+        <li>Sky, horizon, natural textures (linen, sand, stone, wood)</li>
+        <li>Warm hearth / firelight</li>
+        <li>Subtle geometric / mandala patterns</li>
+        <li>Welcome Home mat as core motif</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <div class="box-label">Avoid</div>
+      <ul class="mini-list avoid-list" style="columns:1;">
+        <li>Clich&eacute; spiritual (lotus, third eyes, chakras)</li>
+        <li>Overly literal visuals</li>
+        <li>Busy compositions</li>
+        <li>Staged / corporate stock photos</li>
+        <li>Heavy filters or dark moody aesthetics</li>
+      </ul>
+    </div>
+  </div>
+  <div style="font-size:8px; color:var(--clay); margin-top:2px;">
+    <strong>Treatment:</strong> Soft natural color grading &middot; Warm tone overlay &middot; Contemplative compositions &middot; Images should feel <em>found</em>, not produced.
+  </div>
+
+  <!-- ACCESSIBILITY -->
+  <div class="section-title">Accessibility &mdash; &ldquo;Care as Cause&rdquo;</div>
+  <div style="font-size:8.5px; color:var(--clay); padding:8px 10px; background:rgba(214,178,94,0.05); border:1px solid rgba(214,178,94,0.12); border-radius:4px; line-height:1.5;">
+    Ivory on Espresso = primary high-contrast treatment. CTA buttons: Espresso text on Amber bg. Glow and accent enhance atmosphere but never reduce readability. Non-negotiable.
+  </div>
+
+  <!-- WHAT THIS IS NOT -->
+  <div class="section-title">What This Is Not</div>
+  <ul class="mini-list">
+    <li>Not a spiritual authority platform</li>
+    <li>Not promotional or conversion-driven</li>
+    <li>Not ornate, busy, or loud</li>
+    <li>Not instructional or dogmatic</li>
+    <li>Not a traditional website &mdash; it&rsquo;s a living space</li>
+    <li>Guiding feeling: &ldquo;Returning home to something already known&rdquo;</li>
+  </ul>
+
+  <!-- STATUS -->
+  <div class="section-title">Current Status</div>
+  <table class="mini-table">
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Visual Brand Guide</td><td>SSOT confirmed by Zac (April 9, 2026). This document.</td></tr>
+    <tr><td>Logo</td><td>Canonical pick selected. Sent to designer for variations + vector formats.</td></tr>
+    <tr><td>Amber/Ivory contrast</td><td>Espresso on Amber recommended. Zac to verify WCAG AA.</td></tr>
+  </table>
+
+  <div class="footer">
+    <div class="closing">&ldquo;A site that feels less like a document and more like crossing a threshold &mdash; into a house that has always been waiting.&rdquo;</div>
+    <img src="../assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 30px; margin-bottom: 6px; opacity: 0.6;"><br>
+    Visual Brand Guide Quick Reference &nbsp;|&nbsp; SSOT Confirmed April 9, 2026<br>
+    Questions: marc@tfrg.com &nbsp;|&nbsp; kmvcommunications@gmail.com
+  </div>
+
+</div>
+
+</body>
+</html>

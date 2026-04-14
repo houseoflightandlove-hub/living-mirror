@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Living Mirror — House of Light and Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-earth: #3D2E22;
+    --warm-earth: #5C4A3A;
+    --amber-gold: #C9A96E;
+    --gold-light: #D4BA8A;
+    --warm-white: #FAF7F2;
+    --cream: #F5F0E8;
+    --stone: #8B7D6B;
+    --flame-orange: #D4834E;
+    --flame-glow: #E8A84C;
+    --shadow: #2A1F17;
+    --mirror-edge: rgba(201, 169, 110, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--deep-earth);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO SECTION — THE MIRROR ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    position: relative;
+    background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 40%, var(--warm-earth) 70%, var(--cream) 100%);
+  }
+
+  .hero-logo {
+    width: auto;
+    height: 80px;
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(201, 169, 110, 0.2));
+  }
+
+  /* The Mirror Frame */
+  .mirror-frame {
+    width: clamp(260px, 55vw, 400px);
+    height: clamp(340px, 70vw, 520px);
+    border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    cursor: pointer;
+    transition: transform 0.8s ease;
+  }
+
+  .mirror-frame:hover {
+    transform: scale(1.02);
+  }
+
+  /* Etheric aura rings */
+  .mirror-frame::before {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from 0deg,
+      rgba(201, 169, 110, 0.0) 0deg,
+      rgba(201, 169, 110, 0.12) 40deg,
+      rgba(212, 131, 78, 0.10) 90deg,
+      rgba(232, 168, 76, 0.12) 140deg,
+      rgba(201, 169, 110, 0.08) 200deg,
+      rgba(139, 125, 107, 0.06) 260deg,
+      rgba(201, 169, 110, 0.12) 320deg,
+      rgba(201, 169, 110, 0.0) 360deg
+    );
+    filter: blur(12px);
+    z-index: 0;
+    animation: aura-pulse 6s ease-in-out infinite alternate;
+  }
+
+  .mirror-frame::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: inherit;
+    border: 1.5px solid var(--amber-gold);
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  @keyframes aura-pulse {
+    0% { opacity: 0.5; filter: blur(12px); }
+    50% { opacity: 0.8; filter: blur(16px); }
+    100% { opacity: 0.6; filter: blur(14px); }
+  }
+
+  .mirror-surface {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 50% 40%,
+      rgba(250, 247, 242, 0.08) 0%,
+      rgba(92, 74, 58, 0.15) 30%,
+      rgba(42, 31, 23, 0.6) 60%,
+      rgba(42, 31, 23, 0.85) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  /* Flame animation inside mirror */
+  .flame-container {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+
+  .flame {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    background: radial-gradient(ellipse at 50% 90%,
+      #fff8e7 0%,
+      var(--flame-glow) 25%,
+      var(--flame-orange) 50%,
+      var(--amber-gold) 75%,
+      transparent 100%
+    );
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 2s ease-in-out infinite alternate;
+    filter: blur(1px);
+  }
+
+  .flame::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 30px;
+    background: radial-gradient(ellipse at 50% 85%,
+      #fffcf0 0%,
+      var(--flame-glow) 40%,
+      transparent 100%
+    );
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker-inner 1.5s ease-in-out infinite alternate-reverse;
+  }
+
+  .flame-glow {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    background: radial-gradient(ellipse, rgba(232, 168, 76, 0.2) 0%, transparent 70%);
+    animation: glow-pulse 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { height: 48px; width: 28px; opacity: 0.9; }
+    25% { height: 54px; width: 32px; opacity: 1; }
+    50% { height: 46px; width: 26px; opacity: 0.85; }
+    75% { height: 52px; width: 30px; opacity: 0.95; }
+    100% { height: 50px; width: 29px; opacity: 0.9; }
+  }
+
+  @keyframes flicker-inner {
+    0% { height: 28px; opacity: 0.9; }
+    50% { height: 34px; opacity: 1; }
+    100% { height: 30px; opacity: 0.85; }
+  }
+
+  @keyframes glow-pulse {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.7; }
+  }
+
+  .mirror-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 30px rgba(201, 169, 110, 0.2);
+  }
+
+  .mirror-subtitle {
+    font-family: 'Work Sans', sans-serif;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    font-weight: 300;
+    color: var(--stone);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .mirror-cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber-gold);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    padding: 0.6rem 1.8rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background: transparent;
+    text-decoration: none;
+  }
+
+  .mirror-cta:hover {
+    background: rgba(201, 169, 110, 0.1);
+    border-color: var(--amber-gold);
+  }
+
+  .hero-footer {
+    position: absolute;
+    bottom: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--stone);
+    opacity: 0.5;
+  }
+
+  /* ===== INTRODUCTION SECTION ===== */
+  .intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 300;
+    color: var(--deep-earth);
+    margin-bottom: 2rem;
+    line-height: 1.4;
+  }
+
+  .intro p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--warm-earth);
+    margin-bottom: 1.5rem;
+  }
+
+  .intro .emphasis {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--deep-earth);
+    border-left: 2px solid var(--amber-gold);
+    padding-left: 1.25rem;
+    margin: 2.5rem 0;
+    text-align: left;
+    line-height: 1.7;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+    margin: 3rem auto;
+  }
+
+  /* ===== PATHWAYS SECTION ===== */
+  .pathways {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .pathways h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    font-weight: 300;
+    color: var(--deep-earth);
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .pathways .section-sub {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--stone);
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+
+  .pathway-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pathway-card {
+    background: var(--cream);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pathway-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(61, 46, 34, 0.08);
+    border-color: var(--amber-gold);
+  }
+
+  .pathway-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+    border-radius: 0 0 4px 4px;
+  }
+
+  .pathway-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pathway-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--deep-earth);
+    margin-bottom: 0.75rem;
+  }
+
+  .pathway-card p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  .pathway-card .card-prompt {
+    display: block;
+    margin-top: 1.25rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--amber-gold);
+  }
+
+  /* ===== INQUIRY EXPERIENCE ===== */
+  .inquiry-container {
+    display: none;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    min-height: 80vh;
+  }
+
+  .inquiry-container.active {
+    display: block;
+    animation: fadeIn 0.8s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .inquiry-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .inquiry-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--deep-earth);
+    margin-bottom: 0.5rem;
+  }
+
+  .inquiry-header p {
+    font-size: 0.85rem;
+    color: var(--stone);
+    font-weight: 300;
+  }
+
+  .inquiry-progress {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--stone);
+    transition: all 0.4s ease;
+  }
+
+  .progress-dot.active {
+    background: var(--amber-gold);
+    border-color: var(--amber-gold);
+    box-shadow: 0 0 8px rgba(201, 169, 110, 0.4);
+  }
+
+  .progress-dot.completed {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  .inquiry-question {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .inquiry-question .breath-prompt {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .inquiry-question h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    font-weight: 400;
+    color: var(--deep-earth);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .inquiry-question .question-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  .inquiry-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1.25rem;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--deep-earth);
+    background: var(--cream);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    border-radius: 12px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s ease;
+    line-height: 1.7;
+  }
+
+  .inquiry-textarea:focus {
+    border-color: var(--amber-gold);
+  }
+
+  .inquiry-textarea::placeholder {
+    color: var(--stone);
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  .inquiry-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.7rem 1.8rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--stone);
+    border: 1px solid rgba(139, 125, 107, 0.3);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--stone);
+  }
+
+  .btn-primary {
+    background: var(--deep-earth);
+    color: var(--gold-light);
+    border: 1px solid var(--deep-earth);
+  }
+
+  .btn-primary:hover {
+    background: var(--warm-earth);
+  }
+
+  .btn-back-pathways {
+    display: block;
+    margin: 2rem auto 0;
+    background: transparent;
+    color: var(--stone);
+    border: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+  }
+
+  .btn-back-pathways:hover {
+    color: var(--deep-earth);
+  }
+
+  /* ===== REFLECTION OUTPUT ===== */
+  .reflection-output {
+    display: none;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .reflection-output.active {
+    display: block;
+    animation: fadeIn 1s ease;
+  }
+
+  .reflection-mirror {
+    background: linear-gradient(180deg, var(--shadow) 0%, var(--deep-earth) 50%, var(--warm-earth) 100%);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .reflection-mirror::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--amber-gold), transparent);
+  }
+
+  .reflection-mirror .mirror-label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber-gold);
+    opacity: 0.6;
+    margin-bottom: 2rem;
+  }
+
+  .reflection-mirror h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .reflection-mirror .reflection-body {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.9;
+    text-align: left;
+  }
+
+  .reflection-mirror .reflection-body p {
+    margin-bottom: 1rem;
+  }
+
+  .reflection-mirror .council-voice {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .reflection-mirror .council-voice p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .reflection-mirror .council-voice .attribution {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+
+  .reflection-closing {
+    text-align: center;
+  }
+
+  .reflection-closing p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--warm-earth);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .reflection-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ===== YOUR WORDS SECTION ===== */
+  .your-words {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .your-words .words-label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-gold);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .your-words .word-echo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(201, 169, 110, 0.2);
+    opacity: 0.85;
+  }
+
+  .your-words .word-echo .echo-note {
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-style: normal;
+    color: var(--stone);
+    opacity: 0.5;
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== JOURNAL VIEW (for print/download) ===== */
+  .journal-view {
+    display: none;
+  }
+
+  .journal-view.active {
+    display: block;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .journal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .journal-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--deep-earth);
+    margin-bottom: 0.5rem;
+  }
+
+  .journal-header .journal-date {
+    font-size: 0.8rem;
+    color: var(--stone);
+    font-weight: 300;
+  }
+
+  .journal-header .journal-pathway {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--amber-gold);
+    margin-top: 0.75rem;
+  }
+
+  .journal-entry {
+    margin-bottom: 2.5rem;
+  }
+
+  .journal-entry .journal-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--deep-earth);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .journal-entry .journal-answer {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--warm-earth);
+    line-height: 1.8;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .journal-reflection {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .journal-reflection h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--deep-earth);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .journal-reflection p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--warm-earth);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .journal-council {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+
+  .journal-council p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--deep-earth);
+  }
+
+  .journal-council .attribution {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--stone);
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  .journal-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .journal-footer img {
+    width: auto;
+    height: 40px;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .journal-footer p {
+    font-size: 0.7rem;
+    color: var(--stone);
+    opacity: 0.5;
+  }
+
+  /* ===== PHILOSOPHY SECTION ===== */
+  .philosophy {
+    background: var(--cream);
+    padding: 5rem 2rem;
+  }
+
+  .philosophy-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .philosophy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    font-weight: 300;
+    color: var(--deep-earth);
+    margin-bottom: 2.5rem;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    text-align: left;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 500px) {
+    .philosophy-grid { grid-template-columns: 1fr; }
+  }
+
+  .philosophy-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--deep-earth);
+    margin-bottom: 0.5rem;
+  }
+
+  .philosophy-item p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--warm-earth);
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+
+  footer p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  footer .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--warm-earth);
+    margin-top: 1rem;
+  }
+
+  /* ===== NAVIGATION BAR ===== */
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(42, 31, 23, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.4s ease;
+  }
+
+  .nav-bar.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav-brand img {
+    width: auto;
+    height: 22px;
+  }
+
+  .nav-brand span {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 500px) {
+    .nav-links { gap: 0.75rem; }
+    .nav-links a { font-size: 0.6rem; }
+    .nav-brand span { display: none; }
+  }
+
+  /* ===== PRINT STYLES FOR JOURNAL ===== */
+  @media print {
+    body { background: white; }
+    .nav-bar, .hero, .intro, .pathways, .philosophy, footer,
+    .inquiry-container, .reflection-output,
+    .btn, .reflection-actions { display: none !important; }
+
+    .journal-view.active {
+      display: block !important;
+      padding: 1rem;
+    }
+
+    .journal-entry {
+      page-break-inside: avoid;
+    }
+
+    .journal-reflection {
+      page-break-inside: avoid;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .journal-footer {
+      page-break-before: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION BAR ===== -->
+<nav class="nav-bar" id="navbar">
+  <a class="nav-brand" onclick="goHome()">
+    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love">
+  </a>
+  <div class="nav-links">
+    <a onclick="goHome()">Home</a>
+    <a onclick="goToPathways()">Doorways</a>
+    <a href="#philosophy">What the Mirror Knows</a>
+    <a href="living-mirror-cards.html">Cards</a>
+  </div>
+</nav>
+
+<!-- ===== HERO: THE LIVING MIRROR ===== -->
+<section class="hero" id="hero">
+
+  <div class="mirror-frame" onclick="enterMirror()">
+    <div class="mirror-surface">
+      <div class="flame-container">
+        <div class="flame-glow"></div>
+        <div class="flame"></div>
+      </div>
+      <div class="mirror-title">The Living Mirror</div>
+      <div class="mirror-subtitle">A space for remembering what already lives within</div>
+      <button class="mirror-cta" onclick="enterMirror()">Look Within</button>
+    </div>
+  </div>
+
+  <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" class="hero-logo">
+
+  <div class="hero-footer">
+    Mirror, mirror — who I'm seeing is who I'm being, after all.
+  </div>
+</section>
+
+<!-- ===== INTRODUCTION ===== -->
+<section class="intro" id="intro">
+  <h2>This is not self-help.<br>This is self-inquiry.</h2>
+
+  <p>The Living Mirror is a space for remembering. Not for fixing, not for becoming something else, not for adding what you think is missing. Simply for seeing — clearly, gently, honestly — what is already here.</p>
+
+  <p>The answers you seek are not outside of you. They never were. These questions are simply a bridge — a way of clearing the mirror so you can see what was always reflected.</p>
+
+  <div class="emphasis">
+    No one ever looks in the same mirror and sees the same reflection twice. We are never the same. Moment by moment, we are eternally different versions of ourselves — and every version belongs.
+  </div>
+
+  <p>Every action, every decision, every choice in this moment is shaping who you are becoming. Not as punishment or reward — simply as information. The mirror doesn't judge. It reflects.</p>
+
+  <div class="divider"></div>
+
+  <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--amber-gold);">
+    Ask better questions. Get better answers.
+  </p>
+</section>
+
+<!-- ===== INQUIRY PATHWAYS ===== -->
+<section class="pathways" id="pathways">
+  <h2>Choose a Doorway</h2>
+  <p class="section-sub">Each pathway is a different angle on the same mirror.<br>There is no wrong door. Begin where you feel drawn.</p>
+
+  <div class="pathway-grid">
+    <div class="pathway-card" onclick="startInquiry('values')">
+      <span class="pathway-icon">&#9671;</span>
+      <h3>What Do I Value?</h3>
+      <p>Not what you've been told to value. Not what looks good. What actually makes you feel light when you hold it?</p>
+      <span class="card-prompt">"What is true for me — not inherited, not performed?"</span>
+    </div>
+
+    <div class="pathway-card" onclick="startInquiry('intention')">
+      <span class="pathway-icon">&#9675;</span>
+      <h3>What Is My Intention?</h3>
+      <p>Beneath the plans and the goals and the to-do lists — what is the deeper movement? What wants to emerge?</p>
+      <span class="card-prompt">"Am I creating from love, or building from fear?"</span>
+    </div>
+
+    <div class="pathway-card" onclick="startInquiry('navigate')">
+      <span class="pathway-icon">&#9656;</span>
+      <h3>How Do I Navigate This?</h3>
+      <p>When life presents a disturbance — not to drive around it, over it, or through it — but to dance with it. The vritti is a road sign, not a wall.</p>
+      <span class="card-prompt">"What is this moment asking of me?"</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INQUIRY EXPERIENCE ===== -->
+<div class="inquiry-container" id="inquiry">
+  <div class="inquiry-header">
+    <h2 id="inquiry-title"></h2>
+    <p id="inquiry-subtitle"></p>
+  </div>
+
+  <div class="inquiry-progress" id="progress-dots"></div>
+
+  <div class="inquiry-question" id="question-area">
+    <div class="breath-prompt">Take a breath before answering</div>
+    <h3 id="question-text"></h3>
+    <p class="question-note" id="question-note"></p>
+  </div>
+
+  <textarea class="inquiry-textarea" id="answer-input" placeholder="Write what comes... no editing, no performing. Just truth."></textarea>
+
+  <div class="inquiry-nav">
+    <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()">Back</button>
+    <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">Continue</button>
+  </div>
+
+  <button class="btn-back-pathways" onclick="backToPathways()">&#8592; Choose a different doorway</button>
+</div>
+
+<!-- ===== REFLECTION OUTPUT ===== -->
+<div class="reflection-output" id="reflection">
+  <div class="reflection-mirror">
+    <div class="mirror-label">Your Reflection</div>
+    <h3 id="reflection-title"></h3>
+    <div class="reflection-body" id="reflection-body"></div>
+    <div class="your-words" id="your-words"></div>
+    <div class="council-voice" id="council-voice"></div>
+  </div>
+
+  <div class="reflection-closing">
+    <p>The mirror remembers nothing. Each time you return, it meets you new.</p>
+    <div class="reflection-actions">
+      <button class="btn btn-secondary" onclick="backToPathways()">Try Another Doorway</button>
+      <button class="btn btn-primary" onclick="showJournal()">Save This Reflection</button>
+      <button class="btn btn-secondary" onclick="restartSame()">Look Again</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JOURNAL VIEW (printable/downloadable) ===== -->
+<div class="journal-view" id="journal">
+  <div class="journal-header">
+    <h2>The Living Mirror — A Reflection</h2>
+    <div class="journal-date" id="journal-date"></div>
+    <div class="journal-pathway" id="journal-pathway"></div>
+  </div>
+
+  <div id="journal-entries"></div>
+
+  <div class="journal-reflection" id="journal-reflection"></div>
+  <div class="journal-council" id="journal-council"></div>
+
+  <div class="reflection-actions" style="margin-bottom: 2rem;">
+    <button class="btn btn-secondary" onclick="printJournal()">Print / Save as PDF</button>
+    <button class="btn btn-secondary" onclick="backToPathways()">Return to Doorways</button>
+  </div>
+
+  <div class="journal-footer">
+    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love">
+    <p>The Living Mirror &middot; houseoflightandlove.org</p>
+    <p>There is nothing to fix. Only love to remember.</p>
+  </div>
+</div>
+
+<!-- ===== PHILOSOPHY ===== -->
+<section class="philosophy" id="philosophy">
+  <div class="philosophy-inner">
+    <h2>What the Mirror Knows</h2>
+
+    <div class="philosophy-grid">
+      <div class="philosophy-item">
+        <h4>It Reflects, Never Judges</h4>
+        <p>There is nothing wrong with what you see. The muck on the mirror isn't failure — it's simply what hasn't been seen yet. As it clears, the reflection becomes more true.</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>Darkness Holds the Light</h4>
+        <p>The places that seem hardest are holding the most wisdom. Not punishment — information. Road signs for higher choices, disguised as difficulty.</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>From Flicker to Flame</h4>
+        <p>Within you is the capacity to go from a flicker to a flame to an inferno. This is simply an invitation to ignite what was always there.</p>
+      </div>
+      <div class="philosophy-item">
+        <h4>No Destination</h4>
+        <p>There is never an end to this journey. The intention is not to eradicate disturbance but to navigate more smoothly, more harmoniously, when disturbance arrives.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="philosophy-quote">
+      "The most powerful computer in the world is not artificial.<br>
+      It's authentic. It's autonomous. It's you."
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 55px; margin-bottom: 0.75rem; opacity: 0.7;">
+  <p>Truth &middot; Integrity &middot; Love &middot; Simplicity &middot; Sovereignty &middot; Joy</p>
+  <p class="footer-tagline">There is nothing to fix. Only love to remember.</p>
+  <p style="margin-top: 0.75rem; font-size: 0.7rem; color: var(--stone); opacity: 0.5;">houseoflightandlove.org</p>
+</footer>
+
+<script>
+// ===== INQUIRY DATA =====
+const inquiryData = {
+  values: {
+    title: "What Do I Value?",
+    subtitle: "Clearing the mirror to see what matters",
+    questions: [
+      {
+        text: "When you imagine a day where everything feels right — not productive, not successful, just right — what is present?",
+        note: "Don't think about this. Feel it. What does that day smell like, sound like, feel like in the body?"
+      },
+      {
+        text: "What have you been told you should value that, if you're honest, doesn't actually make you feel light?",
+        note: "This isn't about rejecting what others believe. It's about noticing what you've been carrying that isn't yours."
+      },
+      {
+        text: "Think of a moment when you felt most like yourself — not performing, not proving. What was happening?",
+        note: "The moment might be small. A conversation. A walk. A silence. Let it find you."
+      },
+      {
+        text: "If no one would ever know what you chose — no praise, no judgment, no audience — what would you choose?",
+        note: "This is between you and the mirror. No one is watching."
+      },
+      {
+        text: "What are you willing to protect, even when it costs you something?",
+        note: "Not what sounds noble. What you actually protect — with your time, your energy, your quiet choices."
+      },
+      {
+        text: "Hold everything you've written here. Read it back slowly. What single word rises to the surface?",
+        note: "Trust the first word that comes. It doesn't need to be profound. It just needs to be true."
+      }
+    ],
+    reflection: {
+      title: "What the mirror sees",
+      generate: function(answers) {
+        const filled = answers.filter(a => a && a.trim().length > 0);
+        if (filled.length === 0) {
+          return `<p>You came here carrying questions about what matters. Even in silence, the mirror saw something. The willingness to look is itself a value — perhaps the deepest one.</p>`;
+        }
+        let html = `<p>You came here carrying questions about what matters. The mirror doesn't tell you what to value — it shows you what you already do.</p>`;
+        if (answers[0] && answers[0].trim()) {
+          html += `<p>When everything feels right, what you described wasn't achievement — it was a quality of presence. That feeling is your compass, not your goal list.</p>`;
+        }
+        if (answers[1] && answers[1].trim()) {
+          html += `<p>You named something you've been carrying that isn't yours. Seeing it is the first act of setting it down. You don't have to do anything with this yet — just let it be seen.</p>`;
+        }
+        if (answers[4] && answers[4].trim()) {
+          html += `<p>The things you protect when no one is watching — those are your actual values. Not the list on the wall. The quiet, unglamorous choices you make when it costs you something.</p>`;
+        }
+        if (answers[5] && answers[5].trim()) {
+          html += `<p>And the word that surfaced — hold it gently. It didn't come from thinking. It came from somewhere deeper. That word is a seed. You don't need to plant it anywhere. Just carry it.</p>`;
+        }
+        html += `<p>The muck on this mirror was never wrong. It was simply inherited stories about what should matter. As it clears, what remains is simpler than you expected.</p>`;
+        return html;
+      },
+      council: {
+        text: "Are we forcing, or flowing?",
+        source: "Laozi — from the Council of Resonance"
+      }
+    }
+  },
+  intention: {
+    title: "What Is My Intention?",
+    subtitle: "Listening beneath the plans",
+    questions: [
+      {
+        text: "Before any goals or plans — what is the feeling you are actually reaching for?",
+        note: "Not the outcome. The feeling underneath the outcome. Peace? Freedom? Belonging? Let it surface."
+      },
+      {
+        text: "Is there something you're trying to prove — to yourself or to someone else — through what you're building right now?",
+        note: "This isn't a trick question. Sometimes we are proving something, and it's worth seeing clearly."
+      },
+      {
+        text: "If this intention were a seed, what kind of soil does it need? And is that the soil you're actually standing in?",
+        note: "The seed might be perfect. The soil might not be ready. Both truths can exist."
+      },
+      {
+        text: "What would happen if you did nothing? If you simply stopped pushing this forward — what would remain on its own?",
+        note: "What remains without effort is closer to your true intention than anything you have to force into being."
+      },
+      {
+        text: "Does this intention make you feel light — or heavy? Not excited, not inspired. Light. In the body.",
+        note: "Excitement can be the mind's disguise for anxiety. Lightness is the body's signal for truth."
+      },
+      {
+        text: "Complete this sentence with whatever comes first: 'What I really want is to...'",
+        note: "Don't edit. Don't refine. The first version is usually the truest."
+      }
+    ],
+    reflection: {
+      title: "What the mirror sees",
+      generate: function(answers) {
+        const filled = answers.filter(a => a && a.trim().length > 0);
+        if (filled.length === 0) {
+          return `<p>You arrived here with something you're building, creating, or moving toward — and chose to sit with it in silence. Sometimes the deepest intention reveals itself not in words, but in the willingness to pause.</p>`;
+        }
+        let html = `<p>You arrived here with something you're building, creating, or moving toward. The mirror isn't interested in the plan — it's interested in what's underneath.</p>`;
+        if (answers[0] && answers[0].trim()) {
+          html += `<p>The feeling you named — that's the real destination. Everything else is a vehicle. When vehicle and destination point the same direction, there is flow. When they diverge, there is friction. Not wrong — just information.</p>`;
+        }
+        if (answers[1] && answers[1].trim()) {
+          html += `<p>You looked at whether something is being proved through what you're building. That question alone shifts the ground. Proving isn't bad — but seeing it clearly changes what happens next.</p>`;
+        }
+        if (answers[3] && answers[3].trim()) {
+          html += `<p>What remains when you stop pushing — that's closer to your true intention than anything you have to force into being. The flame doesn't try to burn. It simply does.</p>`;
+        }
+        if (answers[5] && answers[5].trim()) {
+          html += `<p>You finished the sentence. The first version — unedited, unrefined — is usually the truest. Let those words settle. They know something your plans don't.</p>`;
+        }
+        html += `<p>The question isn't whether your intention is good enough. It's whether it's actually yours — or a story you inherited about what you should want.</p>`;
+        return html;
+      },
+      council: {
+        text: "Is there joy here?",
+        source: "Rumi — from the Council of Resonance"
+      }
+    }
+  },
+  navigate: {
+    title: "How Do I Navigate This?",
+    subtitle: "Dancing with what's in front of you",
+    questions: [
+      {
+        text: "What is the disturbance? Name it plainly, as if describing it to a kind stranger who has no opinion about it.",
+        note: "Not the story about it. Not why it's unfair. Just what it is."
+      },
+      {
+        text: "Where do you feel this in your body right now? Put your hand there if you can.",
+        note: "The body always knows before the mind does. It's been holding this for you."
+      },
+      {
+        text: "What is the old story this situation is activating? You've been here before — what's the familiar pattern?",
+        note: "Not to judge the pattern. Just to see it. The pattern isn't the enemy — it's information."
+      },
+      {
+        text: "If this disturbance were a messenger — not a punishment, not a test, just a messenger — what might it be delivering?",
+        note: "The hardest moments are often holding the most light. What if this one is too?"
+      },
+      {
+        text: "What would your highest self do with this — not the version that has it all figured out, but the version that trusts?",
+        note: "Not the perfect response. The trusting one. There's a difference."
+      },
+      {
+        text: "What is one small thing you can do right now — not to fix this, but to be with it differently?",
+        note: "Navigate more smoothly, not arrive somewhere else. The shift is in the quality of presence, not the circumstance."
+      }
+    ],
+    reflection: {
+      title: "What the mirror sees",
+      generate: function(answers) {
+        const filled = answers.filter(a => a && a.trim().length > 0);
+        if (filled.length === 0) {
+          return `<p>You brought something to the mirror — and even in the silence of not naming it, something shifted. The willingness to face a disturbance without words is its own form of navigation.</p>`;
+        }
+        let html = `<p>You brought something difficult to the mirror — and instead of looking away, you looked in. That is already the shift.</p>`;
+        if (answers[0] && answers[0].trim()) {
+          html += `<p>You named the disturbance plainly. Without the story, without the drama — just what it is. That act of seeing, without the elaborate narrative, is where clarity begins.</p>`;
+        }
+        if (answers[1] && answers[1].trim()) {
+          html += `<p>You found it in the body. The body knew before the mind did — it's been holding this for you. The hand you placed there is a bridge between knowing and feeling.</p>`;
+        }
+        if (answers[2] && answers[2].trim()) {
+          html += `<p>The old pattern you recognized — that's not the enemy. It's information. A familiar road sign. Seeing it doesn't make it disappear, but it does change what happens next at the crossroads.</p>`;
+        }
+        if (answers[3] && answers[3].trim()) {
+          html += `<p>You let the disturbance be a messenger. The hardest moments are often holding the most light — and you chose to receive the message instead of shooting the messenger.</p>`;
+        }
+        html += `<p>You don't navigate by arriving somewhere without disturbance. You navigate by dancing with it — with grace, with ease, with the willingness to let the disturbance last long enough to become a teacher.</p>`;
+        return html;
+      },
+      council: {
+        text: "Does this reduce suffering?",
+        source: "Thich Nhat Hanh — from the Council of Resonance"
+      }
+    }
+  }
+};
+
+// ===== STATE =====
+let currentPathway = null;
+let currentQuestion = 0;
+let answers = [];
+
+// ===== NAVIGATION =====
+function enterMirror() {
+  document.getElementById('hero').style.display = 'none';
+  document.getElementById('intro').style.display = 'block';
+  document.getElementById('pathways').style.display = 'block';
+  document.getElementById('philosophy').style.display = 'block';
+  document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });
+}
+
+function startInquiry(pathway) {
+  currentPathway = pathway;
+  currentQuestion = 0;
+  answers = [];
+
+  const data = inquiryData[pathway];
+
+  document.getElementById('pathways').style.display = 'none';
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('philosophy').style.display = 'none';
+  document.getElementById('reflection').classList.remove('active');
+
+  const container = document.getElementById('inquiry');
+  container.classList.add('active');
+
+  document.getElementById('inquiry-title').textContent = data.title;
+  document.getElementById('inquiry-subtitle').textContent = data.subtitle;
+
+  renderProgress();
+  renderQuestion();
+
+  container.scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderProgress() {
+  const dots = document.getElementById('progress-dots');
+  const total = inquiryData[currentPathway].questions.length;
+  dots.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'progress-dot';
+    if (i < currentQuestion) dot.classList.add('completed');
+    if (i === currentQuestion) dot.classList.add('active');
+    dots.appendChild(dot);
+  }
+}
+
+function renderQuestion() {
+  const q = inquiryData[currentPathway].questions[currentQuestion];
+  document.getElementById('question-text').textContent = q.text;
+  document.getElementById('question-note').textContent = q.note;
+  document.getElementById('answer-input').value = answers[currentQuestion] || '';
+  document.getElementById('answer-input').focus();
+
+  const isFirst = currentQuestion === 0;
+  const isLast = currentQuestion === inquiryData[currentPathway].questions.length - 1;
+
+  document.getElementById('btn-prev').style.visibility = isFirst ? 'hidden' : 'visible';
+  document.getElementById('btn-next').textContent = isLast ? 'See Reflection' : 'Continue';
+
+  renderProgress();
+}
+
+function nextQuestion() {
+  answers[currentQuestion] = document.getElementById('answer-input').value;
+
+  if (currentQuestion < inquiryData[currentPathway].questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+    document.getElementById('question-area').style.animation = 'none';
+    void document.getElementById('question-area').offsetHeight;
+    document.getElementById('question-area').style.animation = 'fadeIn 0.6s ease';
+  } else {
+    showReflection();
+  }
+}
+
+function prevQuestion() {
+  answers[currentQuestion] = document.getElementById('answer-input').value;
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+  }
+}
+
+function showReflection() {
+  document.getElementById('inquiry').classList.remove('active');
+
+  const data = inquiryData[currentPathway].reflection;
+  document.getElementById('reflection-title').textContent = data.title;
+  document.getElementById('reflection-body').innerHTML = data.generate(answers);
+
+  // Build "Your Words" echo — reflect key phrases back to the user
+  const wordsEl = document.getElementById('your-words');
+  const questions = inquiryData[currentPathway].questions;
+  const filledAnswers = answers
+    .map((a, i) => ({ text: a, index: i }))
+    .filter(a => a.text && a.text.trim().length > 0);
+
+  if (filledAnswers.length > 0) {
+    let wordsHtml = '<div class="words-label">What you said</div>';
+    // Show up to 3 most substantive answers (longest ones carry more weight)
+    const sorted = [...filledAnswers].sort((a, b) => b.text.trim().length - a.text.trim().length);
+    const shown = sorted.slice(0, 3);
+    shown.forEach(item => {
+      const excerpt = item.text.trim().length > 200
+        ? item.text.trim().substring(0, 200) + '...'
+        : item.text.trim();
+      const qShort = questions[item.index].text.split('—')[0].split('?')[0].trim();
+      wordsHtml += `<div class="word-echo">"${excerpt}"<span class="echo-note">In response to: ${qShort}</span></div>`;
+    });
+    wordsEl.innerHTML = wordsHtml;
+    wordsEl.style.display = 'block';
+  } else {
+    wordsEl.style.display = 'none';
+  }
+
+  document.getElementById('council-voice').innerHTML = `
+    <p>"${data.council.text}"</p>
+    <span class="attribution">— ${data.council.source}</span>
+  `;
+
+  const output = document.getElementById('reflection');
+  output.classList.add('active');
+  output.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ===== JOURNAL VIEW =====
+function showJournal() {
+  document.getElementById('reflection').classList.remove('active');
+
+  const data = inquiryData[currentPathway];
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  document.getElementById('journal-date').textContent = dateStr;
+  document.getElementById('journal-pathway').textContent = data.title;
+
+  // Build Q&A entries
+  let entriesHtml = '';
+  data.questions.forEach((q, i) => {
+    const answer = answers[i] && answers[i].trim() ? answers[i].trim() : '<em style="color: var(--stone); opacity: 0.4;">— silence —</em>';
+    entriesHtml += `
+      <div class="journal-entry">
+        <div class="journal-question">${q.text}</div>
+        <div class="journal-answer">${answer}</div>
+      </div>`;
+  });
+  document.getElementById('journal-entries').innerHTML = entriesHtml;
+
+  // Build reflection
+  const reflection = data.reflection;
+  document.getElementById('journal-reflection').innerHTML = `
+    <h3>${reflection.title}</h3>
+    ${reflection.generate(answers)}`;
+
+  document.getElementById('journal-council').innerHTML = `
+    <p>"${reflection.council.text}"</p>
+    <span class="attribution">— ${reflection.council.source}</span>`;
+
+  const journal = document.getElementById('journal');
+  journal.classList.add('active');
+  journal.scrollIntoView({ behavior: 'smooth' });
+}
+
+function printJournal() {
+  window.print();
+}
+
+function backToPathways() {
+  document.getElementById('inquiry').classList.remove('active');
+  document.getElementById('reflection').classList.remove('active');
+  document.getElementById('journal').classList.remove('active');
+  document.getElementById('intro').style.display = 'block';
+  document.getElementById('pathways').style.display = 'block';
+  document.getElementById('philosophy').style.display = 'block';
+  document.getElementById('pathways').scrollIntoView({ behavior: 'smooth' });
+}
+
+function restartSame() {
+  document.getElementById('journal').classList.remove('active');
+  startInquiry(currentPathway);
+}
+
+// ===== NAVIGATION =====
+function goHome() {
+  // Reset everything back to hero
+  document.getElementById('inquiry').classList.remove('active');
+  document.getElementById('reflection').classList.remove('active');
+  document.getElementById('hero').style.display = 'flex';
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('pathways').style.display = 'none';
+  document.getElementById('philosophy').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToPathways() {
+  document.getElementById('inquiry').classList.remove('active');
+  document.getElementById('reflection').classList.remove('active');
+  document.getElementById('hero').style.display = 'none';
+  document.getElementById('intro').style.display = 'block';
+  document.getElementById('pathways').style.display = 'block';
+  document.getElementById('philosophy').style.display = 'block';
+  document.getElementById('pathways').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Show/hide navbar on scroll
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 200) {
+    navbar.classList.add('visible');
+  } else {
+    navbar.classList.remove('visible');
+  }
+});
+</script>
+</body>
+</html>

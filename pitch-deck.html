@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House of Light and Love — Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/*
+  ==========================================================
+  DECK VERSION TOGGLE
+  ==========================================================
+  By default, BOTH .teacher-version and .collaborator-version
+  sections are hidden. Use the toggle buttons at the top of
+  the page to choose which version to display.
+
+  To hardcode a version (e.g. for printing), uncomment ONE:
+
+  .teacher-version { display: block !important; }
+  .collaborator-version { display: block !important; }
+  ==========================================================
+*/
+
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --deep-earth: #3D2E22;
+  --warm-earth: #5C4A3A;
+  --amber-gold: #C9A96E;
+  --gold-light: #D4BA8A;
+  --warm-white: #FAF7F2;
+  --cream: #F5F0E8;
+  --light-sand: #E8DED1;
+  --sand: #D4C5B2;
+  --stone: #8B7D6B;
+  --soft-sage: #B5C4B1;
+
+  --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-sans: 'Work Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--warm-earth);
+  background: var(--warm-white);
+  line-height: 1.7;
+}
+
+/* ── Version Toggle Bar ───────────────────────────────── */
+.version-toggle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--deep-earth);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+}
+
+.version-toggle span {
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.version-toggle button {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border: 1px solid var(--amber-gold);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--amber-gold);
+}
+
+.version-toggle button:hover {
+  background: rgba(201, 169, 110, 0.15);
+}
+
+.version-toggle button.active {
+  background: var(--amber-gold);
+  color: var(--deep-earth);
+}
+
+body {
+  padding-top: 52px;
+}
+
+/* ── Page / Slide Structure ───────────────────────────── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 10vw;
+  position: relative;
+}
+
+.page + .page {
+  page-break-before: always;
+}
+
+/* ── Cover Page ───────────────────────────────────────── */
+.page-cover {
+  background: linear-gradient(160deg, #2A1F17 0%, var(--deep-earth) 40%, #4A3828 70%, #3D2E22 100%);
+  color: var(--warm-white);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(212, 186, 138, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.cover-gold-line {
+  width: 60px;
+  height: 1px;
+  background: var(--amber-gold);
+  margin: 0 auto 40px;
+  opacity: 0.6;
+}
+
+.cover-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 3.6rem;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--warm-white);
+  margin-bottom: 28px;
+}
+
+.cover-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+.cover-tagline {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--sand);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.cover-footer {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0.6;
+}
+
+/* ── Interior Pages ───────────────────────────────────── */
+.page-interior {
+  background: var(--warm-white);
+  color: var(--warm-earth);
+}
+
+.page-cream {
+  background: var(--cream);
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber-gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  color: var(--deep-earth);
+  margin-bottom: 12px;
+}
+
+.gold-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--amber-gold);
+  margin: 28px 0;
+  opacity: 0.5;
+}
+
+.section-body {
+  max-width: 640px;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.section-body p + p {
+  margin-top: 1.2em;
+}
+
+/* ── Quotes ───────────────────────────────────────────── */
+.quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--warm-earth);
+  padding: 32px 0;
+  border-left: 2px solid var(--amber-gold);
+  padding-left: 28px;
+  margin: 36px 0;
+  max-width: 580px;
+  opacity: 0.9;
+}
+
+.quote-centered {
+  border-left: none;
+  padding-left: 0;
+  text-align: center;
+  max-width: 520px;
+  margin: 40px auto;
+}
+
+.quote-small {
+  font-size: 1.15rem;
+}
+
+/* ── Values List ──────────────────────────────────────── */
+.values-list {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  list-style: none;
+}
+
+.values-list li {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--deep-earth);
+  letter-spacing: 0.03em;
+  position: relative;
+}
+
+.values-list li::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--amber-gold);
+  margin-top: 6px;
+  opacity: 0.5;
+}
+
+/* ── Rooms Grid ───────────────────────────────────────── */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 48px;
+  margin-top: 40px;
+  max-width: 760px;
+}
+
+.room-card {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--light-sand);
+}
+
+.room-card:last-child,
+.room-card:nth-last-child(2):nth-child(odd) ~ .room-card:last-child {
+  border-bottom: none;
+}
+
+.room-number {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber-gold);
+  margin-bottom: 6px;
+}
+
+.room-name {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+  color: var(--deep-earth);
+  margin-bottom: 6px;
+}
+
+.room-desc {
+  font-size: 0.9rem;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+.room-card.foundation-card {
+  grid-column: 1 / -1;
+  border-bottom: none;
+  border-top: 2px solid var(--amber-gold);
+  padding-top: 28px;
+  margin-top: 8px;
+}
+
+.room-card.foundation-card .room-name {
+  font-size: 1.5rem;
+}
+
+.room-card.foundation-card .new-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--warm-white);
+  background: var(--amber-gold);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* ── Brick Page ───────────────────────────────────────── */
+.page-brick {
+  background: linear-gradient(170deg, var(--cream) 0%, var(--warm-white) 100%);
+  text-align: center;
+  align-items: center;
+}
+
+.brick-icon {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--amber-gold);
+  border-radius: 4px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.brick-icon::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: var(--amber-gold);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+.brick-details {
+  max-width: 520px;
+  text-align: left;
+  margin: 36px auto 0;
+}
+
+.brick-details li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  list-style: none;
+  padding-left: 20px;
+  position: relative;
+}
+
+.brick-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--amber-gold);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.brick-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--stone);
+  margin-top: 32px;
+  max-width: 460px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* ── Content Page ─────────────────────────────────────── */
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  margin-top: 36px;
+  max-width: 720px;
+}
+
+.book-card {
+  padding: 28px 24px;
+  background: var(--cream);
+  border-radius: 4px;
+  border-top: 2px solid var(--amber-gold);
+}
+
+.book-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--deep-earth);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.book-role {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber-gold);
+  margin-bottom: 10px;
+}
+
+.book-desc {
+  font-size: 0.88rem;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+.content-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 2.2rem;
+  color: var(--amber-gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+/* ── Teachers List ────────────────────────────────────── */
+.teachers-list {
+  list-style: none;
+  margin-top: 32px;
+  max-width: 660px;
+}
+
+.teachers-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--light-sand);
+}
+
+.teachers-list li:last-child {
+  border-bottom: none;
+}
+
+.teacher-name {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--deep-earth);
+}
+
+.teacher-desc {
+  font-size: 0.88rem;
+  color: var(--stone);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.teacher-quote-inline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--warm-earth);
+}
+
+/* ── Emerging List ────────────────────────────────────── */
+.emerging-list {
+  list-style: none;
+  margin-top: 32px;
+  max-width: 600px;
+}
+
+.emerging-list li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 12px 0 12px 24px;
+  border-bottom: 1px solid var(--light-sand);
+  position: relative;
+}
+
+.emerging-list li:last-child {
+  border-bottom: none;
+}
+
+.emerging-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--amber-gold);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.emerging-highlight {
+  font-weight: 400;
+  color: var(--deep-earth);
+}
+
+.emerging-sub {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--stone);
+  margin-top: 2px;
+}
+
+/* ── Closing / Contact ────────────────────────────────── */
+.page-closing {
+  text-align: center;
+  align-items: center;
+}
+
+.signature {
+  margin-top: 40px;
+}
+
+.signature-name {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--deep-earth);
+}
+
+.signature-role {
+  font-size: 0.85rem;
+  color: var(--stone);
+  margin-top: 2px;
+}
+
+.signature-contact {
+  font-size: 0.85rem;
+  color: var(--stone);
+  margin-top: 8px;
+  line-height: 1.7;
+}
+
+.page-contact {
+  background: linear-gradient(160deg, #2A1F17 0%, var(--deep-earth) 50%, #4A3828 100%);
+  color: var(--warm-white);
+  text-align: center;
+  align-items: center;
+}
+
+.contact-links {
+  list-style: none;
+  margin-top: 40px;
+  font-size: 1rem;
+  line-height: 2.2;
+}
+
+.contact-links li {
+  color: var(--gold-light);
+}
+
+.contact-links a {
+  color: var(--amber-gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.contact-links a:hover {
+  border-color: var(--amber-gold);
+}
+
+.welcome-home {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 2.2rem;
+  color: var(--amber-gold);
+  margin-top: 60px;
+  opacity: 0.7;
+}
+
+/* ── Version Visibility ───────────────────────────────── */
+.teacher-version,
+.collaborator-version {
+  display: none;
+}
+
+/* ── Print Styles ─────────────────────────────────────── */
+@media print {
+  .version-toggle {
+    display: none !important;
+  }
+
+  body {
+    padding-top: 0;
+  }
+
+  .page {
+    min-height: auto;
+    height: 100vh;
+    padding: 60px 8%;
+    overflow: hidden;
+  }
+
+  .page-interior,
+  .page-cream {
+    background: white !important;
+  }
+
+  .page-cover {
+    background: var(--deep-earth) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page-contact {
+    background: var(--deep-earth) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .quote {
+    border-left-color: var(--amber-gold);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .book-card {
+    background: #f5f0e8 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page {
+    padding: 60px 7vw;
+  }
+
+  .cover-title {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .values-list {
+    gap: 24px;
+  }
+
+  .content-stats {
+    gap: 24px;
+  }
+
+  .version-toggle {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     VERSION TOGGLE
+     Choose "Teacher Deck" or "Collaborator Deck" to show
+     the appropriate version of Pages 7 and 9.
+     ═══════════════════════════════════════════════════════ -->
+<div class="version-toggle">
+  <span>Deck version:</span>
+  <button id="btn-teacher" onclick="showVersion('teacher')">Teacher Deck</button>
+  <button id="btn-collaborator" onclick="showVersion('collaborator')">Collaborator Deck</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-cover">
+  <div class="cover-content">
+    <div class="cover-gold-line"></div>
+    <h1 class="cover-title">House of Light<br>and Love</h1>
+    <p class="cover-subtitle">An Open Community for Remembrance,<br>Reflection, and Shared Humanity</p>
+    <p class="cover-tagline">"A Quiet Place to Remember What Already Lives as Love"</p>
+  </div>
+  <p class="cover-footer">Presented with love &mdash; April 2026</p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 2 — THE INVITATION
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior">
+  <p class="section-label">The Invitation</p>
+  <h2 class="section-title">A door that is always open</h2>
+  <div class="gold-divider"></div>
+  <div class="section-body">
+    <p>House of Light and Love is an open community &mdash; a quiet, invitational space for anyone who wants to pause, reflect, and remember what already lives as love. There is no membership, no doctrine, no hierarchy, and no agenda beyond presence, honesty, and care.</p>
+    <p>The door is always open. All are always welcome.</p>
+  </div>
+  <ul class="values-list">
+    <li>Truth</li>
+    <li>Integrity</li>
+    <li>Love</li>
+    <li>Simplicity</li>
+    <li>Sovereignty</li>
+    <li>Joy</li>
+    <li>Play</li>
+    <li>Fun</li>
+  </ul>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 3 — THE VISION
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior page-cream">
+  <p class="section-label">The Vision</p>
+  <h2 class="section-title">Open doorways toward&hellip;</h2>
+  <div class="gold-divider"></div>
+  <div class="section-body">
+    <p>House of Light and Love is not an organization &mdash; it is an open community. A living space where anyone can walk in, sit down, and be met exactly as they are. No application, no requirements, no conversion. Just presence.</p>
+    <p>Every visitor crosses the same threshold: <strong>Welcome Home.</strong> Not welcome to a program. Not welcome to a belief system. Welcome home to yourself &mdash; to what was never missing, only forgotten.</p>
+    <p>The House exists to hold space for that remembrance. Nothing more. Nothing less.</p>
+  </div>
+  <div class="quote quote-centered">
+    "Love is not separate from us. It is what we are, and all that is."
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 4 — THE ROOMS OF THE HOUSE
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior">
+  <p class="section-label">The Rooms</p>
+  <h2 class="section-title">The Rooms of the House</h2>
+  <div class="gold-divider"></div>
+  <div class="rooms-grid">
+
+    <div class="room-card">
+      <p class="room-number">Room I</p>
+      <p class="room-name">The Hearth</p>
+      <p class="room-desc">Home, warmth, welcome. The center of the House where every journey begins.</p>
+    </div>
+
+    <div class="room-card">
+      <p class="room-number">Room II</p>
+      <p class="room-name">The Library of Love</p>
+      <p class="room-desc">Wisdom from all traditions, rooted in light and love. Curated, not collected. Words that open doors.</p>
+    </div>
+
+    <div class="room-card">
+      <p class="room-number">Room III</p>
+      <p class="room-name">The Wellness Room</p>
+      <p class="room-desc">Body, mind, and spirit &mdash; in harmony and coherence. First contributor: Lee Albert &mdash; Integrated Positional Therapy.</p>
+    </div>
+
+    <div class="room-card">
+      <p class="room-number">Room IV</p>
+      <p class="room-name">The Council of Resonance</p>
+      <p class="room-desc">Wisdom holders across all paths, times, and places &mdash; invited to share their light within the House.</p>
+    </div>
+
+    <div class="room-card">
+      <p class="room-number">Room V</p>
+      <p class="room-name">The Discussion Room</p>
+      <p class="room-desc">Honest conversations. No debate, no performance &mdash; just real talk between real hearts.</p>
+    </div>
+
+    <div class="room-card">
+      <p class="room-number">Room VI</p>
+      <p class="room-name">The Gallery</p>
+      <p class="room-desc">Creative expression &mdash; art, music, poetry, photography &mdash; the soul made visible.</p>
+    </div>
+
+    <div class="room-card foundation-card">
+      <p class="room-number">Room VII</p>
+      <p class="room-name">The Foundation <span class="new-badge">New</span></p>
+      <p class="room-desc">Where every soul places a Brick of Love. A lasting foundation &mdash; built by everyone who enters.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 5 — THE BRICK OF LOVE
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior page-brick">
+  <div class="brick-icon"></div>
+  <p class="section-label">The Foundation</p>
+  <h2 class="section-title">The Brick of Love</h2>
+  <div class="gold-divider" style="margin: 28px auto;"></div>
+  <div class="section-body" style="max-width: 520px; text-align: center; margin: 0 auto;">
+    <p>The House is built by everyone who enters.</p>
+  </div>
+  <ul class="brick-details">
+    <li>Each person places a handprint with their name, a message of love, and where they are from</li>
+    <li>The Foundation grows endlessly &mdash; visible, living proof of a community connected by love</li>
+    <li>If inspired, your contribution helps sustain the House and its offerings to the world</li>
+    <li>The brick is free. The donation is gratitude. Nothing is required.</li>
+  </ul>
+  <p class="brick-note">A love offering &mdash; not a membership fee. The Foundation belongs to everyone who places a brick, and every brick makes the House stronger.</p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 6 — THE CONTENT
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior">
+  <p class="section-label">The Content</p>
+  <h2 class="section-title">200,000+ words of lived experience</h2>
+  <div class="gold-divider"></div>
+  <div class="section-body">
+    <p>Three books form the living content library of the House &mdash; each one a different doorway into the same truth.</p>
+  </div>
+  <div class="books-grid">
+    <div class="book-card">
+      <p class="book-role">The Teaching</p>
+      <p class="book-title">Being Watered</p>
+      <p class="book-desc">Why it matters. The principles, themes, and wisdom distilled from a lifetime of seeking and finding.</p>
+    </div>
+    <div class="book-card">
+      <p class="book-role">The Memoir</p>
+      <p class="book-title">Alone at First</p>
+      <p class="book-desc">What happened. The raw, honest story of transformation &mdash; from running to arriving.</p>
+    </div>
+    <div class="book-card">
+      <p class="book-role">The Practice</p>
+      <p class="book-title">Writing My Way to Freedom</p>
+      <p class="book-desc">How it feels now. The living practice of writing as a path home to yourself.</p>
+    </div>
+  </div>
+  <div class="content-stats">
+    <div class="stat">
+      <p class="stat-number">15</p>
+      <p class="stat-label">Universal Themes</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">20</p>
+      <p class="stat-label">Golden Nuggets</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">3</p>
+      <p class="stat-label">Books</p>
+    </div>
+  </div>
+  <div class="section-body" style="margin-top: 28px;">
+    <p style="font-size: 0.9rem; color: var(--stone);">Stories that become animations, discussions, reflections &mdash; each piece of content designed for multiple expressions across the House.</p>
+  </div>
+  <div class="quote quote-small">
+    "The whole time I was running away, I was longing for the love and home that always lived in me."
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 7 — THE TEACHERS (Teacher Version)
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior page-cream teacher-version">
+  <p class="section-label">The Teachers</p>
+  <h2 class="section-title">Your wisdom is already woven<br>into the House</h2>
+  <div class="gold-divider"></div>
+  <div class="section-body">
+    <p>Through direct experience with your teachings, the tenets of House of Light and Love have been shaped. Your words, practices, and presence have contributed to a living foundation of love, truth, and remembrance.</p>
+  </div>
+  <ul class="teachers-list">
+    <li>
+      <span class="teacher-name">Patrick Connor</span>
+      <p class="teacher-desc"><span class="teacher-quote-inline">"The journey is in and down, not up and out."</span> Fellowship retreats, light bath practice, radical inclusion.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Michael Singer</span>
+      <p class="teacher-desc">The Surrender Experiment, Three Essays on Universal Law, Temple of the Universe visit. <span class="teacher-quote-inline">"Keep it simple."</span> <span class="teacher-quote-inline">"Are you growing?"</span></p>
+    </li>
+    <li>
+      <span class="teacher-name">Dr. Sue Morter</span>
+      <p class="teacher-desc">The Energy Codes, Cosmic Bus Stop, France &amp; Mary Magdalene journey. Embodiment as a way home.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Byron Katie</span>
+      <p class="teacher-desc">The Work, four questions, self-inquiry as liberation. <span class="teacher-quote-inline">"Is it true?"</span> <span class="teacher-quote-inline">"You are the one you have been waiting for."</span></p>
+    </li>
+    <li>
+      <span class="teacher-name">Dr. Joe Dispenza</span>
+      <p class="teacher-desc">Energy meditations, weeklong intensives. The gateway to heart emergence. <span class="teacher-quote-inline">"It's all energy."</span></p>
+    </li>
+    <li>
+      <span class="teacher-name">Sangeeta</span>
+      <p class="teacher-desc">Spiritual teacher and counselor. Energy work, underworld and higher world. Deep excavation.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Mo Lattin</span>
+      <p class="teacher-desc">Somatic work, parts work (IFS), physiology-based transformation.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Paul Welch</span>
+      <p class="teacher-desc">Byron Katie practitioner. The Work applied to being vs. doing.</p>
+    </li>
+  </ul>
+  <div class="section-body" style="margin-top: 32px;">
+    <p><em>We invite you to consider how your presence within the House could deepen its offering to the world.</em></p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 7 — THE TEACHERS (Collaborator Version)
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior page-cream collaborator-version">
+  <p class="section-label">The Luminaries</p>
+  <h2 class="section-title">Inspired by the greatest teachers<br>of our time</h2>
+  <div class="gold-divider"></div>
+  <div class="section-body">
+    <p>The House has been shaped by direct experience with these luminaries &mdash; their wisdom, practices, and presence forming a living foundation of love, truth, and remembrance.</p>
+  </div>
+  <ul class="teachers-list">
+    <li>
+      <span class="teacher-name">Patrick Connor</span>
+      <p class="teacher-desc"><span class="teacher-quote-inline">"The journey is in and down, not up and out."</span> Fellowship retreats, light bath practice, radical inclusion.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Michael Singer</span>
+      <p class="teacher-desc">The Surrender Experiment, Three Essays on Universal Law, Temple of the Universe visit. <span class="teacher-quote-inline">"Keep it simple."</span> <span class="teacher-quote-inline">"Are you growing?"</span></p>
+    </li>
+    <li>
+      <span class="teacher-name">Dr. Sue Morter</span>
+      <p class="teacher-desc">The Energy Codes, Cosmic Bus Stop, France &amp; Mary Magdalene journey. Embodiment as a way home.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Byron Katie</span>
+      <p class="teacher-desc">The Work, four questions, self-inquiry as liberation. <span class="teacher-quote-inline">"Is it true?"</span> <span class="teacher-quote-inline">"You are the one you have been waiting for."</span></p>
+    </li>
+    <li>
+      <span class="teacher-name">Dr. Joe Dispenza</span>
+      <p class="teacher-desc">Energy meditations, weeklong intensives. The gateway to heart emergence. <span class="teacher-quote-inline">"It's all energy."</span></p>
+    </li>
+    <li>
+      <span class="teacher-name">Sangeeta</span>
+      <p class="teacher-desc">Spiritual teacher and counselor. Energy work, underworld and higher world. Deep excavation.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Mo Lattin</span>
+      <p class="teacher-desc">Somatic work, parts work (IFS), physiology-based transformation.</p>
+    </li>
+    <li>
+      <span class="teacher-name">Paul Welch</span>
+      <p class="teacher-desc">Byron Katie practitioner. The Work applied to being vs. doing.</p>
+    </li>
+  </ul>
+  <div class="gold-divider" style="margin: 36px 0;"></div>
+  <div class="section-body">
+    <p style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 300; color: var(--deep-earth); line-height: 1.4;">And now the House needs you.</p>
+    <p style="margin-top: 16px;">Whether through your time, your voice, your expertise, or your love offering &mdash; there is a place for you in the Foundation.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 8 — WHAT'S EMERGING
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior">
+  <p class="section-label">What's Emerging</p>
+  <h2 class="section-title">The House is taking shape</h2>
+  <div class="gold-divider"></div>
+  <ul class="emerging-list">
+    <li>
+      <span class="emerging-highlight">Advisory Board / Discovery Council</span> forming
+    </li>
+    <li>
+      <span class="emerging-highlight">Website launching</span> &mdash; Phase 1 MVP landing page
+    </li>
+    <li>
+      <span class="emerging-highlight">Animation series</span> inspired by lived experience
+    </li>
+    <li>
+      <span class="emerging-highlight">YouTube channel</span> for teachings, stories, and reflections
+    </li>
+    <li>
+      <span class="emerging-highlight">Open Community gatherings</span> &mdash; online and in-person
+    </li>
+    <li>
+      <span class="emerging-highlight">Soft launch tour: Spain &amp; Portugal</span> &mdash; April&ndash;June 2026
+      <span class="emerging-sub">Patrick Connor retreat (Malaga) &mdash; 100+ souls</span>
+      <span class="emerging-sub">Bhakti retreat (Portugal) &mdash; devotional community</span>
+      <span class="emerging-sub">Holomovement Wave (Cascais, May 29&ndash;Jun 2) &mdash; 500 global changemakers</span>
+    </li>
+  </ul>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 9 — THE CLOSING INVITATION (Teacher Version)
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior page-closing teacher-version">
+  <p class="section-label">With Gratitude</p>
+  <h2 class="section-title">The path you lit</h2>
+  <div class="gold-divider" style="margin: 28px auto;"></div>
+  <div class="section-body" style="text-align: center; margin: 0 auto;">
+    <p>Your contribution has already changed lives &mdash; including mine. House of Light and Love exists because teachers like you lit the path.</p>
+    <p>If this resonates, I would be honored to share more about how we might collaborate &mdash; in whatever form feels aligned.</p>
+  </div>
+  <div class="quote quote-centered" style="margin-top: 48px;">
+    "With love and deep gratitude"
+  </div>
+  <div class="signature">
+    <p class="signature-name">Marc Cooper</p>
+    <p class="signature-role">Steward, House of Light and Love</p>
+    <p class="signature-contact">
+      houseoflightandlove.org<br>
+      hello@houseoflightandlove.org<br>
+      978-852-3028
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 9 — THE CLOSING INVITATION (Collaborator Version)
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-interior page-closing collaborator-version">
+  <p class="section-label">The Door Is Open</p>
+  <h2 class="section-title">Your handprint in the Foundation</h2>
+  <div class="gold-divider" style="margin: 28px auto;"></div>
+  <div class="section-body" style="text-align: center; margin: 0 auto;">
+    <p>The House is built by all, and all are welcome. Your handprint, your voice, your love &mdash; added to the Foundation.</p>
+    <p>If you feel called, the door is open. There are many ways to participate &mdash; from placing a brick to joining the Advisory Council to simply staying connected.</p>
+  </div>
+  <div class="quote quote-centered" style="margin-top: 48px;">
+    "With love and deep gratitude"
+  </div>
+  <div class="signature">
+    <p class="signature-name">Marc Cooper</p>
+    <p class="signature-role">Steward, House of Light and Love</p>
+    <p class="signature-contact">
+      houseoflightandlove.org<br>
+      hello@houseoflightandlove.org<br>
+      978-852-3028
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 10 — CONTACT / STAY CONNECTED
+     ═══════════════════════════════════════════════════════ -->
+<section class="page page-contact">
+  <p class="section-label" style="color: var(--gold-light);">Stay Connected</p>
+  <h2 class="section-title" style="color: var(--warm-white);">The door is always open</h2>
+  <div class="gold-divider" style="margin: 28px auto; opacity: 0.3;"></div>
+  <ul class="contact-links">
+    <li><a href="https://houseoflightandlove.org">houseoflightandlove.org</a></li>
+    <li><a href="mailto:hello@houseoflightandlove.org" style="color: var(--gold-light);">hello@houseoflightandlove.org</a></li>
+    <li style="margin-top: 20px; font-size: 0.9rem; color: var(--sand);">Receive Gentle Updates &mdash; email signup at the site</li>
+    <li style="font-size: 0.9rem; color: var(--sand);">Place Your Brick of Love</li>
+    <li style="margin-top: 20px;">Marc Cooper &mdash; 978-852-3028</li>
+  </ul>
+  <p class="welcome-home">"The House is built by all, and all are welcome."</p>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT — Version Toggle
+     ═══════════════════════════════════════════════════════ -->
+<script>
+function showVersion(version) {
+  // Hide both versions
+  document.querySelectorAll('.teacher-version').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.collaborator-version').forEach(el => el.style.display = 'none');
+
+  // Remove active class from buttons
+  document.getElementById('btn-teacher').classList.remove('active');
+  document.getElementById('btn-collaborator').classList.remove('active');
+
+  // Show selected version
+  if (version === 'teacher') {
+    document.querySelectorAll('.teacher-version').forEach(el => el.style.display = 'flex');
+    document.getElementById('btn-teacher').classList.add('active');
+  } else if (version === 'collaborator') {
+    document.querySelectorAll('.collaborator-version').forEach(el => el.style.display = 'flex');
+    document.getElementById('btn-collaborator').classList.add('active');
+  }
+}
+
+// Default: show teacher version on load
+// Change to 'collaborator' below if desired
+showVersion('teacher');
+</script>
+
+</body>
+</html>

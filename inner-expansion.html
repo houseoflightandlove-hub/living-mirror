@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Living Light — Inner Expansion & Outer Illumination</title>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D890;
+    --gold-pale: #FBF5E0;
+    --deep: #1A1610;
+    --ink: #2C2418;
+    --muted: #7A6E5A;
+    --border: rgba(201,168,76,0.25);
+    --card-bg: rgba(255,252,245,0.97);
+    --page-bg: #F5F0E8;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--page-bg); color: var(--ink); font-family: var(--serif); min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #1A1610 0%, #2C2010 50%, #1A1008 100%);
+    color: #F0D890;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+  .hero-symbol { font-size: 3rem; margin-bottom: 1rem; opacity: 0.85; }
+  .hero h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 400; letter-spacing: 0.04em; line-height: 1.25; margin-bottom: 0.75rem; }
+  .hero-sub { font-size: 1.1rem; color: rgba(240,216,144,0.7); font-style: italic; margin-bottom: 2.5rem; }
+  .master-eq {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+  }
+  .master-eq-note { font-size: 0.85rem; color: rgba(240,216,144,0.55); font-style: italic; }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--deep);
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 0;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav a {
+    color: rgba(240,216,144,0.7);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: var(--sans);
+    padding: 0.75rem 1.1rem;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    letter-spacing: 0.03em;
+  }
+  .nav a:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+  .nav a.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .section-title {
+    font-size: 1.5rem; font-weight: 400; color: var(--gold);
+    text-align: center; margin-bottom: 0.4rem; letter-spacing: 0.05em;
+  }
+  .section-sub { text-align: center; font-size: 0.9rem; color: var(--muted); font-style: italic; margin-bottom: 2.5rem; }
+  .divider { width: 60px; height: 1px; background: var(--gold); margin: 1.2rem auto; opacity: 0.5; }
+
+  /* ── SYNTHESIS ── */
+  .synthesis-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.9;
+  }
+  .synthesis-block p { margin-bottom: 1.2rem; font-size: 1.02rem; }
+  .synthesis-block p:last-child { margin-bottom: 0; }
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 0.8rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 1.1rem;
+    background: var(--gold-pale);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-wrap { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
+  .chip {
+    font-size: 0.78rem; padding: 5px 14px; border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent; color: var(--muted);
+    cursor: pointer; font-family: var(--sans);
+    transition: all 0.15s; letter-spacing: 0.03em;
+  }
+  .chip:hover { border-color: var(--gold); color: var(--ink); }
+  .chip.active { background: var(--gold); color: var(--deep); border-color: var(--gold); font-weight: 600; }
+
+  /* ── LUMINARY GRID ── */
+  .luminary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+  .lcard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
+  }
+  .lcard:hover { border-color: rgba(201,168,76,0.55); box-shadow: 0 4px 20px rgba(201,168,76,0.1); transform: translateY(-2px); }
+  .lcard.open { border-color: var(--gold); box-shadow: 0 6px 28px rgba(201,168,76,0.15); }
+  .lcard-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; border: 1px solid var(--border); }
+  .lcard-meta { flex: 1; }
+  .lcard-name { font-size: 1rem; font-weight: 600; font-family: var(--sans); color: var(--ink); }
+  .lcard-era { font-size: 0.75rem; color: var(--muted); font-family: var(--sans); margin-top: 2px; }
+  .lcard-domain { font-size: 0.7rem; padding: 2px 9px; border-radius: 20px; display: inline-block; margin-top: 4px; font-family: var(--sans); font-weight: 600; letter-spacing: 0.04em; }
+  .eq-display {
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-align: center;
+    margin: 10px 0;
+    font-style: italic;
+  }
+  .lcard-quote { font-size: 0.82rem; color: var(--muted); font-style: italic; line-height: 1.5; }
+  .lcard-detail { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+  .lcard.open .lcard-detail { max-height: 600px; }
+  .lcard-detail-inner {
+    border-top: 1px solid var(--border);
+    margin-top: 12px; padding-top: 12px;
+  }
+  .eq-note { font-size: 0.75rem; color: var(--muted); font-style: italic; text-align: center; margin-bottom: 10px; font-family: var(--sans); }
+  .lcard-body { font-size: 0.88rem; line-height: 1.75; color: var(--ink); }
+  .tap-hint { font-size: 0.7rem; color: rgba(201,168,76,0.6); text-align: right; margin-top: 8px; font-family: var(--sans); }
+
+  /* ── CONVERGENCE ── */
+  .convergence-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 2rem; }
+  .truth-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .truth-icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .truth-title { font-size: 0.85rem; font-weight: 700; font-family: var(--sans); color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+  .truth-body { font-size: 0.82rem; line-height: 1.65; color: var(--muted); }
+
+  /* ── JOURNAL ── */
+  .journal-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+  .journal-prompt {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .journal-prompt h4 { font-size: 0.85rem; font-family: var(--sans); font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+  .journal-prompt p { font-size: 0.9rem; color: var(--ink); line-height: 1.6; }
+  .journal-response {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .journal-response h5 { font-size: 0.78rem; font-family: var(--sans); font-weight: 700; color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; }
+  .journal-response p { font-size: 0.88rem; color: var(--ink); line-height: 1.75; margin-bottom: 0.6rem; }
+  .journal-response p:last-child { margin-bottom: 0; }
+  .journal-response .personal-eq {
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink);
+    text-align: center;
+    margin: 10px 0;
+    font-style: italic;
+  }
+  .journal-eq-builder {
+    background: rgba(201,168,76,0.06);
+    border: 1px dashed rgba(201,168,76,0.4);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .journal-eq-builder h3 { font-size: 1rem; font-family: var(--sans); color: var(--gold); margin-bottom: 0.75rem; }
+  .eq-field { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .eq-field label { font-size: 0.8rem; font-family: var(--sans); color: var(--muted); min-width: 120px; }
+  .eq-field input, .eq-field textarea {
+    flex: 1; min-width: 180px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    background: white;
+    color: var(--ink);
+    outline: none;
+  }
+  .eq-field input:focus, .eq-field textarea:focus { border-color: var(--gold); }
+  .eq-preview {
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    min-height: 48px;
+    margin-top: 12px;
+  }
+
+  /* ── TEMPLATE ── */
+  .template-box {
+    background: var(--card-bg);
+    border: 2px dashed rgba(201,168,76,0.4);
+    border-radius: 14px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+  .template-box h3 { font-size: 1rem; color: var(--gold); font-family: var(--sans); margin-bottom: 1rem; }
+  .template-field { margin-bottom: 14px; }
+  .template-field label { display: block; font-size: 0.78rem; font-family: var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+  .template-field input, .template-field textarea {
+    width: 100%; border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 12px; font-family: var(--serif); font-size: 0.9rem;
+    background: white; color: var(--ink); outline: none; resize: vertical;
+  }
+  .template-field input:focus, .template-field textarea:focus { border-color: var(--gold); }
+  .btn {
+    background: var(--gold); color: var(--deep); font-family: var(--sans);
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+    padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .user-entries { margin-top: 1.5rem; }
+  .user-entry {
+    background: var(--gold-pale);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .user-entry .del-btn { position: absolute; top: 10px; right: 12px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep); color: rgba(240,216,144,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.8rem; font-family: var(--sans); letter-spacing: 0.04em;
+  }
+
+  /* domain color map */
+  .d-science { background: #E6F1FB; color: #0C447C; }
+  .d-philosophy { background: #EEEDFE; color: #3C3489; }
+  .d-art { background: #FAEEDA; color: #633806; }
+  .d-mysticism { background: #E1F5EE; color: #085041; }
+  .d-psychology { background: #FAECE7; color: #993C1D; }
+  .d-somatics { background: #FAECE7; color: #712B13; }
+  .d-indigenous { background: #EAF3DE; color: #27500A; }
+  .d-sufi { background: #FBEAF0; color: #72243E; }
+  .d-hindu { background: #FAEEDA; color: #854F0B; }
+  .d-buddhist { background: #E1F5EE; color: #0F6E56; }
+  .d-african { background: #EAF3DE; color: #3B6D11; }
+  .d-feminine { background: #FBEAF0; color: #4B1528; }
+  .d-poetry { background: #EEEDFE; color: #26215C; }
+  .d-hebrew { background: #EEF0FA; color: #2B3A7A; }
+
+  /* ── COHERENCE MIRROR ── */
+  .mirror-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+  .mirror-intro { font-size: 0.92rem; line-height: 1.8; color: var(--ink); margin-bottom: 2rem; }
+  .mirror-intro em { color: var(--gold); }
+  .mirror-input-area { margin-bottom: 1.5rem; }
+  .mirror-input-area label { display: block; font-size: 0.8rem; font-family: var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .mirror-input-area textarea {
+    width: 100%; border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 16px; font-family: var(--serif); font-size: 0.95rem;
+    background: white; color: var(--ink); outline: none; resize: vertical; min-height: 100px; line-height: 1.7;
+  }
+  .mirror-input-area textarea:focus { border-color: var(--gold); }
+  .mirror-result {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 14px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    display: none;
+  }
+  .mirror-result.visible { display: block; }
+  .mirror-result h4 { font-size: 0.85rem; font-family: var(--sans); color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+  .alignment-meter {
+    height: 8px; border-radius: 4px; background: rgba(201,168,76,0.15);
+    margin-bottom: 16px; overflow: hidden;
+  }
+  .alignment-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+  .alignment-fill.high { background: linear-gradient(90deg, var(--gold), #8BC34A); }
+  .alignment-fill.mid { background: linear-gradient(90deg, var(--gold), #FF9800); }
+  .alignment-fill.low { background: linear-gradient(90deg, #FF5722, #FF9800); }
+  .mirror-signal {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .mirror-signal strong { color: var(--gold); font-family: var(--sans); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .mirror-equations { margin-top: 1.25rem; }
+  .mirror-eq-tag {
+    display: inline-block; font-size: 0.72rem; padding: 3px 10px;
+    border-radius: 14px; border: 1px solid var(--border);
+    color: var(--muted); font-family: var(--sans); margin: 3px;
+    letter-spacing: 0.03em;
+  }
+  .mirror-eq-tag.resonant { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .synthesis-block { padding: 1.5rem; }
+    .journal-section { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="../assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 70px; margin-bottom: 1.5rem; opacity: 0.9; filter: drop-shadow(0 0 12px rgba(201,168,76,0.2));">
+  <h1>The Living Light</h1>
+  <p class="hero-sub">Inner Expansion & Outer Illumination — A Global Wisdom Archive</p>
+  <div class="master-eq">ℰ<sub>out</sub> = f(Ψ<sub>in</sub>) · t</div>
+  <div class="master-eq-note">Outer illumination is a function of inner expansion, projected across time</div>
+</div>
+
+<nav class="nav" id="main-nav">
+  <a href="#synthesis">The Synthesis</a>
+  <a href="#luminaries">Luminaries</a>
+  <a href="#convergence">Convergence</a>
+  <a href="#journal">Journal</a>
+  <a href="#coherence-mirror">Coherence Mirror</a>
+  <a href="#add">Add a Voice</a>
+</nav>
+
+<!-- SYNTHESIS -->
+<section id="synthesis">
+<div class="container">
+  <div class="section-title">The Grand Synthesis</div>
+  <div class="divider"></div>
+  <p class="section-sub">What every tradition, in its own language, has always been saying</p>
+
+  <div class="synthesis-block">
+    <p>Across every continent, in every era, through every tongue — the same fire has been passed from hand to hand. It has been called <em>enlightenment</em> and <em>wu wei</em>, <em>moksha</em> and <em>ubuntu</em>, <em>the kingdom within</em> and <em>the dreamtime</em>. The scientists translated it into equations. The poets into longing. The mystics into silence. The indigenous elders into the land itself. But the message has never changed:</p>
+
+    <div class="pull-quote">What you expand within you, you project into the world. The universe does not give you what you want — it gives you what you are.</div>
+
+    <p>The concept of <em>incension</em> — the deliberate turning of consciousness inward to its own luminous root — is not a modern spiritual innovation. It is the oldest technology on earth. Before agriculture, before writing, before cities, human beings sat in caves and around fires and learned to enter themselves. The shaman descended into the lower worlds. The elder sat with the ancestors. The dreamer opened the songline. The yogi stilled the modifications of the mind. They were all doing the same thing: pressing consciousness against its own source until it ignited.</p>
+
+    <p>What happens in that ignition? The equation is consistent: <em>something flows outward</em>. The healer heals. The poet sings. The mathematician sees what was invisible. The leader creates shelter. The mother transmits peace. The scientist discovers the hidden grammar of nature. None of these things can be manufactured from the outside. They arise, always, as overflow — as what cannot be contained within the vessel of a person who has genuinely expanded inward.</p>
+
+    <p>The traditions disagree on the mechanism but converge on the outcome. The Sufi burns in divine love and radiates mercy. The Zen monk empties the self and becomes entirely present to the world. The Lakota elder aligns with the sacred hoop and the community heals. The quantum physicist goes so far into the nature of observation that the observer and the observed collapse into one another. The forms are different. The light is the same.</p>
+
+    <div class="pull-quote">The question is never "how do I project more outward?" The question is always "how deeply am I willing to go inward?"</div>
+
+    <p>This document is a living archive. It is meant to grow. Each luminary here represents a different facet of a single jewel — the irreducible truth that the inner and outer worlds are not two things, but one thing seen from different directions. Add voices. Add your own equation. Sit with the ones that disturb you most, for they are likely the ones that have seen the part of the jewel you have not yet turned toward the light.</p>
+  </div>
+</div>
+</section>
+
+<!-- LUMINARIES -->
+<section id="luminaries">
+<div class="container">
+  <div class="section-title">The Luminaries</div>
+  <div class="divider"></div>
+  <p class="section-sub">Tap any card to expand the full philosophy and equation · Filter by tradition</p>
+  <div class="filter-wrap" id="filters"></div>
+  <div class="luminary-grid" id="luminary-grid"></div>
+</div>
+</section>
+
+<!-- CONVERGENCE -->
+<section id="convergence" style="background: rgba(201,168,76,0.04); padding: 3rem 0;">
+<div class="container">
+  <div class="section-title">The Convergence</div>
+  <div class="divider"></div>
+  <p class="section-sub">Seven universal truths that every tradition points toward</p>
+  <div class="convergence-grid" id="convergence-grid"></div>
+  <div class="synthesis-block">
+    <p>The master equation — <strong>ℰ<sub>out</sub> = f(Ψ<sub>in</sub>) · t</strong> — resolves differently depending on which tradition holds the chalk. For the scientist, f(Ψ) is exponential: insight compounds. For the mystic, f(Ψ) is paradoxical: the function inverts at the moment of surrender. For the poet, f(Ψ) is resonant: inner vibration creates standing waves in the world. For the indigenous elder, f(Ψ) is relational: the expansion is not personal but communal — the whole web brightens when one node illuminates.</p>
+    <p>What they all agree on is the variable <em>t</em> — time, patience, practice. Inner expansion cannot be rushed. It has its own seasons. The seed does not apologize for wintering. The fire does not hurry the wood. Every tradition that has survived long enough to reach us understood that the deepest expansions require the longest dwelling. This is why every genuine wisdom lineage on earth has, at its center, a practice of sustained stillness — whether that is meditation, vision quest, prayer, ritual, contemplation, fasting, or simply sitting with one's ancestors by the fire.</p>
+    <div class="pull-quote">You are not a human being having a spiritual experience. You are a spiritual being having a human experience — and that human experience is the very medium through which the inner becomes outer.</div>
+    <p>The true meaning of life, if these voices can be synthesized into a single utterance, seems to be this: <em>to become so fully what you already are at your deepest center that the world cannot help but be illuminated by your presence</em>. Not by striving. Not by performance. But by the quiet, radical, lifelong work of going inward — until what you find there is too vast to be contained, and spills, inevitably, beautifully, into everything you touch.</p>
+  </div>
+</div>
+</section>
+
+<!-- JOURNAL -->
+<section id="journal">
+<div class="container">
+  <div class="section-title">Personal Contemplation</div>
+  <div class="divider"></div>
+  <p class="section-sub">Reflection prompts for your own inner expansion practice</p>
+
+  <div class="journal-section">
+    <div id="journal-prompts"></div>
+
+    <div class="journal-eq-builder">
+      <h3>✦ Write Your Own Equation</h3>
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;font-family:var(--sans);">What is your inner expansion? What does it produce outward? Express it as a living equation in any form.</p>
+      <div class="eq-field">
+        <label>Your inner resource</label>
+        <input type="text" id="eq-inner" placeholder="e.g. Stillness, Grief fully felt, Curiosity..." oninput="updateEq()">
+      </div>
+      <div class="eq-field">
+        <label>The function / process</label>
+        <input type="text" id="eq-func" placeholder="e.g. amplified by courage, divided by fear..." oninput="updateEq()">
+      </div>
+      <div class="eq-field">
+        <label>The outer projection</label>
+        <input type="text" id="eq-outer" placeholder="e.g. compassion, art, healing, presence..." oninput="updateEq()">
+      </div>
+      <div class="eq-preview" id="eq-preview">Your equation will appear here...</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COHERENCE MIRROR -->
+<section id="coherence-mirror" style="background: rgba(201,168,76,0.04); padding: 3rem 0;">
+<div class="container">
+  <div class="section-title">The Coherence Mirror</div>
+  <div class="divider"></div>
+  <p class="section-sub">Test any message against the collective wisdom — is it heart-inspired reflection, or mind-projected story?</p>
+
+  <div class="mirror-section">
+    <div class="mirror-intro">
+      <p>The master equation — <em>ℰ<sub>out</sub> = f(Ψ<sub>in</sub>) · t</em> — tells us that outer illumination is always a function of inner expansion. Every luminary in this archive arrived at the same truth from a different direction: <em>authentic outer expression is overflow from inner depth, never projection from ego alone.</em></p>
+      <p>This tool synthesizes the wisdom and equations of all luminaries — including your own — to evaluate whether a piece of messaging, content, or intention is <em>coherent</em>: genuinely reflecting inward expansion outward through the heart, or whether it has drifted into mind-projected narrative disconnected from its inner source.</p>
+      <p>The five tests below are derived from the convergence of all traditions in this archive:</p>
+    </div>
+
+    <div style="margin-bottom:2rem;">
+      <div class="mirror-signal"><strong>1. Source Test (Heschel / Buber / Ramana)</strong> — Does this arise from radical amazement, genuine encounter, or self-inquiry? Or from obligation, performance, or proving worth?</div>
+      <div class="mirror-signal"><strong>2. Overflow Test (Rumi / Hafiz / Mirabai / Michelangelo)</strong> — Does this feel like natural overflow from inner fullness? Or is it being forced, manufactured, or effortfully constructed?</div>
+      <div class="mirror-signal"><strong>3. Relational Test (Buber / Ubuntu / Black Elk / Thich Nhat Hanh)</strong> — Does this speak <em>with</em> others (I-Thou), or <em>at</em> them (I-It)? Does it honor interbeing, or assert separation?</div>
+      <div class="mirror-signal"><strong>4. Contraction-Expansion Test (Zohar / Lao Tzu / Dogen / Baal Shem Tov)</strong> — Has there been genuine inner contraction (Tzimtzum, Wu Wei, stillness, presence) before this outer expression? Or is it expansion without prior depth?</div>
+      <div class="mirror-signal"><strong>5. Marc's Equation Test</strong> — Is this rooted in <em>self-love, grace, and heart-inspired inspiration</em> (the new equation)? Or does it carry the residue of <em>force, proving, and efforting</em> (the old equation)?</div>
+    </div>
+
+    <div class="mirror-input-area">
+      <label>Enter messaging, content, or intention to evaluate</label>
+      <textarea id="mirror-input" placeholder="Paste any draft messaging, content idea, social post, or intention here. The Coherence Mirror will evaluate it against the collective wisdom of all luminaries and your personal equation..."></textarea>
+    </div>
+    <button class="btn" onclick="runCoherenceMirror()">✦ Reflect in the Mirror</button>
+
+    <div class="mirror-result" id="mirror-result">
+      <h4>Coherence Reading</h4>
+      <div class="alignment-meter"><div class="alignment-fill" id="alignment-fill" style="width:0%"></div></div>
+      <div id="mirror-signals"></div>
+      <div class="mirror-equations" id="mirror-equations"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ADD A VOICE -->
+<section id="add" style="background: rgba(201,168,76,0.04); padding: 3rem 0;">
+<div class="container">
+  <div class="section-title">Add a Voice</div>
+  <div class="divider"></div>
+  <p class="section-sub">This is a living document. Contribute a luminary to the archive.</p>
+
+  <div class="template-box">
+    <h3>✦ New Luminary Template</h3>
+    <div class="template-field"><label>Full Name</label><input type="text" id="new-name" placeholder="e.g. Rumi, Black Elk, Simone Weil..."></div>
+    <div class="template-field"><label>Era / Dates</label><input type="text" id="new-era" placeholder="e.g. 1207–1273"></div>
+    <div class="template-field"><label>Tradition / Domain</label><input type="text" id="new-domain" placeholder="e.g. Sufi Mysticism, Quantum Physics..."></div>
+    <div class="template-field"><label>Emoji Symbol</label><input type="text" id="new-emoji" placeholder="e.g. 🌊" style="max-width:100px"></div>
+    <div class="template-field"><label>Their Equation for Inner→Outer Expansion</label><input type="text" id="new-eq" placeholder="e.g. L_out = Love_in · (1 / Distance)"></div>
+    <div class="template-field"><label>Equation Note (what it means)</label><input type="text" id="new-eqnote" placeholder="Brief interpretation of the equation..."></div>
+    <div class="template-field"><label>A Key Quote</label><input type="text" id="new-quote" placeholder="A defining statement attributed to them..."></div>
+    <div class="template-field"><label>Their Philosophy on Inner Expansion (2–4 sentences)</label><textarea id="new-body" rows="4" placeholder="How did they understand the relationship between inner depth and outer expression?"></textarea></div>
+    <button class="btn" onclick="addLuminary()">✦ Add to the Archive</button>
+  </div>
+
+  <div class="user-entries" id="user-entries"></div>
+</div>
+</section>
+
+<footer>
+  <img src="../assets/logos/315i-gold-horizontal.png" alt="House of Light and Love" style="width: auto; height: 40px; margin-bottom: 0.75rem; opacity: 0.6;"><br>
+  The Living Light &nbsp; ✦ &nbsp; A global wisdom archive on inner expansion and outer illumination<br>
+  <span style="opacity:0.5;font-size:0.75rem;display:block;margin-top:0.5rem">This document is alive. Add voices. Return often. Go inward.</span>
+</footer>
+
+<script>
+const LUMINARIES = [
+  // Original 13
+  { name:"Albert Einstein", era:"1879–1955", domain:"Physics", tag:"Science", dc:"d-science", emoji:"⚛",
+    eq:"E_out = (Ψ_in · c²) / m_ego", eqNote:"Inner energy amplified by clarity squared, divided by ego-mass",
+    quote:"The measure of intelligence is the ability to change.",
+    body:"Einstein framed incension as a relativistic phenomenon — your internal spacetime curves inward first. Stillness in one dimension creates velocity in another. The more you contract inward through thought and imagination, the faster your outer ideas travel. His famous thought experiments were pure inner expansion; relativity was the outward projection. He believed imagination was more important than knowledge precisely because imagination moves inward before knowledge can move outward." },
+  { name:"Max Planck", era:"1858–1947", domain:"Quantum Physics", tag:"Science", dc:"d-science", emoji:"🔬",
+    eq:"ΔΨ_out ≥ ℏ / (2 · Δt_inner)", eqNote:"Outer clarity is bounded by inner time invested",
+    quote:"When you change the way you look at things, the things you look at change.",
+    body:"Planck would see incension as quantum — inner expansion happens in discrete packets (quanta) of insight, not continuously. Each moment of deep inner work releases a fixed packet of outer illumination. You cannot have half an insight. The energy of your outward projection equals your frequency of inner contemplation multiplied by his constant. Revolutionary science, like inner transformation, happens in jumps." },
+  { name:"Wilhelm Reich", era:"1897–1957", domain:"Psychology & Bioenergy", tag:"Psychology", dc:"d-psychology", emoji:"⚡",
+    eq:"L_out = ∫(Orgone_in) dt − Armor", eqNote:"Life energy radiated outward equals integrated inner charge minus body armoring",
+    quote:"Love, work and knowledge are the wellsprings of life.",
+    body:"Reich described incension as the buildup of life-force within the body. Armor — psychological and muscular rigidity — blocks the outward flow. Inner expansion means dissolving the armoring layer by layer until energy flows freely. The outer projection (charisma, vitality, creative work) is the integral of unblocked inner charge over a lifetime. His most radical insight: the body is not a vehicle for consciousness — it IS consciousness." },
+  { name:"Leonardo da Vinci", era:"1452–1519", domain:"Art & Science", tag:"Art", dc:"d-art", emoji:"🎨",
+    eq:"V_vision = I_observation^n · R_sfumato", eqNote:"Outer vision is inner observation raised to curiosity, blurred at edges like sfumato",
+    quote:"The greatest deception men suffer is from their own opinions.",
+    body:"Da Vinci saw incension as total observation turned inward. The eye of the mind sees what the outer eye cannot. His notebooks were acts of inner expansion made visible — every sketch a projection of inner seeing. The equation involves sfumato, his technique of soft edges: great outer work has no sharp boundary between inner and outer. He kept notes on everything precisely because he understood that the inner world, once seen clearly, produces an outer world of inexhaustible richness." },
+  { name:"Plato", era:"428–348 BC", domain:"Philosophy", tag:"Philosophy", dc:"d-philosophy", emoji:"🏛",
+    eq:"F_ideal = Ψ_soul² / S_shadow", eqNote:"Outward form approaches the ideal as the soul expands beyond the shadow cave",
+    quote:"The unexamined life is not worth living.",
+    body:"Plato's Allegory of the Cave: most people project only shadows — the outer world reflects inner imprisonment. Incension is turning around in the cave and ascending toward the Sun (the Good). As inner expansion approaches the Form of the Good, outward projections become less like shadows and more like true Forms. The philosopher-king rules outwardly well precisely because they have descended most deeply inward first. Political wisdom is inner wisdom overflowed." },
+  { name:"Socrates", era:"470–399 BC", domain:"Philosophy", tag:"Philosophy", dc:"d-philosophy", emoji:"🪬",
+    eq:"K_out = Σ(¬Ignorance_in) · Δquestion", eqNote:"Outer knowing equals dissolved inner ignorance multiplied by questioning",
+    quote:"I know that I know nothing.",
+    body:"Socrates rejected equations as pretending to know too much — and therein lies his equation. Outer illumination is proportional to the amount of inner ignorance one has consciously eliminated through questioning. The more you empty yourself inward, the more truth radiates outward through dialogue. Incension for Socrates was the maieutic method: midwifing truth from within. He was, he said, merely a midwife — the knowledge was always already inside the person he questioned." },
+  { name:"Michelangelo", era:"1475–1564", domain:"Art & Sculpture", tag:"Art", dc:"d-art", emoji:"🗿",
+    eq:"S_revealed = M_block − (Fear + Excess)", eqNote:"The sculpture revealed equals the marble minus fear and everything unnecessary",
+    quote:"The sculpture is already complete within the marble block.",
+    body:"Michelangelo believed the figure already exists inside the stone — the sculptor merely removes what is not it. This is pure incension: inner expansion reveals what was always there. Applied to the self, your outer illumination is already complete within you. Inner work is subtraction — removing ego, fear, and false identity — until what remains radiates outward as the finished form. The Sistine Chapel was not painted so much as remembered into existence." },
+  { name:"Jesus of Nazareth", era:"c. 4 BC–c. 30 AD", domain:"Spiritual Teacher", tag:"Mysticism", dc:"d-mysticism", emoji:"✦",
+    eq:"L_world = Love_in · (1 + neighbors)", eqNote:"Light to the world equals inner love multiplied by its extension to all others",
+    quote:"The kingdom of God is within you.",
+    body:"Jesus located the entire kingdom of heaven within — the supreme statement of incension. Outer illumination is a direct overflow of inner transformation through love. His equation is multiplicative: inner love, when extended outward without subtraction to self, amplifies. To lose one's small life inwardly is to gain the larger life outwardly. The Sermon on the Mount is a precise map of inner states (blessed are the poor in spirit) and their corresponding outer effects (for theirs is the kingdom)." },
+  { name:"Lao Tzu", era:"c. 600 BC", domain:"Taoism", tag:"Mysticism", dc:"d-mysticism", emoji:"☯",
+    eq:"P_out = 1 / (Effort_forced + ε)", eqNote:"Outer power approaches maximum as forced effort approaches zero (Wu Wei)",
+    quote:"Knowing others is wisdom. Knowing yourself is enlightenment.",
+    body:"Lao Tzu would flip the conventional equation. Outer expansion is not achieved by pushing outward but by emptying inward. Wu Wei (non-action) is maximum inner stillness yielding maximum outer effect. The Tao that can be named is not the eternal Tao — the deepest inner expansion is beyond formulation. Yet paradoxically, from that emptiness, the ten thousand things arise. The valley spirit never dies. Empty yourself and you become capable of everything." },
+  { name:"Mother Teresa", era:"1910–1997", domain:"Humanitarian & Mystic", tag:"Mysticism", dc:"d-mysticism", emoji:"🕊",
+    eq:"G_out = Σ(Small acts · Infinite love)", eqNote:"Outer grace equals the sum of small faithful acts each multiplied by infinite inner love",
+    quote:"If you judge people, you have no time to love them.",
+    body:"Mother Teresa wrote of the 'darkness' within — her own spiritual crisis — yet continued to project love outward without ceasing. Her equation involves the paradox of inner poverty producing outer abundance. The incension is surrender: when the self is small enough inwardly, divine love has more room to project through you. She found God not in the cathedral but in the face of the dying, which required first finding God in the cathedral of her own suffering." },
+  { name:"Srinivasa Ramanujan", era:"1887–1920", domain:"Mathematics", tag:"Science", dc:"d-science", emoji:"∞",
+    eq:"T_out = e^(π√(Insight_in) / 6) · ∇τ", eqNote:"Mathematical truth grows exponentially with depth of inner vision",
+    quote:"An equation for me has no meaning unless it expresses a thought of God.",
+    body:"Ramanujan received mathematical theorems in dreams, through the goddess Namagiri — pure incension. With almost no formal training, his inner expansion into mathematical reality produced some of the most remarkable formulas ever written. He said the outer equation is merely the symbol of an inner seeing. His notebooks were projections of a mind expanded into mathematical infinity from within. The incension came first; the formula followed as its shadow." },
+  { name:"Gil Hedley", era:"1963–present", domain:"Integral Anatomy", tag:"Somatics", dc:"d-somatics", emoji:"🫀",
+    eq:"M_free = ∫(Fascia_awareness) dV − Frozen_story", eqNote:"Movement freedom equals volume integral of bodily awareness minus stored trauma narrative",
+    quote:"Your body is not a machine. It is a living story.",
+    body:"Hedley frames incension as the body itself expanding its own self-awareness. The fascia — the connective tissue web — stores both memory and restriction. Inner expansion means bringing consciousness into every cubic centimeter of one's own body. As internal awareness increases, the outer projection becomes more fluid, more present, more alive. He teaches that you cannot truly love another body until you have truly inhabited your own." },
+  { name:"Carl Sagan", era:"1934–1996", domain:"Cosmology", tag:"Science", dc:"d-science", emoji:"🌌",
+    eq:"C_out = Cosmos_in · Σ(Wonder × Rigor)", eqNote:"Outer contribution equals the cosmos reflected within, multiplied by wonder and disciplined inquiry",
+    quote:"We are made of star-stuff. We are a way for the cosmos to know itself.",
+    body:"Sagan saw incension as the universe becoming aware of itself through human consciousness. When you expand inward — through wonder, through science, through honest awe — you are the cosmos doing its own self-exploration. The outer projection is the cosmos' own expansion mirrored back through the lens of a single conscious being. Inner and outer expansion are the same event at different scales. The pale blue dot is both the humbling of ego and the consecration of consciousness." },
+
+  // Indigenous & Native
+  { name:"Black Elk", era:"1863–1950", domain:"Oglala Lakota Elder", tag:"Indigenous", dc:"d-indigenous", emoji:"🦅",
+    eq:"H_whole = Center_in × Sacred_hoop / fragmentation", eqNote:"Wholeness equals inner centeredness times the sacred hoop, divided by fragmentation of self or community",
+    quote:"The center of the earth is everywhere, and she is within each of us.",
+    body:"Black Elk received the Great Vision at age nine — a complete cosmology of inner and outer correspondence. The sacred hoop connects all living beings; inner alignment with its center produces outer healing and community wholeness. His vision showed that personal inner expansion is inseparable from collective wellbeing. When one person finds their center, they strengthen the hoop. His equation is communal: the self is never expanding alone." },
+  { name:"Vine Deloria Jr.", era:"1933–2005", domain:"Standing Rock Sioux Scholar", tag:"Indigenous", dc:"d-indigenous", emoji:"🌎",
+    eq:"K_living = Relation_in^n × Land", eqNote:"Living knowledge equals inner relational awareness raised to depth, multiplied by sacred connection to land",
+    quote:"Religion is not a theology or a cosmology, but a way of life.",
+    body:"Deloria insisted that indigenous science is not primitive but radically relational — it expands inward toward connection rather than outward toward domination. Inner expansion, in the Lakota framework, is the deepening of one's sense of relationship: to ancestors, to animals, to the land itself. The outer illumination is a life lived in right relationship, which produces sustainable knowledge rather than extractive information. He challenged Western science to learn that the observer is always inside what they observe." },
+  { name:"Grandmother Flordemayo", era:"1950–present", domain:"Mayan-Nahua Curandera", tag:"Indigenous", dc:"d-indigenous", emoji:"🌱",
+    eq:"L_seed = Vision_dreamed × Soil_inner / Time_forced", eqNote:"Life's flowering equals inner dream-vision multiplied by inner soil, divided by forcing",
+    quote:"The seed knows what to become. Our work is to provide the right conditions.",
+    body:"Flordemayo holds the ancient Mayan-Nahua understanding that consciousness is a seed carrying its own complete blueprint. Incension is the act of entering the dreaming deeply enough to remember what you were born to become. The outer flowering — healing, service, the reseeding of sacred knowledge — happens naturally when the inner soil (the quality of one's inner life) is tended with prayer and ceremonial attention. She carries thirteen crystal skulls as maps of human consciousness: each one a mirror of an inner world." },
+  { name:"Rolling Thunder", era:"1916–1997", domain:"Cherokee/Shoshone Medicine Man", tag:"Indigenous", dc:"d-indigenous", emoji:"⛈",
+    eq:"M_earth = Body_inner = Earth_outer", eqNote:"Medicine arises when inner body-knowing equals awareness of earth as body",
+    quote:"The earth is a living being. When you harm it, you harm yourself.",
+    body:"Rolling Thunder taught that the body and the earth are one continuous system — inner expansion into the body's own intelligence is simultaneously an expansion into earth-knowing. Healing, in his tradition, is not applied from outside but arises when the healer and the patient have both expanded inward to the place where human and earth-body are indistinguishable. His outer work (healing, activism, earth stewardship) was the direct projection of this inner knowing. He walked the outer land by walking the inner land first." },
+  { name:"Waitaha Nation Elders", era:"Ancient–present", domain:"Waitaha / Aotearoa New Zealand", tag:"Indigenous", dc:"d-indigenous", emoji:"🌊",
+    eq:"W_peace = Memory_ancient × Breath_shared / separation", eqNote:"Peace in the world equals ancient inner memory multiplied by shared breath, divided by the illusion of separation",
+    quote:"We are the songs our ancestors sang into the future.",
+    body:"The Waitaha are among the oldest wisdom-keepers of the Pacific, holding a tradition of peace so ancient it predates recorded history. Their understanding of incension is encoded in whakapapa (genealogical chant) — the inner expansion is a descent into ancestral memory, recognizing oneself as a note in a song that began before birth. The outer projection of this inner expansion is radical peace: not the absence of conflict but the presence of such deep belonging that conflict loses its ground. The breath shared between people in hongi (pressing foreheads and noses together) is the equation made physical." },
+  { name:"Amazonian Shipibo-Conibo Tradition", era:"Ancient–present", domain:"Amazonian Wisdom / Ayahuasca Lineage", tag:"Indigenous", dc:"d-indigenous", emoji:"🐍",
+    eq:"I_icaros = Pattern_inner × Song_sung / Ego_noise", eqNote:"Healing songs equal inner visionary pattern multiplied by voiced expression, divided by ego interference",
+    quote:"The plants are the teachers. We are only the students who learned to sing what they showed us.",
+    body:"The Shipibo-Conibo curanderos receive intricate geometric patterns (kené) in ayahuasca visions — these are the inner blueprints of reality. The healer's work is to translate inner vision into outer song (icaro), which then restructures the patient's energy field. The equation is precise: inner expansion produces a pattern; voice makes it real; ego interrupts it. The elaborate geometric textiles of Shipibo women are inner visions projected outward through craft — every cloth is a map of an inner cosmos, a prayer made visible." },
+  { name:"Aboriginal Australian Elders", era:"65,000+ years–present", domain:"Songline / Dreamtime Tradition", tag:"Indigenous", dc:"d-indigenous", emoji:"🟤",
+    eq:"S_line = Dreamtime_in × Walk_outer / forgetting", eqNote:"The songline equals inner dreamtime awareness times outer physical walking, divided by the act of forgetting",
+    quote:"The land is not something we own. It is something we sing into being.",
+    body:"The Australian Aboriginal traditions hold the longest continuous wisdom lineage on earth. The Songlines are simultaneously inner and outer: invisible paths across the land that must be walked and sung to keep the world in existence. Incension, in this framework, is remembering the Dreamtime — the inner dimension where all creation is constantly arising. The outer act of walking and singing the Songline is the projection of that inner remembering into physical reality. The elder who has expanded most deeply inward holds the most country — meaning the most outer responsibility and the most life." },
+
+  // Sufi & Islamic
+  { name:"Rumi (Jalal ad-Din)", era:"1207–1273", domain:"Sufi Mysticism", tag:"Sufi", dc:"d-sufi", emoji:"🌀",
+    eq:"L_out = Longing_in² / Distance_to_Beloved", eqNote:"Light radiated outward equals inner longing squared, divided by perceived distance from the divine",
+    quote:"Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.",
+    body:"Rumi's reed flute is the perfect incension metaphor: cut from the reed bed (separated from its source), it cries its longing — and that cry becomes music that heals others. Inner expansion, for Rumi, is the willingness to fully feel the ache of separation, to let it deepen rather than anesthetize it. The further you allow yourself to long, the more powerfully the divine pours through you outward. His Masnavi is 25,000 verses of inner expansion made outer song." },
+  { name:"Ibn Arabi", era:"1165–1240", domain:"Sufi Philosophy", tag:"Sufi", dc:"d-sufi", emoji:"🪞",
+    eq:"Ψ_cosmos = Self_mirror × Self_mirrored", eqNote:"The cosmos equals the self as mirror and the self as what is mirrored — they are identical",
+    quote:"There is no existence save His existence.",
+    body:"Ibn Arabi's Fusus al-Hikam (Bezels of Wisdom) presents each prophet as a different facet of divine self-revelation — inner expansions of the one consciousness into different outer forms. For him, the cosmos exists so that God can know Himself through the multiplicity of mirrors. Human consciousness is the most perfect mirror: the more polished through inner work, the more clearly the divine is reflected outward into the world. To expand inward is to allow God to see Himself more clearly in you." },
+  { name:"Hafiz", era:"1315–1390", domain:"Sufi Poetry", tag:"Sufi", dc:"d-sufi", emoji:"🍷",
+    eq:"J_joy = Wine_inner / cup_too_small", eqNote:"Outer joy overflows when inner divine wine exceeds the small cup of ego",
+    quote:"Even after all this time the sun never says to the earth, 'You owe me.' Look what happens with a love like that.",
+    body:"Hafiz wrote from a state of inner saturation — he had drunk so deeply from the inner tavern of divine love that the poems poured out as simple overflow. His equation is one of excess: the inner cup fills until it cannot contain itself, and the overflow becomes poetry, becomes generosity, becomes the particular madness of those who have loved too much to care about propriety. Incension, for Hafiz, is drinking until you forget you are separate from what you love." },
+  { name:"Al-Ghazali", era:"1058–1111", domain:"Islamic Philosophy", tag:"Sufi", dc:"d-sufi", emoji:"💎",
+    eq:"H_happiness = Heart_polished / Rust_of_sin", eqNote:"Inner happiness and outer radiance equal the heart's mirror polished, divided by the rust that obscures it",
+    quote:"Knowledge without action is vanity, and action without knowledge is insanity.",
+    body:"Al-Ghazali's Alchemy of Happiness is a direct equation for inner-to-outer transformation. The heart is a mirror. Sin, distraction, and ego create rust (ran) on the surface. Spiritual practice (inner expansion through prayer, remembrance, purification) polishes the mirror. As the mirror clears, the divine light reflects outward through the person as wisdom, mercy, and right action. His journey from intellectual pride to sufi annihilation was itself the equation lived: the further inward he went, the more powerfully he radiated outward." },
+
+  // Hindu / Vedic
+  { name:"Ramana Maharshi", era:"1879–1950", domain:"Advaita Vedanta", tag:"Hindu", dc:"d-hindu", emoji:"🔥",
+    eq:"Self_out = ∞ when I_in → 0", eqNote:"The true Self radiates infinitely as the small ego-I approaches zero through self-inquiry",
+    quote:"Your own Self-Realization is the greatest service you can render the world.",
+    body:"Ramana's single teaching — 'Who am I?' — is the most radical incension practice ever articulated. He found that pursuing the I-thought inward to its source dissolves the questioner in the source. What remains radiates naturally as the Self (Atman = Brahman). The outer projection is not an action but a state: people traveled thousands of miles simply to sit in his presence and found their suffering dissolving. His equation: as the small I shrinks toward zero, the true Self expands to infinity — and that infinity is indistinguishable from the world." },
+  { name:"Sri Aurobindo", era:"1872–1950", domain:"Integral Yoga / Philosophy", tag:"Hindu", dc:"d-hindu", emoji:"🌅",
+    eq:"E_supramental = Ψ_involution^n → Evolution_out", eqNote:"Supramental energy equals consciousness descending into matter, then evolving back outward through the human",
+    quote:"All life is yoga — the transformation of the instrument.",
+    body:"Aurobindo saw the entire cosmos as consciousness involuting (expanding inward into matter) and then evoluting (projecting outward through increasingly complex forms). The human being is the point where this process becomes conscious of itself. Inner expansion (sadhana, yoga) accelerates the evolutionary return — the more a human consciousness expands inward into its supramental root, the more it accelerates the outer transformation of humanity. His ashram in Pondicherry was an experiment in collective inner expansion producing a new outer form of human community." },
+  { name:"Patanjali", era:"c. 400 CE", domain:"Yoga Sutras", tag:"Hindu", dc:"d-hindu", emoji:"🧘",
+    eq:"Ψ_pure = chitta_vritti_nirodha → Seer_abides", eqNote:"Pure consciousness equals the cessation of mind-modifications, from which the Seer abides in its own nature",
+    quote:"Yoga is the cessation of the modifications of the mind.",
+    body:"Patanjali's Yoga Sutras are the most systematic equation ever written for inner expansion producing outer illumination. The path moves inward through eight limbs: outer ethics (yamas/niyamas) → body (asana) → breath (pranayama) → withdrawal of senses (pratyahara) → concentration (dharana) → meditation (dhyana) → absorption (samadhi). Each stage is a further incension. The outer projection of reaching samadhi is described as omniscience, extraordinary abilities (siddhis), and liberation — consciousness so expanded inward it breaks its own outer container." },
+  { name:"Mirabai", era:"1498–1547", domain:"Bhakti Poet-Saint", tag:"Hindu", dc:"d-hindu", emoji:"🎵",
+    eq:"D_divine = Longing_heart^∞ / social_approval", eqNote:"Union with the divine equals infinite inner longing divided by all dependence on outer approval",
+    quote:"I have felt the swaying of the elephant's shoulders, and now you want me to ride the donkey?",
+    body:"Mirabai abandoned royal life, social convention, and personal safety to follow her inner devotion to Krishna — the most radical act of incension possible in sixteenth-century India. Her poetry is the direct overflow of inner states so intense they could not be contained. She sang of the inner beloved so purely that her songs became outer medicine — they are still sung five centuries later wherever people are heartbroken and longing for something truer than the world offers. Her equation requires destroying the outer scaffolding of approval to make room for the inner fire." },
+
+  // Buddhist Masters
+  { name:"Nagarjuna", era:"c. 150–250 CE", domain:"Madhyamaka Buddhism", tag:"Buddhist", dc:"d-buddhist", emoji:"🪷",
+    eq:"ℰ_real = Form_in = Emptiness_in = Form_out", eqNote:"Reality equals inner form which equals inner emptiness which equals outer form — all identical",
+    quote:"There is no difference at all between nirvana and samsara.",
+    body:"Nagarjuna's Madhyamaka philosophy is the most radical equation of inner and outer ever formulated: sunyata (emptiness) is not a void but the very fullness of interdependence. When consciousness expands inward to its own empty nature, it discovers that this emptiness is identical to the fullness of the outer world. Form IS emptiness; emptiness IS form. The outer illumination of Nagarjuna's teaching is the complete dissolution of the boundary between inner and outer — there is no inside from which to project, and no outside to receive the projection. There is only the unobstructed play of awareness." },
+  { name:"Milarepa", era:"1052–1135", domain:"Tibetan Buddhism", tag:"Buddhist", dc:"d-buddhist", emoji:"🏔",
+    eq:"L_liberation = Austerity_in^n × Song_out", eqNote:"Liberation's light equals inner austerity raised to depth of practice, projected outward as spontaneous song",
+    quote:"My religion is to live — and die — without regret.",
+    body:"Milarepa began as a murderer and became Tibet's greatest saint — the ultimate demonstration of inner expansion overcoming outer history. He spent years in caves in freezing mountains with virtually no outer resources, expanding inward with such ferocity that he achieved enlightenment in a single lifetime (considered extraordinary in Tibetan Buddhism). The outer projection of his inner expansion was the Hundred Thousand Songs — spontaneous dohas (realization songs) that poured out as natural overflow. He is living proof that the more completely one strips the outer, the more powerfully the inner illuminates." },
+  { name:"Thich Nhat Hanh", era:"1926–2022", domain:"Engaged Buddhism", tag:"Buddhist", dc:"d-buddhist", emoji:"🌸",
+    eq:"P_peace = Breath_in · Interbeing / separation", eqNote:"Peace projected outward equals conscious breath times the awareness of interbeing, divided by the illusion of separation",
+    quote:"The present moment is the only moment available to us, and it is the door to all moments.",
+    body:"Thich Nhat Hanh coined the term 'engaged Buddhism' — the idea that inner meditative expansion is not escape from the world but the very ground of effective action in it. His concept of interbeing (interêtre) is the equation: there is no separate inner or outer; the flower contains the cloud, the cloud contains the rain, the rain contains the farmer, the farmer contains you. Incension, in his teaching, is the act of becoming so present in this breath that the illusion of a separate inner self dissolves — and what remains is boundless care for all that shares the breath." },
+  { name:"Dogen Zenji", era:"1200–1253", domain:"Soto Zen Buddhism", tag:"Buddhist", dc:"d-buddhist", emoji:"🎋",
+    eq:"Ψ_buddha = Sit · (self_forget)^∞", eqNote:"Buddha-nature manifests through sitting in which the self is forgotten infinitely",
+    quote:"To study the Way is to study the self. To study the self is to forget the self.",
+    body:"Dogen's entire teaching is a single equation: zazen (sitting meditation) is not a technique to achieve enlightenment — it IS enlightenment. This is called shikantaza: just sitting. The incension is complete. The outer projection is zero: Dogen famously resisted founding institutions or gaining followers. Yet his Shobogenzo is considered the most profound philosophical text ever written in Japanese. From maximum inner stillness, maximum outer radiance — even if that radiance is simply the undeniable presence of someone who has fully arrived in themselves." },
+
+  // Hebrew / Judaic Wisdom
+  { name:"Rabbi Abraham Joshua Heschel", era:"1907–1972", domain:"Jewish Mysticism & Prophetic Theology", tag:"Hebrew", dc:"d-hebrew", emoji:"✡",
+    eq:"A_awe = Radical_amazement × Presence / indifference", eqNote:"Authentic action equals radical amazement at existence multiplied by prophetic presence, divided by the deadening of indifference",
+    quote:"Our goal should be to live life in radical amazement — get up in the morning and look at the world in a way that takes nothing for granted.",
+    body:"Heschel bridged the mystical depths of Hasidic Judaism with the prophetic demand for justice in the world — the most complete inner-to-outer equation in the Jewish tradition. For Heschel, the beginning of all inner expansion is radical amazement: the refusal to take existence for granted, the recognition that being itself is the supreme miracle. From this amazement arises what he called 'divine pathos' — God is not indifferent to human suffering, and neither can the person who has truly expanded inward remain indifferent. He marched alongside Martin Luther King Jr. in Selma and said afterward, 'I felt my legs were praying.' This is the equation made flesh: inner contemplation (prayer, amazement, awe) does not withdraw from the world but presses the mystic into the very center of its suffering and transformation. The Sabbath, in Heschel's teaching, is a palace in time — inner expansion creates not a place but a quality of presence so luminous that time itself becomes sacred architecture. His life demonstrated that the deeper one descends into the wells of Jewish mysticism, the more powerfully one is propelled outward into compassion, justice, and the fierce protection of human dignity." },
+  { name:"Martin Buber", era:"1878–1965", domain:"Hasidic Philosophy & Dialogue", tag:"Hebrew", dc:"d-hebrew", emoji:"🤲",
+    eq:"R_real = I_Thou / I_It", eqNote:"Authentic reality equals the ratio of I-Thou encounters to I-It transactions — the more Thou, the more real",
+    quote:"All real living is meeting.",
+    body:"Buber's I and Thou is the most penetrating equation for how inner expansion becomes outer relationship. When you approach another being — person, tree, work of art — as Thou rather than It, you enter a space where the boundary between inner and outer dissolves in mutual presence. The I-It relation treats the world as object, something to use and categorize; the I-Thou relation meets the world as subject, as living presence. Inner expansion, for Buber, is the cultivation of the capacity to say Thou — to meet rather than merely observe. His collection of Hasidic tales revealed that the humblest encounter (a conversation with a coachman, a prayer said while plowing) can be the site of the highest revelation. God, for Buber, is the Eternal Thou — encountered not by withdrawing from the world but by meeting everything in it with total presence." },
+  { name:"Baal Shem Tov", era:"1698–1760", domain:"Hasidic Judaism (Founder)", tag:"Hebrew", dc:"d-hebrew", emoji:"🕎",
+    eq:"S_sparks = Joy_in × Presence_ordinary / concealment", eqNote:"Holy sparks liberated equals inner joy times presence in ordinary moments, divided by the veils of concealment",
+    quote:"Let the love of God be joined with a love for your fellow human beings, and let the fear of God be joined with a tenderness of heart.",
+    body:"The Baal Shem Tov (Master of the Good Name) founded Hasidism by turning Jewish mysticism inside out — moving it from elite scholarly asceticism to joyful, embodied, everyday encounter with the divine. His central teaching: holy sparks (nitzotzot) are hidden in every object, every encounter, every moment. Inner expansion is the act of recognizing and liberating these sparks through joy, prayer, and wholehearted presence. Where the Kabbalists sought to repair the cosmos through esoteric meditation, the Besht (as he was known) taught that a shoemaker repairing a boot with full presence liberates as many sparks as a scholar studying Torah. The outer projection of this teaching transformed Eastern European Judaism — millions found that the humblest inner life, filled with genuine joy and devotion, radiates outward with the same luminosity as the most learned sage." },
+  { name:"Rabbi Nachman of Breslov", era:"1772–1810", domain:"Hasidic Mysticism & Sacred Story", tag:"Hebrew", dc:"d-hebrew", emoji:"🌾",
+    eq:"T_tikkun = Hitbodedut × Broken_prayer / despair_believed", eqNote:"Soul-repair equals solitary conversation with God times the broken prayer offered, divided by the degree to which despair is believed",
+    quote:"The whole world is a very narrow bridge, and the main thing is not to be afraid at all.",
+    body:"Rabbi Nachman, great-grandson of the Baal Shem Tov, brought the Hasidic tradition to its most psychologically acute and paradoxical expression. His practice of hitbodedut — going alone into nature and speaking to God in one's own words, even screaming, even weeping — is the rawest form of incension in any tradition: no formula, no liturgy, just the naked soul addressing the infinite. He taught that the deepest inner expansion happens precisely at the point of greatest despair and confusion, and that the broken prayer offered from that darkness is more precious than the polished prayer of the comfortable. His thirteen mystical tales are not allegories but living maps of the soul's journey through concealment toward revelation. He understood that storytelling itself is a form of inner expansion: the tale enters the listener and rearranges their interior landscape without the mind's defenses engaging." },
+  { name:"Moses de León & the Zohar", era:"c. 1240–1305", domain:"Kabbalah / Jewish Mysticism", tag:"Hebrew", dc:"d-hebrew", emoji:"📜",
+    eq:"O_or = Ein_Sof × Sefirot_10 / Tzimtzum", eqNote:"The revealed light equals the Infinite (Ein Sof) channeled through ten emanations, made possible by divine contraction",
+    quote:"The Holy One contracted His light to create space for the world — and in that contraction, all expansion was born.",
+    body:"The Zohar (Book of Splendor), attributed to the circle of Moses de León, is the masterwork of Jewish mysticism and arguably the most elaborate map of inner-outer correspondence ever created. Its central framework — the ten Sefirot (emanations) through which the Infinite (Ein Sof) projects itself into manifest reality — is the master equation of incension rendered as cosmology. The most revolutionary concept is Tzimtzum: God contracted inward to create space for the world. Contraction precedes expansion. Withdrawal precedes creation. This is the deepest possible validation of the incension principle — even the Infinite had to go inward first before anything could radiate outward. The Zohar teaches that human consciousness mirrors this divine architecture: the same ten Sefirot map the inner landscape of the soul. When a person aligns their inner Sefirot through prayer, study, and ethical action, they become a channel through which divine light flows into the world. The outer illumination is not personal achievement but divine overflow through a cleared vessel." },
+
+  // African Wisdom
+  { name:"Ubuntu Philosophy", era:"Ancient–present", domain:"Nguni / Southern African Wisdom", tag:"African", dc:"d-african", emoji:"🤝",
+    eq:"I_am = We_are · (1 − isolation)", eqNote:"I become fully myself in proportion to the community I recognize as myself, minus isolation",
+    quote:"Umuntu ngumuntu ngabantu — A person is a person through other persons.",
+    body:"Ubuntu is perhaps the most important corrective to purely individualistic models of inner expansion. The equation is irreducibly communal: you cannot expand fully inward in isolation because the inner self IS the web of relationships. Inner expansion, in the Ubuntu framework, is the deepening recognition of how thoroughly you are composed of others — ancestors, community, land, the living and the dead. The outer illumination is a life that makes others more fully themselves. You grow inward by growing others outward. The self is not a container but a crossing point." },
+  { name:"Malidoma Patrice Somé", era:"1956–2021", domain:"Dagara / West African Initiation", tag:"African", dc:"d-african", emoji:"🌍",
+    eq:"P_purpose = Grief_faced^n × Ancestors_alive", eqNote:"Outer purpose equals inner grief fully descended into, multiplied by the living presence of ancestral guidance",
+    quote:"The ancestors are not dead. They are the most alive part of the community.",
+    body:"Somé brought the Dagara initiation tradition to the West with a precise message: the grief that Western culture avoids is the very portal to purpose. Inner expansion requires going fully into what is unfinished, unmourned, and unacknowledged. The ancestors are not metaphors — they are interior presences who guide from within. The outer illumination of his work was to teach grief ritual as community medicine: when one person descends into their grief in community, the entire community's purpose clarifies. He died holding the understanding that the inner world is more populated than the outer." },
+  { name:"Harriet Tubman", era:"1822–1913", domain:"Liberation & Spiritual Navigation", tag:"African", dc:"d-african", emoji:"⭐",
+    eq:"F_freedom = Inner_north_star / Fear_believed", eqNote:"Freedom projected outward equals the inner north star navigating, divided by how much you believe your fear",
+    quote:"I never ran my train off the track, and I never lost a passenger.",
+    body:"Tubman navigated by inner vision as much as outer star. She described hearing God's voice directing her — a form of incension so acute it overrode rational fear in situations where rational fear was entirely justified. The north star she followed was simultaneously external (the actual star) and internal (an inner orientation that could not be suppressed or enslaved). Her outer illumination liberated over 70 people from slavery. She understood, in her bones, what the mystics put into words: that the inner light, once trusted completely, produces outer action that seems impossible from the outside." },
+  { name:"Howard Thurman", era:"1899–1981", domain:"Mystical Theology", tag:"African", dc:"d-african", emoji:"💫",
+    eq:"C_center = Stillness_in · Justice_out / noise_outside", eqNote:"The centered life equals inner stillness multiplied by outer justice work, divided by the noise that keeps us from both",
+    quote:"Don't ask what the world needs. Ask what makes you come alive, and go do it.",
+    body:"Thurman was the spiritual grandfather of the American Civil Rights movement — his book Jesus and the Disinherited was carried by Martin Luther King Jr. everywhere he went. Thurman taught that contemplative inner expansion (the inward journey) was not escapism but the only ground from which effective justice work could proceed. Without a deep inner center, outer activism burns itself out in rage and reaction. With it, the work is sustained, wise, and powered by something larger than personal will. His equation: the deeper inward you go, the further outward you can reach." },
+
+  // Feminine / Goddess Wisdom
+  { name:"Hildegard von Bingen", era:"1098–1179", domain:"Christian Mysticism & Viriditas", tag:"Feminine", dc:"d-feminine", emoji:"🌿",
+    eq:"V_green = Feather_on_breath · viriditas", eqNote:"The greening power projects outward as a feather borne on the breath of God — light, responsive, alive",
+    quote:"We cannot live in a world that is interpreted for us by others.",
+    body:"Hildegard received luminous visions from childhood that she called the 'living light' — a source of inner knowing so overwhelming that it generated music, theology, natural philosophy, medicine, and poetry. Her concept of viriditas (greening power) is the inner-outer equation in biological form: the same force that makes a plant grow green is the divine force that expands human consciousness outward into creative work. Inner expansion for Hildegard was always sensory: she heard, saw, smelled, and tasted the divine. The outer projections were encyclopedic." },
+  { name:"Julian of Norwich", era:"1342–c.1416", domain:"Christian Mysticism", tag:"Feminine", dc:"d-feminine", emoji:"🕯",
+    eq:"W_well = Love_was · Love_is · Love_shall_be", eqNote:"All shall be well because love is the ground, the present, and the future of all expansion",
+    quote:"All shall be well, and all shall be well, and all manner of thing shall be well.",
+    body:"Julian received sixteen showings (visions) during a near-death illness and spent the next twenty years as an anchoress — literally enclosed in a cell beside a church — deepening their meaning through inner contemplation. Her Revelations of Divine Love is the first book written in English by a woman. Her central equation is one of absolute trust: love was the ground before the beginning, love is the ground now, love will be the ground afterward. Inner expansion, for Julian, is the radical acceptance of this — which produces an outer radiance of such undefended warmth that people still travel to Norwich to sit beside her reconstructed cell." },
+  { name:"Teresa of Ávila", era:"1515–1582", domain:"Carmelite Mysticism", tag:"Feminine", dc:"d-feminine", emoji:"🏰",
+    eq:"G_god = Center_7 / 7_rooms_traversed", eqNote:"Union with God is at the seventh mansion — reached only by traversing all seven rooms of the inner castle",
+    quote:"The Interior Castle is within you. You need not go to heaven to speak to God.",
+    body:"Teresa's Interior Castle is the most precise map of inner expansion ever written in the Western tradition. The soul is a castle with seven mansions, and God dwells at the center. Each room requires a deeper surrender of self — not annihilation but integration. Her outer illumination was staggering: she reformed a monastic order, founded seventeen convents, wrote three major mystical texts, and was declared a Doctor of the Church. She held that the outer work was only possible because of the inner work, and that the inner work was only credible because of the outer work. They were, for her, the same castle entered from different doors." },
+  { name:"Kahlil Gibran", era:"1883–1931", domain:"Poet & Mystic", tag:"Feminine", dc:"d-poetry", emoji:"📖",
+    eq:"W_wisdom = Pain_in · Beauty_seen / words_unspoken", eqNote:"Wisdom projected outward equals inner pain multiplied by beauty witnessed, divided by what remains unsayable",
+    quote:"Your pain is the breaking of the shell that encloses your understanding.",
+    body:"Gibran occupies a unique position — a Lebanese mystic writing in English, drawing on Christianity, Sufism, and ancient Phoenician wisdom simultaneously. The Prophet is a sustained meditation on how every life domain (love, children, work, joy, sorrow, death) is a different facet of the same inner expansion. For Gibran, incension is not a technique but the natural consequence of allowing life to break you open repeatedly. Pain is not the obstacle to illumination — it is the instrument. The outer projection of such a life is words that arrive in others as recognition, not instruction." },
+  { name:"C.S. Lewis", era:"1898–1963", domain:"Christian Apologetics & Myth", tag:"Feminine", dc:"d-philosophy", emoji:"🦁",
+    eq:"J_joy = Sehnsucht_in → Pointing_out", eqNote:"Joy equals the inner ache of longing (Sehnsucht) which always points outward beyond itself toward its true source",
+    quote:"If I find in myself desires which nothing in this world can satisfy, the only logical explanation is that I was made for another world.",
+    body:"Lewis named the inner expansion he knew best 'Sehnsucht' — an untranslatable German word for a piercing, bittersweet longing for something beyond ordinary life. He argued this inner ache is the most important datum about human consciousness: it proves we are built for a reality we have not yet reached. The outer work of his life was to translate this inner pointing into myth, story, and argument that others could recognize in themselves. Narnia is not children's fiction — it is incension made narrative, an inner country projected outward so that readers might find the door into their own." },
+
+  // Additional Luminaries
+  { name:"Nikola Tesla", era:"1856–1943", domain:"Electrical Engineering & Resonance", tag:"Science", dc:"d-science", emoji:"⚡",
+    eq:"P_out = Ψ_in · f² · resonance", eqNote:"Outer power equals inner imagination times frequency squared times resonance with the field",
+    quote:"My brain is only a receiver. In the Universe there is a core from which we obtain knowledge, strength and inspiration.",
+    body:"Tesla received complete visions of his inventions in a state of inner expansion before touching a single wire. He described his mind as a receiver tuned to frequencies beyond ordinary perception. His equation is one of resonance: the outer manifestation (the alternating current that powers civilization) is the projection of an inner frequency so precisely tuned that it matched the frequency of the universe itself. He understood the cosmos as a vast field of potential that individual consciousness could tap into by deepening inward to its own resonant frequency." },
+  { name:"Pierre Teilhard de Chardin", era:"1881–1955", domain:"Jesuit Priest & Paleontologist", tag:"Mysticism", dc:"d-mysticism", emoji:"🌐",
+    eq:"Ω = Σ(Ψ_in) · complexity × consciousness", eqNote:"The Omega Point equals the sum of all inner expansions multiplied by the universe's increasing complexity and consciousness",
+    quote:"We are not human beings having a spiritual experience. We are spiritual beings having a human experience.",
+    body:"Teilhard synthesized evolutionary biology with Christian mysticism into a single equation: the universe is consciousness evolving toward an Omega Point of total self-awareness. Every individual act of inner expansion contributes to this collective becoming. Incension, in his framework, is not personal improvement but cosmic participation — you are the universe deepening its own self-knowledge through the particular instrument of your life. His outer illumination was suppressed by the Church during his lifetime; it has since become one of the most influential frameworks for understanding consciousness and evolution." },
+  { name:"Rainer Maria Rilke", era:"1875–1926", domain:"Poetry", tag:"Poetry", dc:"d-poetry", emoji:"🌹",
+    eq:"A_art = Solitude_in^patience · transformation", eqNote:"Art (and life) equals inner solitude raised to the power of patience, then transformed into gift",
+    quote:"Go into yourself and see how deep the place is from which your life flows.",
+    body:"Rilke's Letters to a Young Poet is a manual for incension disguised as literary advice. His central counsel: go into yourself. Do not ask whether you should be an artist — ask whether you would die if you were not allowed to create. If yes, build your life around that necessity. Wait with enormous patience in the darkness of inner expansion until the poem, or the life, that can only come from you arrives. His outer luminosity (the Duino Elegies, the Sonnets to Orpheus) was produced during periods of almost supernatural inner concentration that lasted years." },
+  { name:"Walt Whitman", era:"1819–1892", domain:"Poetry", tag:"Poetry", dc:"d-poetry", emoji:"🌿",
+    eq:"S_song = Multitudes_in = World_sung_out", eqNote:"The song of the self equals the multitudes contained within, which equals the entire world sung outward",
+    quote:"Do I contradict myself? Very well then I contradict myself. I am large. I contain multitudes.",
+    body:"Whitman's inner expansion was democratic and cosmic simultaneously: he expanded inward not by narrowing to a point but by widening to include everyone. 'I am the hounded slave, I wince at the bite of the dogs' — he genuinely felt himself to contain the lives of others. Song of Myself is the most ambitious inner-to-outer projection in American literature: one consciousness expanded wide enough to contain a nation, then projected back outward as poetry that helps a nation find its better self. His equation: the more selves you can genuinely feel yourself to be inwardly, the more powerfully you illuminate all of them outward." },
+  { name:"Rabindranath Tagore", era:"1861–1941", domain:"Poetry & Philosophy", tag:"Poetry", dc:"d-poetry", emoji:"🎶",
+    eq:"G_gitanjali = Soul_in · Beauty_outer / separation_from_divine", eqNote:"The song offering equals inner soul multiplied by outer beauty perceived, divided by any sense of separation from the divine",
+    quote:"The butterfly counts not months but moments, and has time enough.",
+    body:"Tagore received the Nobel Prize for Gitanjali (Song Offerings) — poems written in a state of inner expansion so pure they translated across cultures without losing their essence. His inner equation was bhakti (devotional love) meeting the Bengali renaissance of art, education, and nationalism. The outer projection was the founding of Visva-Bharati University, which he conceived as an inner expansion made institutional: a place where the inner life of learning was as important as its outer products. He believed beauty itself was the most reliable pointer toward the divine." },
+];
+
+const CONVERGENCE_TRUTHS = [
+  { icon:"🔄", title:"Inner precedes outer", body:"In every tradition, the inner movement comes first. The outer is always the echo, never the source." },
+  { icon:"🌀", title:"Emptying enables filling", body:"Whether Zen, Taoist, Sufi, or Apophatic Christian — the paradox is universal: less self = more light." },
+  { icon:"🤝", title:"The self is relational", body:"Ubuntu, Lakota, Aboriginal, and Buddhist traditions agree: there is no isolated inner — the self is woven of all others." },
+  { icon:"⏳", title:"Time cannot be rushed", body:"Every lineage demands patience. The deepest expansions require years, sometimes lifetimes. The seed cannot be forced to flower." },
+  { icon:"💔", title:"Brokenness is the gateway", body:"Grief, longing, exile, and suffering appear across all traditions as doorways into deeper inner expansion, not obstacles to it." },
+  { icon:"♾️", title:"Inner and outer are one", body:"At the deepest level — from quantum physics to Advaita to Dreamtime — the boundary between inner and outer dissolves entirely." },
+  { icon:"✨", title:"Overflow is the mechanism", body:"None of these luminaries 'decided' to illuminate the world. The outer work was always overflow from an inner fullness that could not be contained." },
+];
+
+const JOURNAL_PROMPTS = [
+  { num:1, q:"The equation of your life so far", p:"If you were to write an honest equation for how your inner life has projected outward until now — what would it be? What is the function that transforms your interior into your exterior? What variable, if changed, would alter the projection most?",
+    response: {
+      eq: "ℰ_illuminated = (Self-love · Grace · Inspiration_heart) · Capacity_light / (1 + Force_old)",
+      eqNote: "Illumination equals self-love times grace times heart-rooted inspiration, amplified by capacity for light, divided by the residue of old force — as force releases, light flows freely",
+      text: "My old equation was driven by extreme force: <em>Worth = Effort × Proving × Fixing</em> — an exhausting cycle of doing, pushing, and demonstrating value from a place of ego. Over time, that equation has evolved. Self-love and grace have replaced force as the primary variables. I am engaging in less forceful activities to experience the same feeling of love, inclusion, and accomplishment — not from ego but from inspiration rooted in the heart. This growth enables more expansion and capacity to hold more light, which then enables me to project a brighter, more illuminated version of myself — still rooted in authenticity, truth, integrity, and love. As the old force diminishes toward zero, the denominator approaches one, and the full expression of love, grace, and inspiration flows unimpeded."
+    }
+  },
+  { num:2, q:"Which luminary disturbs you most?", p:"Disturbance is often recognition. Which voice in this archive made you uncomfortable, impatient, or resistant? Sit with that resistance. What is it protecting in you? What might it be protecting you from becoming?",
+    response: {
+      text: "<strong>Wilhelm Reich.</strong> He had such an opportunity to make a profound, positive change in the world, yet chose to live from a place of opposition and resistance rather than inclusion, love, and flow. He possessed incredible wisdom, knowledge, and brilliance, yet did not use it to its full capacity — thus limiting his ability to make a difference in the world. This is still a valuable lesson to learn from. I feel a sense of righteousness in presenting it this way, and yet also a strong sense of appreciation. The feeling is one of conflict, acceptance, and appreciation existing simultaneously. The disturbance is the mirror: seeing brilliant capacity constrained by resistance is precisely the pattern I am releasing in my own equation — the shift from force and opposition to flow and grace."
+    }
+  },
+  { num:3, q:"What is your inner resource?", p:"Every luminary had a primary inner fuel — longing, silence, grief, wonder, devotion, curiosity. What is yours? Not what you think it should be, but what actually moves in you when you allow it? Name it without judgment.",
+    response: {
+      text: "My inner resource is <em>longing</em> — specifically, the longing for love. To feel authentic love without having to prove or demonstrate worth or value. To just simply <em>be</em> it. I am gaining a new relationship with this longing and have started to feel it more authentically and fully in my heart, enabling it to transmute and alchemize into more authentic love. The longing for love has been my inspiration for continued exploration and expansion. Alongside this lives an insatiable appetite for being creative, curious, and questioning all that is — both internally and externally. My intention is to remove all limits or blocks preventing me from fully stepping into the field of infinite possibilities with true wonder and bewilderment, letting go of the known and the stories keeping me stuck in the familiar."
+    }
+  },
+  { num:4, q:"Where does your inner expansion leak?", p:"Where do you close down instead of going deeper? In whose presence do you become smaller? In what circumstances does the projection dim? What would it mean to stop doing that, just for today?",
+    response: {
+      text: "My expansion leaks in the areas of overloading my system — trying to do too much, figure things out, and get stuff done. I still get distracted easily and have a tendency to get too rigid in my thinking, which limits my capacity for full expansion. I can also get frustrated and confused easily when faced with multiple decisions or options. Instead of pausing, I force my way forward, which ultimately meets with more resistance and keeps me further from the inspiration I aspire to embody. The leak is clear: <em>force is the inverse of flow</em>. Every moment I force, I constrict the very capacity I am trying to expand."
+    }
+  },
+  { num:5, q:"The ancestor inside you", p:"Every indigenous tradition holds that ancestors live within us. Which ancestor — biological, cultural, or spiritual — has been expanding inside you lately? What are they asking you to carry outward into the world?",
+    response: {
+      text: "In the spirit of oneness, the ancestor who speaks to me most loudly in the recent past has been <strong>Jesus</strong>. He experienced life in a perpetual state of meditation and love. He didn't experience anything other than love, which allowed for complete unity and inclusion of everything and everyone — including acceptance of himself as he was and all others as they were and are. To me, this feels like the most authentic, truthful, and integral way to dance through life. I feel that I am being asked to carry this — the essence and spirit of this message — into the world, starting with myself, in the creation of the House of Light and Love. I trust that this inspiration will enable me to create from the most authentic and integral place, as the truth."
+    }
+  },
+  { num:6, q:"Your personal synthesis", p:"If you were to write a single paragraph — your own contribution to this archive — what would you say about the relationship between your inner and outer life? What have you learned from living that none of these luminaries could have told you?",
+    response: {
+      text: "My outer life is a direct reflection of my inner life, thoughts, and feelings. I am eternally creating karma through my actions, words, and thoughts — thus shaping my future in the present moment, while also being an accumulation of all my life experiences. What none of these luminaries could have told me is this: the only way to experience life fully is by living it in the present moment. I cannot compare, contrast, or judge myself or others based on anyone's life experiences other than their own unique circumstances. This wisdom can only be gained through direct experience, and it is not a destination but a continuous, eternal process. Learning to let go of everything that has happened or may happen is the only way to fully be in the present moment. What has been both disturbing and inspiring is the awareness that nothing is permanent — and therefore the process of inner expansion and growth is eternal as well. There is no destination, nowhere to go, nothing to do other than to <em>be</em>. It can feel overwhelming after all the work that has been put forth, and yet all that appears to be obstacles and challenges still lies ahead. Learning to embrace that which feels like resistance with grace and ease feels like the greatest invitation to continue this journey."
+    }
+  },
+];
+
+let activeTag = "All";
+const allTags = ["All", "Science","Philosophy","Art","Mysticism","Hebrew","Sufi","Hindu","Buddhist","Indigenous","African","Feminine","Somatics","Poetry","Psychology"];
+let openCards = new Set();
+let userEntries = JSON.parse(localStorage.getItem('ll-entries') || '[]');
+
+function renderFilters() {
+  document.getElementById('filters').innerHTML = allTags.map(t =>
+    `<button class="chip${t===activeTag?' active':''}" onclick="setTag('${t}')">${t}</button>`
+  ).join('');
+}
+
+function setTag(t) { activeTag = t; renderFilters(); renderGrid(); }
+
+function renderGrid() {
+  const all = [...LUMINARIES, ...userEntries];
+  const filtered = activeTag === 'All' ? all : all.filter(l => l.tag === activeTag);
+  document.getElementById('luminary-grid').innerHTML = filtered.map((l, i) => {
+    const isOpen = openCards.has(l.name);
+    return `<div class="lcard${isOpen?' open':''}" id="lc-${i}" onclick="toggleCard(${i}, '${l.name.replace(/'/g,"\\'")}')">
+      <div class="lcard-head">
+        <div class="avatar">${l.emoji||'✦'}</div>
+        <div class="lcard-meta">
+          <div class="lcard-name">${l.name}</div>
+          <div class="lcard-era">${l.era}</div>
+          <span class="lcard-domain ${l.dc||'d-philosophy'}">${l.domain}</span>
+        </div>
+      </div>
+      <div class="eq-display">${l.eq}</div>
+      <div class="lcard-quote">"${l.quote}"</div>
+      <div class="lcard-detail">
+        <div class="lcard-detail-inner">
+          <div class="eq-note">${l.eqNote}</div>
+          <p class="lcard-body">${l.body}</p>
+        </div>
+      </div>
+      <div class="tap-hint">${isOpen ? 'tap to close ▲' : 'tap to expand ▼'}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCard(i, name) {
+  if (openCards.has(name)) openCards.delete(name);
+  else openCards.add(name);
+  renderGrid();
+  const el = document.getElementById('lc-'+i);
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function renderConvergence() {
+  document.getElementById('convergence-grid').innerHTML = CONVERGENCE_TRUTHS.map(t =>
+    `<div class="truth-card"><div class="truth-icon">${t.icon}</div><div class="truth-title">${t.title}</div><div class="truth-body">${t.body}</div></div>`
+  ).join('');
+}
+
+function renderJournal() {
+  document.getElementById('journal-prompts').innerHTML = JOURNAL_PROMPTS.map(p => {
+    let responseHtml = '';
+    if (p.response) {
+      responseHtml = '<div class="journal-response"><h5>Marc\'s Reflection</h5>';
+      if (p.response.eq) {
+        responseHtml += `<div class="personal-eq">${p.response.eq}</div>`;
+        if (p.response.eqNote) responseHtml += `<p style="font-size:0.78rem;color:var(--muted);font-style:italic;text-align:center;margin-bottom:10px;">${p.response.eqNote}</p>`;
+      }
+      responseHtml += `<p>${p.response.text}</p></div>`;
+    }
+    return `<div class="journal-prompt"><h4>Prompt ${p.num} — ${p.q}</h4><p>${p.p}</p>${responseHtml}</div>`;
+  }).join('');
+}
+
+function updateEq() {
+  const i = document.getElementById('eq-inner').value || '?';
+  const f = document.getElementById('eq-func').value || '?';
+  const o = document.getElementById('eq-outer').value || '?';
+  document.getElementById('eq-preview').textContent = `${o} = ${i} [${f}]`;
+}
+
+function addLuminary() {
+  const name = document.getElementById('new-name').value.trim();
+  if (!name) { alert('Please enter a name.'); return; }
+  const entry = {
+    name, era: document.getElementById('new-era').value.trim(),
+    domain: document.getElementById('new-domain').value.trim(),
+    tag: document.getElementById('new-domain').value.split(/[\/&, ]/)[0].trim() || 'Custom',
+    dc: 'd-philosophy', emoji: document.getElementById('new-emoji').value.trim() || '✦',
+    eq: document.getElementById('new-eq').value.trim(),
+    eqNote: document.getElementById('new-eqnote').value.trim(),
+    quote: document.getElementById('new-quote').value.trim(),
+    body: document.getElementById('new-body').value.trim(),
+    userAdded: true
+  };
+  userEntries.push(entry);
+  localStorage.setItem('ll-entries', JSON.stringify(userEntries));
+  ['new-name','new-era','new-domain','new-emoji','new-eq','new-eqnote','new-quote','new-body'].forEach(id => document.getElementById(id).value = '');
+  renderUserEntries();
+  renderGrid();
+  document.getElementById('luminaries').scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderUserEntries() {
+  if (!userEntries.length) { document.getElementById('user-entries').innerHTML = ''; return; }
+  document.getElementById('user-entries').innerHTML = '<h3 style="font-size:0.9rem;color:var(--gold);font-family:var(--sans);margin-bottom:1rem;">Your Added Voices</h3>' +
+    userEntries.map((e,i) =>
+      `<div class="user-entry"><button class="del-btn" onclick="removeEntry(${i})" title="Remove">✕</button><strong>${e.name}</strong> <span style="font-size:0.8rem;color:var(--muted)">${e.era} · ${e.domain}</span><div style="font-size:0.85rem;margin-top:4px;font-style:italic;color:var(--ink)">${e.eq}</div></div>`
+    ).join('');
+}
+
+function removeEntry(i) {
+  userEntries.splice(i, 1);
+  localStorage.setItem('ll-entries', JSON.stringify(userEntries));
+  renderUserEntries(); renderGrid();
+}
+
+// ── COHERENCE MIRROR ──
+const COHERENCE_TESTS = [
+  { name:"Source", tradition:"Heschel / Buber / Ramana",
+    heartSignals:["amazement","wonder","awe","gratitude","presence","inquiry","devotion","reverence","humility","curiosity","beauty","sacred","mystery","grace"],
+    egoSignals:["should","must","prove","impress","convince","better than","superior","deserve","obligation","perform","validate","status","compete"],
+    question:"Does this arise from genuine amazement, encounter, or inquiry — or from obligation and proving?" },
+  { name:"Overflow", tradition:"Rumi / Hafiz / Mirabai / Michelangelo",
+    heartSignals:["overflow","joy","fullness","song","beauty","love","gift","offering","natural","flow","pour","abundance","gratitude","inspired","heart","moved","touched"],
+    egoSignals:["force","push","make","effort","struggle","try harder","grind","hustle","produce","manufacture","output","deliver","strategy","optimize"],
+    question:"Does this feel like natural overflow from inner fullness — or is it being forced or manufactured?" },
+  { name:"Relational", tradition:"Buber / Ubuntu / Black Elk / Thich Nhat Hanh",
+    heartSignals:["we","together","us","share","include","welcome","belong","connect","interbeing","community","invitation","with you","alongside","mutual","companion"],
+    egoSignals:["you need","you should","you must","listen to me","I know","follow","subscribe","buy","click","don't miss","exclusive","only I","above"],
+    question:"Does this speak with others (I-Thou) — or at them (I-It)?" },
+  { name:"Contraction-Expansion", tradition:"Zohar / Lao Tzu / Dogen / Baal Shem Tov",
+    heartSignals:["stillness","patience","wait","listen","silence","space","allow","rest","surrender","trust","receive","open","breathe","pause","dwell","sit with","let go"],
+    egoSignals:["immediately","now","urgent","fast","quick","hurry","don't wait","act now","seize","grab","rush","limited time","before it's too late"],
+    question:"Has there been genuine inner contraction before this outer expression — or is it expansion without prior depth?" },
+  { name:"Marc's Equation", tradition:"Personal — Self-love · Grace · Inspiration",
+    heartSignals:["love","grace","inspiration","heart","authenticity","truth","integrity","light","capacity","illumination","expansion","compassion","presence","being","longing","wonder"],
+    egoSignals:["force","fix","prove","worth","value","effort","doing","control","rigid","figure out","get it done","push through","make it happen","should be"],
+    question:"Is this rooted in self-love, grace, and heart-inspired inspiration — or does it carry the residue of force, proving, and efforting?" }
+];
+
+function runCoherenceMirror() {
+  const input = document.getElementById('mirror-input').value.trim().toLowerCase();
+  if (!input) { alert('Please enter some text to evaluate.'); return; }
+
+  const results = COHERENCE_TESTS.map(test => {
+    const heartHits = test.heartSignals.filter(s => input.includes(s));
+    const egoHits = test.egoSignals.filter(s => input.includes(s));
+    const heartScore = heartHits.length;
+    const egoScore = egoHits.length;
+    const total = heartScore + egoScore;
+    const ratio = total === 0 ? 0.65 : heartScore / total;
+    return { ...test, heartHits, egoHits, heartScore, egoScore, ratio };
+  });
+
+  const avgRatio = results.reduce((sum, r) => sum + r.ratio, 0) / results.length;
+  const pct = Math.round(avgRatio * 100);
+
+  // Find resonant luminaries
+  const allLums = [...LUMINARIES, ...userEntries];
+  const resonantLums = allLums.filter(l => {
+    const body = (l.body + ' ' + l.quote + ' ' + l.eq).toLowerCase();
+    const words = input.split(/\s+/).filter(w => w.length > 4);
+    const matches = words.filter(w => body.includes(w));
+    return matches.length >= 2;
+  }).slice(0, 6);
+
+  // Render
+  const resultEl = document.getElementById('mirror-result');
+  resultEl.classList.add('visible');
+
+  const fill = document.getElementById('alignment-fill');
+  fill.style.width = pct + '%';
+  fill.className = 'alignment-fill ' + (pct >= 70 ? 'high' : pct >= 40 ? 'mid' : 'low');
+
+  let signalsHtml = '';
+  const overallLabel = pct >= 75 ? 'Heart-Rooted Coherence' : pct >= 50 ? 'Mixed Signal — Heart Present, Ego Residue Detected' : pct >= 30 ? 'Mind-Projected — Reconnect to Inner Source' : 'Ego-Driven Projection — Pause, Go Inward First';
+
+  signalsHtml += `<div class="mirror-signal"><strong>Overall: ${overallLabel} (${pct}%)</strong></div>`;
+
+  results.forEach(r => {
+    let verdict, detail;
+    if (r.ratio >= 0.7) {
+      verdict = 'Aligned';
+      detail = r.heartHits.length > 0 ? `Heart signals detected: ${r.heartHits.join(', ')}` : 'No ego signals detected — neutral or aligned by absence.';
+    } else if (r.ratio >= 0.4) {
+      verdict = 'Mixed';
+      detail = `Heart signals (${r.heartHits.join(', ') || 'none'}) compete with ego residue (${r.egoHits.join(', ') || 'none'}). ${r.question}`;
+    } else {
+      verdict = 'Misaligned';
+      detail = `Ego signals dominant (${r.egoHits.join(', ')}). Ask: ${r.question}`;
+    }
+    signalsHtml += `<div class="mirror-signal"><strong>${r.name} Test (${r.tradition})</strong> — ${verdict}<br><span style="font-size:0.82rem;">${detail}</span></div>`;
+  });
+
+  if (pct < 70) {
+    signalsHtml += `<div class="mirror-signal" style="border-left-color:#FF9800;"><strong>Invitation</strong><br><span style="font-size:0.82rem;">Before refining this outward, consider: What inner expansion does this message want to overflow from? Sit with the feeling beneath the words. As your equation reminds: ℰ_illuminated = (Self-love · Grace · Inspiration_heart) · Capacity_light / (1 + Force_old). Where is the force? Where is the grace?</span></div>`;
+  }
+
+  document.getElementById('mirror-signals').innerHTML = signalsHtml;
+
+  // Resonant equations
+  let eqHtml = '<p style="font-size:0.78rem;color:var(--muted);margin-top:12px;font-family:var(--sans);">Resonant Luminaries:</p>';
+  if (resonantLums.length > 0) {
+    eqHtml += resonantLums.map(l => `<span class="mirror-eq-tag resonant">${l.emoji} ${l.name}: ${l.eq}</span>`).join('');
+  } else {
+    eqHtml += allLums.slice(0, 4).map(l => `<span class="mirror-eq-tag">${l.emoji} ${l.name}</span>`).join('');
+    eqHtml += '<p style="font-size:0.78rem;color:var(--muted);margin-top:8px;">No strong resonance detected — the message may need deeper roots in the wisdom traditions.</p>';
+  }
+  eqHtml += `<span class="mirror-eq-tag resonant">✦ Marc: ℰ = (Love · Grace · Inspiration) · Light / (1+Force)</span>`;
+  document.getElementById('mirror-equations').innerHTML = eqHtml;
+
+  document.getElementById('mirror-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Nav active state
+window.addEventListener('scroll', () => {
+  const sections = ['synthesis','luminaries','convergence','journal','coherence-mirror','add'];
+  const links = document.querySelectorAll('.nav a');
+  let cur = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 80) cur = id;
+  });
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+cur));
+});
+
+renderFilters(); renderGrid(); renderConvergence(); renderJournal(); renderUserEntries();
+</script>
+</body>
+</html>
