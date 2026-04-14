@@ -681,6 +681,177 @@
     flex-wrap: wrap;
   }
 
+  /* ===== YOUR WORDS SECTION ===== */
+  .your-words {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .your-words .words-label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-gold);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .your-words .word-echo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(201, 169, 110, 0.2);
+    opacity: 0.85;
+  }
+
+  .your-words .word-echo .echo-note {
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-style: normal;
+    color: var(--stone);
+    opacity: 0.5;
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== JOURNAL VIEW (for print/download) ===== */
+  .journal-view {
+    display: none;
+  }
+
+  .journal-view.active {
+    display: block;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .journal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .journal-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--deep-earth);
+    margin-bottom: 0.5rem;
+  }
+
+  .journal-header .journal-date {
+    font-size: 0.8rem;
+    color: var(--stone);
+    font-weight: 300;
+  }
+
+  .journal-header .journal-pathway {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--amber-gold);
+    margin-top: 0.75rem;
+  }
+
+  .journal-entry {
+    margin-bottom: 2.5rem;
+  }
+
+  .journal-entry .journal-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--deep-earth);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .journal-entry .journal-answer {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--warm-earth);
+    line-height: 1.8;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .journal-reflection {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .journal-reflection h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--deep-earth);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .journal-reflection p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--warm-earth);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .journal-council {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+  }
+
+  .journal-council p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--deep-earth);
+  }
+
+  .journal-council .attribution {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--stone);
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  .journal-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .journal-footer img {
+    width: auto;
+    height: 40px;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .journal-footer p {
+    font-size: 0.7rem;
+    color: var(--stone);
+    opacity: 0.5;
+  }
+
   /* ===== PHILOSOPHY SECTION ===== */
   .philosophy {
     background: var(--cream);
@@ -834,6 +1005,33 @@
     .nav-links a { font-size: 0.6rem; }
     .nav-brand span { display: none; }
   }
+
+  /* ===== PRINT STYLES FOR JOURNAL ===== */
+  @media print {
+    body { background: white; }
+    .nav-bar, .hero, .intro, .pathways, .philosophy, footer,
+    .inquiry-container, .reflection-output,
+    .btn, .reflection-actions { display: none !important; }
+
+    .journal-view.active {
+      display: block !important;
+      padding: 1rem;
+    }
+
+    .journal-entry {
+      page-break-inside: avoid;
+    }
+
+    .journal-reflection {
+      page-break-inside: avoid;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .journal-footer {
+      page-break-before: avoid;
+    }
+  }
 </style>
 </head>
 <body>
@@ -954,6 +1152,7 @@
     <div class="mirror-label">Your Reflection</div>
     <h3 id="reflection-title"></h3>
     <div class="reflection-body" id="reflection-body"></div>
+    <div class="your-words" id="your-words"></div>
     <div class="council-voice" id="council-voice"></div>
   </div>
 
@@ -961,8 +1160,34 @@
     <p>The mirror remembers nothing. Each time you return, it meets you new.</p>
     <div class="reflection-actions">
       <button class="btn btn-secondary" onclick="backToPathways()">Try Another Doorway</button>
-      <button class="btn btn-primary" onclick="restartSame()">Look Again</button>
+      <button class="btn btn-primary" onclick="showJournal()">Save This Reflection</button>
+      <button class="btn btn-secondary" onclick="restartSame()">Look Again</button>
     </div>
+  </div>
+</div>
+
+<!-- ===== JOURNAL VIEW (printable/downloadable) ===== -->
+<div class="journal-view" id="journal">
+  <div class="journal-header">
+    <h2>The Living Mirror — A Reflection</h2>
+    <div class="journal-date" id="journal-date"></div>
+    <div class="journal-pathway" id="journal-pathway"></div>
+  </div>
+
+  <div id="journal-entries"></div>
+
+  <div class="journal-reflection" id="journal-reflection"></div>
+  <div class="journal-council" id="journal-council"></div>
+
+  <div class="reflection-actions" style="margin-bottom: 2rem;">
+    <button class="btn btn-secondary" onclick="printJournal()">Print / Save as PDF</button>
+    <button class="btn btn-secondary" onclick="backToPathways()">Return to Doorways</button>
+  </div>
+
+  <div class="journal-footer">
+    <img src="assets/logos/315i-gold-horizontal.png" alt="House of Light and Love">
+    <p>The Living Mirror &middot; houseoflightandlove.org</p>
+    <p>There is nothing to fix. Only love to remember.</p>
   </div>
 </div>
 
@@ -1042,10 +1267,25 @@ const inquiryData = {
     reflection: {
       title: "What the mirror sees",
       generate: function(answers) {
-        return `<p>You came here carrying questions about what matters. The mirror doesn't tell you what to value — it shows you what you already do.</p>
-        <p>Notice: you didn't describe achievements or milestones. You described feelings — presence, alignment, the absence of performance. The values that live in your body are different from the ones your mind has been rehearsing.</p>
-        <p>The things you protect when no one is watching — those are your actual values. Not the list on the wall. The quiet, unglamorous choices you make when it costs you something.</p>
-        <p>The muck on this mirror was never wrong. It was simply inherited stories about what should matter. As it clears, what remains is simpler than you expected.</p>`;
+        const filled = answers.filter(a => a && a.trim().length > 0);
+        if (filled.length === 0) {
+          return `<p>You came here carrying questions about what matters. Even in silence, the mirror saw something. The willingness to look is itself a value — perhaps the deepest one.</p>`;
+        }
+        let html = `<p>You came here carrying questions about what matters. The mirror doesn't tell you what to value — it shows you what you already do.</p>`;
+        if (answers[0] && answers[0].trim()) {
+          html += `<p>When everything feels right, what you described wasn't achievement — it was a quality of presence. That feeling is your compass, not your goal list.</p>`;
+        }
+        if (answers[1] && answers[1].trim()) {
+          html += `<p>You named something you've been carrying that isn't yours. Seeing it is the first act of setting it down. You don't have to do anything with this yet — just let it be seen.</p>`;
+        }
+        if (answers[4] && answers[4].trim()) {
+          html += `<p>The things you protect when no one is watching — those are your actual values. Not the list on the wall. The quiet, unglamorous choices you make when it costs you something.</p>`;
+        }
+        if (answers[5] && answers[5].trim()) {
+          html += `<p>And the word that surfaced — hold it gently. It didn't come from thinking. It came from somewhere deeper. That word is a seed. You don't need to plant it anywhere. Just carry it.</p>`;
+        }
+        html += `<p>The muck on this mirror was never wrong. It was simply inherited stories about what should matter. As it clears, what remains is simpler than you expected.</p>`;
+        return html;
       },
       council: {
         text: "Are we forcing, or flowing?",
@@ -1085,10 +1325,25 @@ const inquiryData = {
     reflection: {
       title: "What the mirror sees",
       generate: function(answers) {
-        return `<p>You arrived here with something you're building, creating, or moving toward. The mirror isn't interested in the plan — it's interested in what's underneath.</p>
-        <p>Notice the gap between what you're doing and how you want to feel. Often the intention and the action are pointed in different directions — not because you're wrong, but because the mind is very good at building elaborate plans around a simple desire.</p>
-        <p>The question isn't whether your intention is good enough. It's whether it's actually yours — or a story you inherited about what you should want.</p>
-        <p>What remains when you stop pushing is closer to truth than anything you have to force. The flame doesn't try to burn. It simply does.</p>`;
+        const filled = answers.filter(a => a && a.trim().length > 0);
+        if (filled.length === 0) {
+          return `<p>You arrived here with something you're building, creating, or moving toward — and chose to sit with it in silence. Sometimes the deepest intention reveals itself not in words, but in the willingness to pause.</p>`;
+        }
+        let html = `<p>You arrived here with something you're building, creating, or moving toward. The mirror isn't interested in the plan — it's interested in what's underneath.</p>`;
+        if (answers[0] && answers[0].trim()) {
+          html += `<p>The feeling you named — that's the real destination. Everything else is a vehicle. When vehicle and destination point the same direction, there is flow. When they diverge, there is friction. Not wrong — just information.</p>`;
+        }
+        if (answers[1] && answers[1].trim()) {
+          html += `<p>You looked at whether something is being proved through what you're building. That question alone shifts the ground. Proving isn't bad — but seeing it clearly changes what happens next.</p>`;
+        }
+        if (answers[3] && answers[3].trim()) {
+          html += `<p>What remains when you stop pushing — that's closer to your true intention than anything you have to force into being. The flame doesn't try to burn. It simply does.</p>`;
+        }
+        if (answers[5] && answers[5].trim()) {
+          html += `<p>You finished the sentence. The first version — unedited, unrefined — is usually the truest. Let those words settle. They know something your plans don't.</p>`;
+        }
+        html += `<p>The question isn't whether your intention is good enough. It's whether it's actually yours — or a story you inherited about what you should want.</p>`;
+        return html;
       },
       council: {
         text: "Is there joy here?",
@@ -1128,10 +1383,25 @@ const inquiryData = {
     reflection: {
       title: "What the mirror sees",
       generate: function(answers) {
-        return `<p>You brought something difficult to the mirror — and instead of looking away, you looked in. That is already the shift.</p>
-        <p>Notice: the disturbance didn't disappear through these questions. It wasn't supposed to. The invitation was never to eradicate the vrittis — the disturbances in the field — but to change your relationship with them.</p>
-        <p>The old story is information, not identity. The pattern is a road sign, not a wall. And the body knew the answer before the first question was asked — it just needed you to slow down enough to listen.</p>
-        <p>You don't navigate by arriving somewhere without disturbance. You navigate by dancing with it — with grace, with ease, with the willingness to let the disturbance last long enough to become a teacher.</p>`;
+        const filled = answers.filter(a => a && a.trim().length > 0);
+        if (filled.length === 0) {
+          return `<p>You brought something to the mirror — and even in the silence of not naming it, something shifted. The willingness to face a disturbance without words is its own form of navigation.</p>`;
+        }
+        let html = `<p>You brought something difficult to the mirror — and instead of looking away, you looked in. That is already the shift.</p>`;
+        if (answers[0] && answers[0].trim()) {
+          html += `<p>You named the disturbance plainly. Without the story, without the drama — just what it is. That act of seeing, without the elaborate narrative, is where clarity begins.</p>`;
+        }
+        if (answers[1] && answers[1].trim()) {
+          html += `<p>You found it in the body. The body knew before the mind did — it's been holding this for you. The hand you placed there is a bridge between knowing and feeling.</p>`;
+        }
+        if (answers[2] && answers[2].trim()) {
+          html += `<p>The old pattern you recognized — that's not the enemy. It's information. A familiar road sign. Seeing it doesn't make it disappear, but it does change what happens next at the crossroads.</p>`;
+        }
+        if (answers[3] && answers[3].trim()) {
+          html += `<p>You let the disturbance be a messenger. The hardest moments are often holding the most light — and you chose to receive the message instead of shooting the messenger.</p>`;
+        }
+        html += `<p>You don't navigate by arriving somewhere without disturbance. You navigate by dancing with it — with grace, with ease, with the willingness to let the disturbance last long enough to become a teacher.</p>`;
+        return html;
       },
       council: {
         text: "Does this reduce suffering?",
@@ -1236,6 +1506,32 @@ function showReflection() {
   const data = inquiryData[currentPathway].reflection;
   document.getElementById('reflection-title').textContent = data.title;
   document.getElementById('reflection-body').innerHTML = data.generate(answers);
+
+  // Build "Your Words" echo — reflect key phrases back to the user
+  const wordsEl = document.getElementById('your-words');
+  const questions = inquiryData[currentPathway].questions;
+  const filledAnswers = answers
+    .map((a, i) => ({ text: a, index: i }))
+    .filter(a => a.text && a.text.trim().length > 0);
+
+  if (filledAnswers.length > 0) {
+    let wordsHtml = '<div class="words-label">What you said</div>';
+    // Show up to 3 most substantive answers (longest ones carry more weight)
+    const sorted = [...filledAnswers].sort((a, b) => b.text.trim().length - a.text.trim().length);
+    const shown = sorted.slice(0, 3);
+    shown.forEach(item => {
+      const excerpt = item.text.trim().length > 200
+        ? item.text.trim().substring(0, 200) + '...'
+        : item.text.trim();
+      const qShort = questions[item.index].text.split('—')[0].split('?')[0].trim();
+      wordsHtml += `<div class="word-echo">"${excerpt}"<span class="echo-note">In response to: ${qShort}</span></div>`;
+    });
+    wordsEl.innerHTML = wordsHtml;
+    wordsEl.style.display = 'block';
+  } else {
+    wordsEl.style.display = 'none';
+  }
+
   document.getElementById('council-voice').innerHTML = `
     <p>"${data.council.text}"</p>
     <span class="attribution">— ${data.council.source}</span>
@@ -1246,9 +1542,52 @@ function showReflection() {
   output.scrollIntoView({ behavior: 'smooth' });
 }
 
+// ===== JOURNAL VIEW =====
+function showJournal() {
+  document.getElementById('reflection').classList.remove('active');
+
+  const data = inquiryData[currentPathway];
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  document.getElementById('journal-date').textContent = dateStr;
+  document.getElementById('journal-pathway').textContent = data.title;
+
+  // Build Q&A entries
+  let entriesHtml = '';
+  data.questions.forEach((q, i) => {
+    const answer = answers[i] && answers[i].trim() ? answers[i].trim() : '<em style="color: var(--stone); opacity: 0.4;">— silence —</em>';
+    entriesHtml += `
+      <div class="journal-entry">
+        <div class="journal-question">${q.text}</div>
+        <div class="journal-answer">${answer}</div>
+      </div>`;
+  });
+  document.getElementById('journal-entries').innerHTML = entriesHtml;
+
+  // Build reflection
+  const reflection = data.reflection;
+  document.getElementById('journal-reflection').innerHTML = `
+    <h3>${reflection.title}</h3>
+    ${reflection.generate(answers)}`;
+
+  document.getElementById('journal-council').innerHTML = `
+    <p>"${reflection.council.text}"</p>
+    <span class="attribution">— ${reflection.council.source}</span>`;
+
+  const journal = document.getElementById('journal');
+  journal.classList.add('active');
+  journal.scrollIntoView({ behavior: 'smooth' });
+}
+
+function printJournal() {
+  window.print();
+}
+
 function backToPathways() {
   document.getElementById('inquiry').classList.remove('active');
   document.getElementById('reflection').classList.remove('active');
+  document.getElementById('journal').classList.remove('active');
   document.getElementById('intro').style.display = 'block';
   document.getElementById('pathways').style.display = 'block';
   document.getElementById('philosophy').style.display = 'block';
@@ -1256,6 +1595,7 @@ function backToPathways() {
 }
 
 function restartSame() {
+  document.getElementById('journal').classList.remove('active');
   startInquiry(currentPathway);
 }
 
